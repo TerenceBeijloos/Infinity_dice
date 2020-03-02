@@ -80,10 +80,9 @@ enum
 //    // Custom Service 1
     SVC1_IDX_SVC = 0,// Must be the first line because your characteristics must between two values in this case its between SVC1_IDX_SVC and CUSTS1_IDX_NB 
 		
-//		USER_IDX_TEMPERATURE_VAL_CHAR,
-//		USER_IDX_TEMPERATURE_VAL_VAL,
-//		SVC1_IDX_TEMPERATURE_VAL_NTF_CFG,
-//		USER_IDX_TEMPERATURE_VAL_DESC,
+		DICE_CHANGE_DECLARATION,
+		DICE_CHANGE_VAL,
+		DICE_CHANGE_CFG,
 
     CUSTS1_IDX_NB// must be the last line of the enum because it indicates a size
 };

@@ -87,9 +87,10 @@ void user_send_temperature_ntf(void)
     
     adc_disable();
 #else
-		double temperature = 420;
+		
 #endif
 	
+		unsigned temperature = 420;
 		previous_temperature = temperature;
         length = snprintf(temperature_ntf_string, TEMPERATURE_DATA, SNPRINT_FORMAT, temperature);
 		//Allocate a new message
@@ -101,7 +102,7 @@ void user_send_temperature_ntf(void)
 																
 		req->conidx = 0;                                        //Connection ID to send the data to (this application can only have one connection(0))
 		req->notification = true;                               //Data is sent as a notification and not as indication
-		req->handle = USER_IDX_TEMPERATURE_VAL_VAL;             //The handle of the characteristic we want to write to
+		req->handle = DICE_CHANGE_VAL;      						        //The handle of the characteristic we want to write to
 		req->length = length;                          		    	//Data length in bytes
 		memcpy(req->value, temperature_ntf_string, length);			//Copy the string to the message
 		
@@ -114,21 +115,25 @@ void user_send_temperature_ntf(void)
 
  void user_temperature_message_handler(struct custs1_val_write_ind const *param)
 {
-
-	if(param->value[0]){
-		//If the client subscribed to the notification
-		if(timer_temperature_ntf == EASY_TIMER_INVALID_TIMER){ 
-			//Start the timer if it is not running
-			timer_temperature_ntf = app_easy_timer(NOTIFICATION_DELAY/10, user_send_temperature_ntf); //Set a timer for NOTIFICATION_DELAY ms
-		}
+	uint8_t u8_value_test = param->value[0];
+	if(u8_value_test == 0x11){
+		GPIO_SetActive(GPIO_LED_PORT, GPIO_LED_PIN);
+		user_send_temperature_ntf();
+//		//If the client subscribed to the notification
+//		if(timer_temperature_ntf == EASY_TIMER_INVALID_TIMER){ 
+//			//Start the timer if it is not running
+//			timer_temperature_ntf = app_easy_timer(NOTIFICATION_DELAY/10, user_send_temperature_ntf); //Set a timer for NOTIFICATION_DELAY ms
+//		}
+		
 	}
 	else{
-		//If the client unsubscribed from the notification
-		if(timer_temperature_ntf != EASY_TIMER_INVALID_TIMER){ 
-			//Stop the timer if it is running
-			app_easy_timer_cancel(timer_temperature_ntf);
-			timer_temperature_ntf = EASY_TIMER_INVALID_TIMER;
-		}
+		GPIO_SetInactive(GPIO_LED_PORT, GPIO_LED_PIN);
+//		//If the client unsubscribed from the notification
+//		if(timer_temperature_ntf != EASY_TIMER_INVALID_TIMER){ 
+//			//Stop the timer if it is running
+//			app_easy_timer_cancel(timer_temperature_ntf);
+//			timer_temperature_ntf = EASY_TIMER_INVALID_TIMER;
+//		}
 	}
 
 }

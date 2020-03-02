@@ -94,17 +94,17 @@ const struct attm_desc_128 custs1_att_db[CUSTS1_IDX_NB] =
                                             0, 0, NULL},
 
     // Temperature Characteristic Value
-    [USER_IDX_TEMPERATURE_VAL_VAL]           = {USER_TEMPERATURE_VAL_UUID_128, ATT_UUID_128_LEN, PERM(NTF, ENABLE),
+    [DICE_CHANGE_VAL]           = {USER_TEMPERATURE_VAL_UUID_128, ATT_UUID_128_LEN, PERM(RD, ENABLE) | PERM(WR, ENABLE) | PERM(NTF, ENABLE)| PERM(WRITE_REQ, ENABLE),
                                             USER_IDX_TEMPERATURE_VAL_CHAR_LEN, 0, NULL},
 
     // Temperature Client Characteristic Configuration Descriptor
-    [SVC1_IDX_TEMPERATURE_VAL_NTF_CFG]       = {(uint8_t*)&att_desc_cfg, ATT_UUID_16_LEN, PERM(RD, ENABLE) | PERM(WR, ENABLE) | PERM(WRITE_REQ, ENABLE),
+    [DICE_CHANGE_CFG]       = {(uint8_t*)&att_desc_cfg, ATT_UUID_16_LEN, PERM(RD, ENABLE) | PERM(WR, ENABLE) | PERM(WRITE_REQ, ENABLE),
                                             sizeof(uint16_t), 0, NULL},
 
-    // Temperature Characteristic User Description
-    [USER_IDX_TEMPERATURE_VAL_DESC]     = {(uint8_t*)&att_desc_user_desc, ATT_UUID_16_LEN, PERM(RD, ENABLE),
-                                            sizeof(USER_IDX_TEMPERATURE_VAL_USER_DESC) - 1, sizeof(USER_IDX_TEMPERATURE_VAL_USER_DESC) - 1,
-                                            (uint8_t *) USER_IDX_TEMPERATURE_VAL_USER_DESC},
+//    // Temperature Characteristic User Description
+//    [DICE_CHANGE_DESC]     = {(uint8_t*)&att_desc_user_desc, ATT_UUID_16_LEN, PERM(RD, ENABLE),
+//                                            sizeof(USER_IDX_TEMPERATURE_VAL_USER_DESC) - 1, sizeof(USER_IDX_TEMPERATURE_VAL_USER_DESC) - 1,
+//                                            (uint8_t *) USER_IDX_TEMPERATURE_VAL_USER_DESC},
 
 };
 

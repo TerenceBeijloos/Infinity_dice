@@ -72,6 +72,9 @@
 			#define MCP9808_SCL_PIN	            GPIO_PIN_7//GPIO_PIN_1
 			#define MCP9808_SDA_PORT            GPIO_PORT_1//GPIO_PORT_2
 			#define MCP9808_SDA_PIN             GPIO_PIN_2//GPIO_PIN_3
+			
+			#define GPIO_LED_PORT           GPIO_PORT_1
+			#define GPIO_LED_PIN            GPIO_PIN_0
 	#endif 
 #endif
 

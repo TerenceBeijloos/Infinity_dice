@@ -72,8 +72,8 @@
 #define TEMPERATURE_DATA    (4)
 #define SNPRINT_FORMAT      DECIMAL
 #else
-#define TEMPERATURE_DATA    (9)
-#define SNPRINT_FORMAT      FLOAT
+#define TEMPERATURE_DATA    (4)
+#define SNPRINT_FORMAT      "%d"
 #endif
 
 /* Duration of timer for connection parameter update request */

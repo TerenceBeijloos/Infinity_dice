@@ -49,6 +49,7 @@
 #include "user_custs1_impl.h"
 #include "user_custs1_def.h"
 #include "co_bt.h"
+#include "user_periph_setup.h"
 
 #if defined (CFG_USE_INTERNAL_TEMP_SENSOR) && (__DA14531__)
 #include "adc.h"
@@ -313,10 +314,12 @@ void user_catch_rest_hndl(ke_msg_id_t const msgid,
 
             switch (msg_param->handle)
             {
-                case SVC1_IDX_TEMPERATURE_VAL_NTF_CFG:
-                    user_temperature_message_handler(msg_param);
+                case DICE_CHANGE_CFG:
+									GPIO_SetActive(GPIO_LED_PORT, GPIO_LED_PIN);
+//                    //user_temperature_message_handler(msg_param);
                     break;
-
+								case DICE_CHANGE_VAL:
+									user_temperature_message_handler(msg_param);
                 default:
                     break;
             }
