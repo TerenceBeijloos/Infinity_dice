@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Infinity Dice</string>
+    <string name="title_custom">Custom mode</string>
+    <string name="title_normal">Normal mode</string>
+    <string name="title_admin">Admin mode</string>
+</resources>
