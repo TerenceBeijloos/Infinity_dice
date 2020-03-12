@@ -1119,6 +1119,16 @@
               <FileType>5</FileType>
               <FilePath>..\src\config\user_profiles_config.h</FilePath>
             </File>
+            <File>
+              <FileName>dice_communication.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\dice_communication.h</FilePath>
+            </File>
+            <File>
+              <FileName>dice_led_driver.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\dice_led_driver.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1158,6 +1168,16 @@
               <FileName>user_peripheral.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src\user_peripheral.c</FilePath>
+            </File>
+            <File>
+              <FileName>dice_communication.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\dice_communication.c</FilePath>
+            </File>
+            <File>
+              <FileName>dice_led_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\dice_led_driver.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2276,6 +2296,16 @@
               <FileType>5</FileType>
               <FilePath>..\src\config\user_profiles_config.h</FilePath>
             </File>
+            <File>
+              <FileName>dice_communication.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\dice_communication.h</FilePath>
+            </File>
+            <File>
+              <FileName>dice_led_driver.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\dice_led_driver.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2315,6 +2345,16 @@
               <FileName>user_peripheral.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src\user_peripheral.c</FilePath>
+            </File>
+            <File>
+              <FileName>dice_communication.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\dice_communication.c</FilePath>
+            </File>
+            <File>
+              <FileName>dice_led_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\dice_led_driver.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3433,6 +3473,16 @@
               <FileType>5</FileType>
               <FilePath>..\src\config\user_profiles_config.h</FilePath>
             </File>
+            <File>
+              <FileName>dice_communication.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\dice_communication.h</FilePath>
+            </File>
+            <File>
+              <FileName>dice_led_driver.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\dice_led_driver.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3472,6 +3522,16 @@
               <FileName>user_peripheral.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src\user_peripheral.c</FilePath>
+            </File>
+            <File>
+              <FileName>dice_communication.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\dice_communication.c</FilePath>
+            </File>
+            <File>
+              <FileName>dice_led_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\dice_led_driver.c</FilePath>
             </File>
           </Files>
         </Group>

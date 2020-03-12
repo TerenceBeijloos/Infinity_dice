@@ -42,7 +42,6 @@
 #include "gpio.h"
 #include "uart.h"
 #include "syscntl.h"
-#include "MCP9808.h"
 /*
  * GLOBAL VARIABLE DEFINITIONS
  ****************************************************************************************

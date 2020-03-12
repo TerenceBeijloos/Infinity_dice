@@ -45,8 +45,8 @@
 #include "user_custs1_impl.h"
 #include "user_peripheral.h"
 #include "user_periph_setup.h"
-#include "MCP9808.h"
 #include "arch_console.h"
+#include "dice_communication.h"
 
 #if defined (CFG_USE_INTERNAL_TEMP_SENSOR) && (__DA14531__)
 #include "adc.h"
@@ -56,88 +56,11 @@
  * GLOBAL VARIABLE DEFINITIONS
  ****************************************************************************************
  */
-
-ke_msg_id_t timer_temperature_ntf      		__SECTION_ZERO("retention_mem_area0"); 											//@RETENTION MEMORY
-char temperature_ntf_string[9] 			    __SECTION_ZERO("retention_mem_area0"); //@RETENTION MEMORY
-
-#if defined (CFG_USE_INTERNAL_TEMP_SENSOR) && (__DA14531__)
-uint8_t previous_temperature                __SECTION_ZERO("retention_mem_area0");
-#else
-double previous_temperature 								__SECTION_ZERO("retention_mem_area0"); 
-#endif
+ 
 /*
  * FUNCTION DEFINITIONS
  ****************************************************************************************
  */
- 
-void user_send_temperature_ntf(void)
-{
-    uint8_t length;
-    
-#if defined (CFG_USE_INTERNAL_TEMP_SENSOR) && (__DA14531__)
-    
-        adc_config_t temp_config = {
-        .input_mode = ADC_INPUT_MODE_SINGLE_ENDED,
-        .input = ADC_INPUT_SE_TEMP_SENS,
-    };
-        
-    adc_init(&temp_config);
-    
-    int8_t temperature = adc_get_temp();
-    
-    adc_disable();
-#else
-		
-#endif
-	
-		unsigned temperature = 420;
-		previous_temperature = temperature;
-        length = snprintf(temperature_ntf_string, TEMPERATURE_DATA, SNPRINT_FORMAT, temperature);
-		//Allocate a new message
-		struct custs1_val_ntf_ind_req* req = KE_MSG_ALLOC_DYN(CUSTS1_VAL_NTF_REQ,
-																prf_get_task_from_id(TASK_ID_CUSTS1),
-																TASK_APP,
-																custs1_val_ntf_ind_req,
-																length);
-																
-		req->conidx = 0;                                        //Connection ID to send the data to (this application can only have one connection(0))
-		req->notification = true;                               //Data is sent as a notification and not as indication
-		req->handle = DICE_CHANGE_VAL;      						        //The handle of the characteristic we want to write to
-		req->length = length;                          		    	//Data length in bytes
-		memcpy(req->value, temperature_ntf_string, length);			//Copy the string to the message
-		
-		ke_msg_send(req);                                       //Send the message to the task
-	
-    
-	timer_temperature_ntf = app_easy_timer(NOTIFICATION_DELAY/10, user_send_temperature_ntf); //Set a timer for NOTIFICATION_DELAY ms
-																																
-}
-
- void user_temperature_message_handler(struct custs1_val_write_ind const *param)
-{
-	uint8_t u8_value_test = param->value[0];
-	if(u8_value_test == 0x11){
-		GPIO_SetActive(GPIO_LED_PORT, GPIO_LED_PIN);
-		user_send_temperature_ntf();
-//		//If the client subscribed to the notification
-//		if(timer_temperature_ntf == EASY_TIMER_INVALID_TIMER){ 
-//			//Start the timer if it is not running
-//			timer_temperature_ntf = app_easy_timer(NOTIFICATION_DELAY/10, user_send_temperature_ntf); //Set a timer for NOTIFICATION_DELAY ms
-//		}
-		
-	}
-	else{
-		GPIO_SetInactive(GPIO_LED_PORT, GPIO_LED_PIN);
-//		//If the client unsubscribed from the notification
-//		if(timer_temperature_ntf != EASY_TIMER_INVALID_TIMER){ 
-//			//Stop the timer if it is running
-//			app_easy_timer_cancel(timer_temperature_ntf);
-//			timer_temperature_ntf = EASY_TIMER_INVALID_TIMER;
-//		}
-	}
-
-}
-		
 
 void user_svc1_rest_att_info_req_handler(ke_msg_id_t const msgid,
                                             struct custs1_att_info_req const *param,

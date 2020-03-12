@@ -50,6 +50,7 @@
 #include "user_custs1_def.h"
 #include "co_bt.h"
 #include "user_periph_setup.h"
+#include "dice_communication.h"
 
 #if defined (CFG_USE_INTERNAL_TEMP_SENSOR) && (__DA14531__)
 #include "adc.h"
@@ -314,12 +315,11 @@ void user_catch_rest_hndl(ke_msg_id_t const msgid,
 
             switch (msg_param->handle)
             {
-                case DICE_CHANGE_CFG:
+                case DICE_CHANGE_CHANCE_CFG:
 									GPIO_SetActive(GPIO_LED_PORT, GPIO_LED_PIN);
-//                    //user_temperature_message_handler(msg_param);
-                    break;
-								case DICE_CHANGE_VAL:
-									user_temperature_message_handler(msg_param);
+                break;
+								case DICE_CHANGE_CHANCE_VAL:
+									dice_chance_recieve_handler(msg_param);
                 default:
                     break;
             }

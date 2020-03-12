@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Mon Mar 02 15:09:59 2020
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Fri Mar 13 00:09:33 2020
 ;VERSION 0.2
 ;FILE adc_58x.o
 adc_disable <= USED 0
@@ -80,6 +80,12 @@ read_rcx_freq <= USED 0
 ;FILE custom_common.o
 ;FILE custs1.o
 ;FILE custs1_task.o
+;FILE dice_communication.o
+dice_chance_get_ntf_string <= USED 0
+dice_chance_init <= USED 0
+dice_chance_set_ntf_string <= USED 0
+;FILE dice_led_driver.o
+led_periph_init <= USED 0
 ;FILE diss.o
 ;FILE gpio.o
 GPIO_ConfigurePinPower <= USED 0

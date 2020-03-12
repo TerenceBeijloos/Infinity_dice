@@ -1,0 +1,42 @@
+#include "dice_led_driver.h"
+#include "dice_communication.h"
+
+void led_periph_init(void){
+	
+	SIDE_CONTAINER[top] = SIDE_TOP;
+	SIDE_CONTAINER[bottom] = SIDE_BOT;
+	SIDE_CONTAINER[left] = SIDE_LEFT;
+	SIDE_CONTAINER[right] = SIDE_RIGHT;
+	SIDE_CONTAINER[front] = SIDE_FRONT;
+	SIDE_CONTAINER[back] = SIDE_BACK;
+	
+	LED_PATERNS[one].LED_PATERN[0] 		= LED_MIDDLE_ONE;
+	LED_PATERNS[one].u8Size 					= 1;
+	
+	LED_PATERNS[two].LED_PATERN[0] 		= LED_DIAGANOL_RTL;
+	LED_PATERNS[two].u8Size 					= 1;
+	
+	LED_PATERNS[three].LED_PATERN[0] 	= LED_DIAGANOL_RTL;
+	LED_PATERNS[three].LED_PATERN[1] 	= LED_MIDDLE_ONE;
+	LED_PATERNS[three].u8Size 				= 2;
+	
+	LED_PATERNS[four].LED_PATERN[0]  	= LED_DIAGANOL_RTL;
+	LED_PATERNS[four].LED_PATERN[1]  	= LED_DIAGANOL_LTR;
+	LED_PATERNS[four].u8Size 					= 2;
+	
+	LED_PATERNS[five].LED_PATERN[0]  	= LED_DIAGANOL_RTL;
+	LED_PATERNS[five].LED_PATERN[1]  	= LED_DIAGANOL_LTR;
+	LED_PATERNS[five].LED_PATERN[2]  	= LED_MIDDLE_ONE;
+	LED_PATERNS[five].u8Size 					= 3;
+	
+	LED_PATERNS[six].LED_PATERN[0] 		= LED_DIAGANOL_RTL;
+	LED_PATERNS[six].LED_PATERN[1] 		= LED_DIAGANOL_LTR;
+	LED_PATERNS[six].LED_PATERN[2] 		= LED_MIDDLE_ONE;
+	LED_PATERNS[six].LED_PATERN[3] 		= LED_MIDDLE_PAIR;
+	LED_PATERNS[six].u8Size 					= 4;
+	
+	for (uint8_t i = 0; (SIDES)i<back; i++){
+		GPIO_ConfigurePin(SIDE_CONTAINER[i].gpPort, SIDE_CONTAINER[i].gpPin, OUTPUT, PID_GPIO, false);
+	}
+	
+}

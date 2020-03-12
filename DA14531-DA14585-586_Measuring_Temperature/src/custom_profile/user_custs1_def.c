@@ -51,6 +51,7 @@
 #include "prf_types.h"
 #include "attm_db_128.h"
 #include "user_custs1_def.h"
+#include "dice_communication.h"
 
 /*
  * LOCAL VARIABLE DEFINITIONS
@@ -64,13 +65,12 @@ static const att_svc_desc128_t custs1_svc1	= DEF_SVC1_UUID_128;
 static const uint16_t att_decl_svc       		= ATT_DECL_PRIMARY_SERVICE;
 static const uint16_t att_decl_char      		= ATT_DECL_CHARACTERISTIC;
 static const uint16_t att_desc_cfg       		= ATT_DESC_CLIENT_CHAR_CFG;
-static const uint16_t att_desc_user_desc 		= ATT_DESC_CHAR_USER_DESCRIPTION;
 
 /*
  * GLOBAL VARIABLE DEFINITIONS
  ****************************************************************************************
  */
-static const uint8_t USER_TEMPERATURE_VAL_UUID_128[ATT_UUID_128_LEN] = USER_IDX_TEMPERATURE_VAL_UUID_128;
+static const uint8_t u8aDICE_TRANSMIT_MESSAGE_UUID_128[ATT_UUID_128_LEN] = DICE_TRANSMIT_MESSAGE_UUID_128;
 
 const uint8_t custs1_services[]  		= {SVC1_IDX_SVC,CUSTS1_IDX_NB};
 const uint8_t custs1_services_size 	= ARRAY_LEN(custs1_services) - 1;
@@ -90,21 +90,17 @@ const struct attm_desc_128 custs1_att_db[CUSTS1_IDX_NB] =
                                             sizeof(custs1_svc1), sizeof(custs1_svc1), (uint8_t*)&custs1_svc1},
 
 		// Temperature Value Characteristic Declaration
-    [DICE_CHANGE_DECLARATION]          = {(uint8_t*)&att_decl_char, ATT_UUID_16_LEN, PERM(RD, ENABLE),
+    [DICE_CHANGE_CHANCE_DECLARATION]         = {(uint8_t*)&att_decl_char, ATT_UUID_16_LEN, PERM(RD, ENABLE),
                                             0, 0, NULL},
 
     // Temperature Characteristic Value
-    [DICE_CHANGE_VAL]           = {USER_TEMPERATURE_VAL_UUID_128, ATT_UUID_128_LEN, PERM(RD, ENABLE) | PERM(WR, ENABLE) | PERM(NTF, ENABLE)| PERM(WRITE_REQ, ENABLE),
-                                            USER_IDX_TEMPERATURE_VAL_CHAR_LEN, 0, NULL},
+    [DICE_CHANGE_CHANCE_VAL]          			 = {u8aDICE_TRANSMIT_MESSAGE_UUID_128, ATT_UUID_128_LEN, PERM(RD, ENABLE) | PERM(WR, ENABLE) | PERM(NTF, ENABLE)| PERM(WRITE_REQ, ENABLE),
+                                            NTF_STRING_SIZE, 0, NULL},
 
     // Temperature Client Characteristic Configuration Descriptor
-    [DICE_CHANGE_CFG]       = {(uint8_t*)&att_desc_cfg, ATT_UUID_16_LEN, PERM(RD, ENABLE) | PERM(WR, ENABLE) | PERM(WRITE_REQ, ENABLE),
+    [DICE_CHANGE_CHANCE_CFG]       					 = {(uint8_t*)&att_desc_cfg, ATT_UUID_16_LEN, PERM(RD, ENABLE) | PERM(WR, ENABLE) | PERM(WRITE_REQ, ENABLE),
                                             sizeof(uint16_t), 0, NULL},
 
-//    // Temperature Characteristic User Description
-//    [DICE_CHANGE_DESC]     = {(uint8_t*)&att_desc_user_desc, ATT_UUID_16_LEN, PERM(RD, ENABLE),
-//                                            sizeof(USER_IDX_TEMPERATURE_VAL_USER_DESC) - 1, sizeof(USER_IDX_TEMPERATURE_VAL_USER_DESC) - 1,
-//                                            (uint8_t *) USER_IDX_TEMPERATURE_VAL_USER_DESC},
 
 };
 
