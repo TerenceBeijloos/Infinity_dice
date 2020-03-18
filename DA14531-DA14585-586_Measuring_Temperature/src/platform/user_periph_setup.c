@@ -102,11 +102,11 @@ void periph_init(void)
 		
 #endif
 		
-		dice_sensor_periph_init();
 		
     // Set pad functionality
     set_pad_functions();
 
+			dice_sensor_init();
     // Enable the pads
     GPIO_set_pad_latch_en(true);
 		

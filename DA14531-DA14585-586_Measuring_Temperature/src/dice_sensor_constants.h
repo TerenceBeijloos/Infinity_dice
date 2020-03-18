@@ -11,14 +11,19 @@
 #define I2C_ADDRESS_SIZE  I2C_1BYTES_ADDR       // Address width: 	I2C_1BYTE_ADDR 
 	
 #define SCL_PORT  				GPIO_PORT_0
-#define SCL_PIN	  				GPIO_PIN_7
-#define SDA_PORT  				GPIO_PORT_1
-#define SDA_PIN   				GPIO_PIN_2
+#define SCL_PIN	  				GPIO_PIN_1
+#define SDA_PORT  				GPIO_PORT_0
+#define SDA_PIN   				GPIO_PIN_7
 
 
 /****************************************************************************************/
 /* Sensor registers                                                                   	*/
 /****************************************************************************************/
+
+//Mind changing the addresses can have impact on the write permission areas defined in dice_sensor_driver.c
+
+#define ADDRESS_SIZE			1			//In bytes
+#define PERMISSIONS_WRITE 30
 
 #define ACT_THS 					0x04
 #define ACT_DUR 					0x05
@@ -38,7 +43,7 @@
 
 #define CTRL_REG1_G 			0x10
 #define CTRL_REG2_G 			0x11
-#define CTRL_REG3_G 			0x13
+#define CTRL_REG3_G 			0x12
 #define ORIENT_CFG_G 			0x13
 #define INT_GEN_SRC_G 		0x14
 

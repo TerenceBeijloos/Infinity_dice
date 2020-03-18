@@ -6,7 +6,8 @@
 #include "i2c.h"
 #include "compiler.h"
 
-static uint8_t u8aWrite_permissions[30] __SECTION_ZERO("retention_mem_area0");
+
+static uint8_t u8aWrite_permissions[PERMISSIONS_WRITE] __SECTION_ZERO("retention_mem_area0");
 
 static const i2c_cfg_t i2c_cfg = {
     .clock_cfg.ss_hcnt = I2C_SS_SCL_HCNT_REG_RESET,
@@ -22,17 +23,38 @@ static const i2c_cfg_t i2c_cfg = {
     .rx_fifo_level = 1,
 };
 
-void dice_sensor_add_limit(uint8_t u8Array_start, uint8_t u8Address_start, uint8_t u8Address_end, uint8_t *u8pArray);
+void dice_sensor_test(void);
 
-void dice_sensor_var_init(void);
-void dice_sensor_periph_init(void);
+static uint8_t dice_sensor_add_limit(const uint8_t u8Array_start, const uint8_t u8Address_start, const uint8_t u8Address_end, uint8_t *u8pArray);
 
-void dice_dice_sensor_write_bits(uint8_t u8Address, uint8_t u8Data, i2c_abort_t *abrt_code);
-void dice_dice_sensor_write_byte(uint8_t u8Address, uint8_t u8Data, i2c_abort_t *abrt_code); 
-void dice_sensor_write_multiple(uint8_t u8StartAddress, uint8_t *u8pData, uint8_t u8Length, i2c_abort_t *abrt_code);
- 
-uint8_t dice_sensor_read_byte(int u8Address, i2c_abort_t *abrt_code);
-void 		dice_sensor_read_multiple(uint8_t u8StartAddress, uint8_t *u8pData, uint8_t u8Length);
+/****************************************************************************************/
+/* Init functions                                                                  	*/
+/****************************************************************************************/
+static void dice_sensor_var_init		(void);
+static void dice_sensor_periph_init	(void);
+			 void dice_sensor_init				(void);
 
+/****************************************************************************************/
+/* Write functions                                                                     	*/
+/****************************************************************************************/
+//u8pData[0] must be the address of the register
+void dice_sensor_write_multiple	(const uint8_t *u8pData, const uint8_t u8Length,i2c_abort_t *abrt_code);
+void dice_sensor_write_bits			(const uint8_t u8Address,const uint8_t u8Data, 	i2c_abort_t *abrt_code);
+void dice_sensor_write_byte			(const uint8_t u8Address,const uint8_t u8Data,  i2c_abort_t *abrt_code); 
+
+
+/****************************************************************************************/
+/* Read functions                                                                     	*/
+/****************************************************************************************/
+uint8_t dice_sensor_read_byte			(const uint8_t u8Address, i2c_abort_t *abrt_code);
+void 		dice_sensor_read_multiple	(const uint8_t u8StartAddress, uint8_t *u8pData, const uint8_t u8Length, i2c_abort_t *abrt_code);
+
+/****************************************************************************************/
+/* Support functions                                                                  	*/
+/****************************************************************************************/
+static bool dice_sensor_write_permission(const uint8_t u8Address, bool bRecoverable);
+static bool dice_sensor_out_of_bound		(const uint8_t u8Address, bool bRecoverable);
+//static uint16_t dice_sensor_transmit(const uint8_t *data, uint16_t len, i2c_abort_t *abrt_code, uint32_t flags);
+//static uint16_t dice_sensor_recieve(uint8_t *data, uint16_t len, i2c_abort_t *abrt_code, uint32_t flags);
 
 #endif // _DICE_SENSOR_DRIVER_

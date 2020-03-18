@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Wed Mar 18 12:03:07 2020
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Wed Mar 18 16:36:12 2020
 ;VERSION 0.2
 ;FILE adc_58x.o
 adc_disable <= USED 0
@@ -87,8 +87,10 @@ dice_chance_set_ntf_string <= USED 0
 ;FILE dice_led_driver.o
 led_periph_init <= USED 0
 ;FILE dice_sensor_driver.o
-dice_sensor_add_limit <= USED 0
-dice_sensor_var_init <= USED 0
+dice_sensor_read_multiple <= USED 0
+dice_sensor_write_bits <= USED 0
+dice_sensor_write_byte <= USED 0
+dice_sensor_write_multiple <= USED 0
 ;FILE diss.o
 ;FILE gpio.o
 GPIO_ConfigurePinPower <= USED 0
@@ -125,9 +127,7 @@ hw_otpc_twr <= USED 0
 hw_otpc_write_rr <= USED 0
 ;FILE i2c.o
 i2c_master_receive_buffer_async <= USED 0
-i2c_master_receive_buffer_sync <= USED 0
 i2c_master_transmit_buffer_async <= USED 0
-i2c_master_transmit_buffer_sync <= USED 0
 i2c_register_int <= USED 0
 i2c_release <= USED 0
 i2c_slave_receive_buffer_async <= USED 0

@@ -51,6 +51,7 @@
 #include "co_bt.h"
 #include "user_periph_setup.h"
 #include "dice_communication.h"
+#include "dice_sensor_driver.h"
 
 #if defined (CFG_USE_INTERNAL_TEMP_SENSOR) && (__DA14531__)
 #include "adc.h"
@@ -301,6 +302,7 @@ void user_app_disconnect(struct gapc_disconnect_ind const *param)
     // Restart Advertising
     user_app_adv_start();
 }
+
 
 void user_catch_rest_hndl(ke_msg_id_t const msgid,
                           void const *param,
