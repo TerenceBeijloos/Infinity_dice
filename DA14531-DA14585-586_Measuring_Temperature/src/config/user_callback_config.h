@@ -52,7 +52,6 @@
  * LOCAL VARIABLE DEFINITIONS
  ****************************************************************************************
  */
-
 static const struct app_callbacks user_app_callbacks = {
     .app_on_connection                  = user_app_connection,
     .app_on_disconnect                  = user_app_disconnect,
