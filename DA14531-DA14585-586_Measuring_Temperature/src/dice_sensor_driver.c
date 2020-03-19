@@ -6,7 +6,7 @@ void dice_sensor_test(void){
 	i2c_abort_t *abrt_code;
 	
 	GPIO_SetActive(GPIO_LED_PORT, GPIO_LED_PIN);
-//	dice_sensor_write_bits(CTRL_REG4,u8aData,abrt_code);
+	//dice_sensor_write_bits(CTRL_REG4,u8aData,abrt_code);
 	uint8_t data = dice_sensor_read_byte(CTRL_REG4,abrt_code);
 	GPIO_SetInactive(GPIO_LED_PORT, GPIO_LED_PIN);
 	
