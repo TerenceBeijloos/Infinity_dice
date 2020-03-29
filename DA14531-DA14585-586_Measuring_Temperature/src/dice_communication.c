@@ -62,7 +62,7 @@ void dice_chance_send(void){
 
 void dice_chance_recieve_handler(struct custs1_val_write_ind const *param){
 	
-	uint8_t u8Step_size 			= 3;
+	const uint8_t u8Step_size = 3;
 	uint8_t u8Percentage_sum 	= 0;
 	
 	if(param->length == 1){
@@ -73,7 +73,7 @@ void dice_chance_recieve_handler(struct custs1_val_write_ind const *param){
 	
 	bNormal_mode = false;
 	for(uint8_t i = 0; i<param->length; i+=u8Step_size){
-		uint8_t u8Value 							 = ((param->value[i]-'0')*100) + ((param->value[i+1]-'0')*10) + ((param->value[i+2]-'0'));
+		uint8_t u8Value 							 = ((param->value[i]-'0')*100) + ((param->value[i+1]-'0')*10) + ((param->value[i+2]-'0'))+1;
 		u8Percentage_sum 							+= u8Value;
 		u8aDice_chance[i/u8Step_size]  = u8Value;
 	}

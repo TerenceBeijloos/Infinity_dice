@@ -17,13 +17,13 @@ void dice_sensor_test(void){
 /****************************************************************************************/
 
 static void dice_sensor_periph_init(void){
-	RESERVE_GPIO(SDA,SDA_PORT, SDA_PIN, PID_I2C_SDA);
-	RESERVE_GPIO(SCL,SCL_PORT, SCL_PIN, PID_I2C_SCL);
-	
-	GPIO_ConfigurePin(SCL_PORT, SCL_PIN, INPUT_PULLUP, PID_I2C_SCL, false);
-  GPIO_ConfigurePin(SDA_PORT, SDA_PIN, INPUT_PULLUP, PID_I2C_SDA, false);
-	
-	i2c_init(&i2c_cfg);
+//	RESERVE_GPIO(SDA,SDA_PORT, SDA_PIN, PID_I2C_SDA);
+//	RESERVE_GPIO(SCL,SCL_PORT, SCL_PIN, PID_I2C_SCL);
+//	
+//	GPIO_ConfigurePin(SCL_PORT, SCL_PIN, INPUT_PULLUP, PID_I2C_SCL, false);
+//  GPIO_ConfigurePin(SDA_PORT, SDA_PIN, INPUT_PULLUP, PID_I2C_SDA, false);
+//	
+//	i2c_init(&i2c_cfg);
 }
 	
 static void dice_sensor_var_init(void){
@@ -41,11 +41,11 @@ static void dice_sensor_var_init(void){
 void dice_sensor_init(void){
 	dice_sensor_var_init();
 	dice_sensor_periph_init();
-	wdg_freeze();
+//	wdg_freeze();
 	
-	while(1){
-	dice_sensor_test();
-	}
+//	while(1){
+//	dice_sensor_test();
+//	}
 	
 }
 

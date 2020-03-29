@@ -10,13 +10,14 @@ typedef enum{
 	six
 } NUMBER;
 
+//Order must be kept like this because numbers are linked to sides with the number of the side, see led_periph_init.
 typedef enum{
-	top = 0,
-	bottom,
+	bottom = 0,
 	left,
-	right,
 	front,
-	back
+	back,
+	right,
+	top
 } SIDES;
 
 typedef struct{
@@ -28,7 +29,7 @@ typedef GPIO_LED GPIO_SIDE;
 
 typedef struct{
 	uint8_t 	u8Size;
-	GPIO_LED	LED_PATERN[4];
+	GPIO_LED	LED_PATERN[3];
 } PATERN;
 
 static const GPIO_SIDE SIDE_TOP 					= {GPIO_PORT_0,GPIO_PIN_0};
@@ -43,14 +44,17 @@ static const GPIO_LED LED_DIAGANOL_RTL 		= {GPIO_PORT_1,GPIO_PIN_1};
 static const GPIO_LED LED_MIDDLE_PAIR 		= {GPIO_PORT_1,GPIO_PIN_3};
 static const GPIO_LED LED_MIDDLE_ONE 			= {GPIO_PORT_0,GPIO_PIN_2};
 
-static 			 PATERN LED_PATERNS[6] 				__SECTION_ZERO("retention_mem_area0");
+static 			 PATERN 	 LED_PATERNS[6] 		__SECTION_ZERO("retention_mem_area0");
 static			 GPIO_SIDE SIDE_CONTAINER[6]	__SECTION_ZERO("retention_mem_area0");
-
-
+static			 SIDES 	 	 SIDE_OF_NUMBER[6] 	__SECTION_ZERO("retention_mem_area0");
 
 void led_periph_init(void);
 void led_periph_deinit(void);
 
-void led_toggle(const struct LED*);
+void led_turn_on(const NUMBER number,const SIDES side);
+void led_turn_off(const NUMBER number,const SIDES side);
+
+PATERN 	led_get_patern(const NUMBER number);
+SIDES 	led_get_side(const NUMBER number);
 
 #endif // _DICE_LED_DRIVER_H_

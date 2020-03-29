@@ -43,6 +43,10 @@
 #include "uart.h"
 #include "syscntl.h"
 #include "dice_sensor_driver.h"
+#include "dice_communication.h"
+#include "dice_led_driver.h"
+#include "dice_led_callback.h"
+
 /**
  ****************************************************************************************
  * @brief Each application reserves its own GPIOs here.
@@ -60,7 +64,7 @@ void GPIO_reservations(void)
     RESERVE_GPIO(UART2_TX, UART2_TX_PORT, UART2_TX_PIN, PID_UART2_TX);
 #endif
 	
-	RESERVE_GPIO(LED, GPIO_LED_PORT, GPIO_LED_PIN, PID_GPIO);
+//	RESERVE_GPIO(LED, GPIO_LED_PORT, GPIO_LED_PIN, PID_GPIO);
 
 }
 
@@ -73,7 +77,7 @@ void set_pad_functions(void)
     GPIO_ConfigurePin(GPIO_PORT_2, GPIO_PIN_3, OUTPUT, PID_GPIO, true);
 #endif
 
-	GPIO_ConfigurePin(GPIO_LED_PORT, GPIO_LED_PIN, OUTPUT, PID_GPIO, false);
+//	GPIO_ConfigurePin(GPIO_LED_PORT, GPIO_LED_PIN, OUTPUT, PID_GPIO, false);
 }
 
 void periph_init(void)
@@ -106,8 +110,11 @@ void periph_init(void)
     // Set pad functionality
     set_pad_functions();
 
-			dice_sensor_init();
+	  dice_sensor_init();
+		dice_chance_init();
+		led_periph_init();
     // Enable the pads
     GPIO_set_pad_latch_en(true);
+		led_callback_init();
 		
 }

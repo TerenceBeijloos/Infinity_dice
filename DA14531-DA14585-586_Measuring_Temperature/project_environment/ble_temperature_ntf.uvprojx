@@ -874,6 +874,16 @@
               <FileType>1</FileType>
               <FilePath>C:\dice_project\6.0.12.1020.2\SDK\6.0.12.1020.2\sdk\platform\driver\dma\dma.c</FilePath>
             </File>
+            <File>
+              <FileName>systick.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\6.0.12.1020.2\SDK\6.0.12.1020.2\sdk\platform\driver\systick\systick.h</FilePath>
+            </File>
+            <File>
+              <FileName>systick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\6.0.12.1020.2\SDK\6.0.12.1020.2\sdk\platform\driver\systick\systick.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1164,6 +1174,11 @@
               <FileType>1</FileType>
               <FilePath>..\src\platform\user_periph_setup.c</FilePath>
             </File>
+            <File>
+              <FileName>dice_led_callback.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\dice_led_callback.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1193,6 +1208,11 @@
               <FileName>dice_sensor_driver.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src\dice_sensor_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>dice_led_callback.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\dice_led_callback.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2066,6 +2086,16 @@
               <FileType>1</FileType>
               <FilePath>C:\dice_project\6.0.12.1020.2\SDK\6.0.12.1020.2\sdk\platform\driver\dma\dma.c</FilePath>
             </File>
+            <File>
+              <FileName>systick.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\6.0.12.1020.2\SDK\6.0.12.1020.2\sdk\platform\driver\systick\systick.h</FilePath>
+            </File>
+            <File>
+              <FileName>systick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\6.0.12.1020.2\SDK\6.0.12.1020.2\sdk\platform\driver\systick\systick.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2356,6 +2386,11 @@
               <FileType>1</FileType>
               <FilePath>..\src\platform\user_periph_setup.c</FilePath>
             </File>
+            <File>
+              <FileName>dice_led_callback.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\dice_led_callback.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2385,6 +2420,11 @@
               <FileName>dice_sensor_driver.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src\dice_sensor_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>dice_led_callback.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\dice_led_callback.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3258,6 +3298,16 @@
               <FileType>1</FileType>
               <FilePath>C:\dice_project\6.0.12.1020.2\SDK\6.0.12.1020.2\sdk\platform\driver\dma\dma.c</FilePath>
             </File>
+            <File>
+              <FileName>systick.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\6.0.12.1020.2\SDK\6.0.12.1020.2\sdk\platform\driver\systick\systick.h</FilePath>
+            </File>
+            <File>
+              <FileName>systick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\6.0.12.1020.2\SDK\6.0.12.1020.2\sdk\platform\driver\systick\systick.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3548,6 +3598,11 @@
               <FileType>1</FileType>
               <FilePath>..\src\platform\user_periph_setup.c</FilePath>
             </File>
+            <File>
+              <FileName>dice_led_callback.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\dice_led_callback.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3577,6 +3632,11 @@
               <FileName>dice_sensor_driver.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src\dice_sensor_driver.c</FilePath>
+            </File>
+            <File>
+              <FileName>dice_led_callback.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\dice_led_callback.c</FilePath>
             </File>
           </Files>
         </Group>

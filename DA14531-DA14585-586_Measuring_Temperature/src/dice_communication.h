@@ -5,7 +5,7 @@
 #include "stdbool.h"
 #include "custs1_task.h"
 
-#define NTF_STRING_SIZE 																18
+#define NTF_STRING_SIZE 																19
 #define DICE_SIDE_COUNT																	6
 
 void dice_chance_init(void);

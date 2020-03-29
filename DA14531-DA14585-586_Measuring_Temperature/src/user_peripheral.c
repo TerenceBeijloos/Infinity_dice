@@ -52,6 +52,7 @@
 #include "user_periph_setup.h"
 #include "dice_communication.h"
 #include "dice_sensor_driver.h"
+#include "dice_led_callback.h"
 
 #if defined (CFG_USE_INTERNAL_TEMP_SENSOR) && (__DA14531__)
 #include "adc.h"

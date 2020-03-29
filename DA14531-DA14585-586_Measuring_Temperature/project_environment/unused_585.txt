@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Thu Mar 19 12:40:14 2020
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Sun Mar 29 22:59:46 2020
 ;VERSION 0.2
 ;FILE adc_58x.o
 adc_disable <= USED 0
@@ -82,12 +82,14 @@ read_rcx_freq <= USED 0
 ;FILE custs1_task.o
 ;FILE dice_communication.o
 dice_chance_get_ntf_string <= USED 0
-dice_chance_init <= USED 0
 dice_chance_set_ntf_string <= USED 0
+;FILE dice_led_callback.o
 ;FILE dice_led_driver.o
-led_periph_init <= USED 0
+led_get_patern <= USED 0
 ;FILE dice_sensor_driver.o
+dice_sensor_read_byte <= USED 0
 dice_sensor_read_multiple <= USED 0
+dice_sensor_test <= USED 0
 dice_sensor_write_bits <= USED 0
 dice_sensor_write_byte <= USED 0
 dice_sensor_write_multiple <= USED 0
@@ -126,10 +128,15 @@ hw_otpc_tdec <= USED 0
 hw_otpc_twr <= USED 0
 hw_otpc_write_rr <= USED 0
 ;FILE i2c.o
+i2c_init <= USED 0
 i2c_master_receive_buffer_async <= USED 0
+i2c_master_receive_buffer_sync <= USED 0
 i2c_master_transmit_buffer_async <= USED 0
+i2c_master_transmit_buffer_sync <= USED 0
 i2c_register_int <= USED 0
 i2c_release <= USED 0
+i2c_setup_master <= USED 0
+i2c_setup_slave <= USED 0
 i2c_slave_receive_buffer_async <= USED 0
 i2c_slave_receive_buffer_sync <= USED 0
 i2c_slave_transmit_buffer_async <= USED 0
@@ -251,6 +258,10 @@ spi_flash_write_status_reg <= USED 0
 syscntl_set_dcdc_vbat3v_level <= USED 0
 ;FILE system_da14585_586.o
 SystemCoreClockUpdate <= USED 0
+;FILE systick.o
+systick_stop <= USED 0
+systick_value <= USED 0
+systick_wait <= USED 0
 ;FILE trng.o
 ;FILE uart.o
 uart_baudrate_setf <= USED 0
@@ -271,6 +282,7 @@ uart_write_buffer <= USED 0
 uart_write_byte <= USED 0
 ;FILE user_custs1_impl.o
 ;FILE user_periph_setup.o
+set_pad_functions <= USED 0
 ;FILE user_peripheral.o
 ;FILE wkupct_quadec.o
 quad_decoder_disable_irq <= USED 0
