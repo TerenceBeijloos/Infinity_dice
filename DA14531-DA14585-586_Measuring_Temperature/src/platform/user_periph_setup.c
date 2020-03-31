@@ -101,20 +101,20 @@ void periph_init(void)
 
     // ROM patch
     patch_func();
-
-#if !defined(CFG_USE_INTERNAL_TEMP_SENSOR)
-		
-#endif
 		
 		
     // Set pad functionality
     set_pad_functions();
 
+		wdg_freeze();
 	  dice_sensor_init();
 		dice_chance_init();
 		led_periph_init();
+		
     // Enable the pads
     GPIO_set_pad_latch_en(true);
 		led_callback_init();
+//		led_turn_on(three,back);
+//		for(;;){}
 		
 }

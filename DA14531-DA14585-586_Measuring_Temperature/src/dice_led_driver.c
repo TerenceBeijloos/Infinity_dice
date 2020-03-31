@@ -2,6 +2,7 @@
 #include "dice_communication.h"
 #include "gpio.h"
 
+
 void led_periph_init(void){
 	
 	SIDE_CONTAINER[top] 		= SIDE_TOP;
@@ -35,40 +36,59 @@ void led_periph_init(void){
 	LED_PATERNS[six].LED_PATERN[2] 		= LED_MIDDLE_PAIR;
 	LED_PATERNS[six].u8Size 					= 3;
 	
-	for (uint8_t i = 0; (SIDES)i<=back; i++){
-		RESERVE_GPIO(side,SIDE_CONTAINER[i].gpPort,SIDE_CONTAINER[i].gpPin,PID_GPIO);
-		GPIO_ConfigurePin(SIDE_CONTAINER[i].gpPort, SIDE_CONTAINER[i].gpPin, OUTPUT, PID_GPIO, false);
+	for (uint8_t i = 0; i<6; i++){
+		GPIO_PORT port 	= SIDE_CONTAINER[i].gpPort;
+		GPIO_PIN 	pin 	= SIDE_CONTAINER[i].gpPin;
+		RESERVE_GPIO(side,port,pin,PID_GPIO);
+		GPIO_ConfigurePin(port,pin, OUTPUT, PID_GPIO, !SIDE_SWITCH);
 		SIDE_OF_NUMBER[i] = (SIDES)i;
 	}
 	
 	RESERVE_GPIO(LED,LED_MIDDLE_ONE.gpPort,LED_MIDDLE_ONE.gpPin,PID_GPIO);
-	GPIO_ConfigurePin(LED_MIDDLE_ONE.gpPort,LED_MIDDLE_ONE.gpPin,OUTPUT,PID_GPIO, false);
+	GPIO_ConfigurePin(LED_MIDDLE_ONE.gpPort,LED_MIDDLE_ONE.gpPin,OUTPUT,PID_GPIO, !LED_SWITCH);
 	
 	for (uint8_t i = 0; i<LED_PATERNS[six].u8Size; i++){
 		GPIO_PORT port = LED_PATERNS[six].LED_PATERN[i].gpPort;
-		GPIO_PIN pin = LED_PATERNS[six].LED_PATERN[i].gpPin;
+		GPIO_PIN pin 	 = LED_PATERNS[six].LED_PATERN[i].gpPin;
 		RESERVE_GPIO(led,port, pin,PID_GPIO);
-		GPIO_ConfigurePin(port, pin, OUTPUT, PID_GPIO, false);
+		GPIO_ConfigurePin(port, pin, OUTPUT, PID_GPIO, !LED_SWITCH);
 	}
 
 }
 
+
 void led_turn_on(const NUMBER number,const SIDES side){
 	
-	GPIO_SetActive(SIDE_CONTAINER[side].gpPort,SIDE_CONTAINER[side].gpPin);
+	if(SIDE_SWITCH){
+		GPIO_SetActive(SIDE_CONTAINER[side].gpPort,SIDE_CONTAINER[side].gpPin);
+	}else{
+		GPIO_SetInactive(SIDE_CONTAINER[side].gpPort,SIDE_CONTAINER[side].gpPin);
+	}
 	
 	for(uint8_t i = 0; i<LED_PATERNS[number].u8Size; i++){
-		GPIO_SetActive(LED_PATERNS[number].LED_PATERN[i].gpPort,LED_PATERNS[number].LED_PATERN[i].gpPin);
+		if(LED_SWITCH){
+			GPIO_SetActive(LED_PATERNS[number].LED_PATERN[i].gpPort,LED_PATERNS[number].LED_PATERN[i].gpPin);
+		}else{
+			GPIO_SetInactive(LED_PATERNS[number].LED_PATERN[i].gpPort,LED_PATERNS[number].LED_PATERN[i].gpPin);
+		}
 	}
 	
 }
 
 void led_turn_off(const NUMBER number,const SIDES side){
 	
-	GPIO_SetInactive(SIDE_CONTAINER[side].gpPort,SIDE_CONTAINER[side].gpPin);
+	if(SIDE_SWITCH){
+		GPIO_SetInactive(SIDE_CONTAINER[side].gpPort,SIDE_CONTAINER[side].gpPin);
+	}else{
+		GPIO_SetActive(SIDE_CONTAINER[side].gpPort,SIDE_CONTAINER[side].gpPin);
+	}
 	
 	for(uint8_t i = 0; i<LED_PATERNS[number].u8Size; i++){
-		GPIO_SetInactive(LED_PATERNS[number].LED_PATERN[i].gpPort,LED_PATERNS[number].LED_PATERN[i].gpPin);
+		if(LED_SWITCH){
+			GPIO_SetInactive(LED_PATERNS[number].LED_PATERN[i].gpPort,LED_PATERNS[number].LED_PATERN[i].gpPin);
+		}else{
+			GPIO_SetActive(LED_PATERNS[number].LED_PATERN[i].gpPort,LED_PATERNS[number].LED_PATERN[i].gpPin);
+		}
 	}
 	
 }
