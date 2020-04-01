@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Tue Mar 31 22:40:53 2020
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Wed Apr 01 14:41:04 2020
 ;VERSION 0.2
 ;FILE adc_58x.o
 adc_disable <= USED 0
@@ -262,7 +262,6 @@ syscntl_set_dcdc_vbat3v_level <= USED 0
 ;FILE system_da14585_586.o
 SystemCoreClockUpdate <= USED 0
 ;FILE systick.o
-systick_stop <= USED 0
 systick_value <= USED 0
 systick_wait <= USED 0
 ;FILE trng.o

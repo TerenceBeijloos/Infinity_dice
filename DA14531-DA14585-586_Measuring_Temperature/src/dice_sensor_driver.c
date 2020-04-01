@@ -41,11 +41,6 @@ static void dice_sensor_var_init(void){
 void dice_sensor_init(void){
 	dice_sensor_var_init();
 	dice_sensor_periph_init();
-//	wdg_freeze();
-	
-//	while(1){
-//	dice_sensor_test();
-//	}
 	
 }
 

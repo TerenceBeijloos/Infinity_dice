@@ -43,7 +43,7 @@ static void led_callback_dice_mode(void){
 
 void led_callback_start_dice_mode(void){
 
-//	systick_stop();
+	systick_stop();
 	systick_register_callback(led_callback_dice_mode);
 	systick_start(LED_UPDATE_TIMER, SYSTICK_EXCEPTION);
 }
