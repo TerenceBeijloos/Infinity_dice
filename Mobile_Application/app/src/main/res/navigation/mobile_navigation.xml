@@ -7,19 +7,20 @@
 
     <fragment
         android:id="@+id/navigation_custom"
-        android:name="com.avans.infinitydice.ui.custom.CustomFragment"
+        android:name="com.avans.infinitydice.ui.custom.custom_fragment"
         android:label="@string/title_custom"
         tools:layout="@layout/fragment_custom" />
 
     <fragment
         android:id="@+id/navigation_normal"
-        android:name="com.avans.infinitydice.ui.normal.NormalFragment"
+        android:name="com.avans.infinitydice.ui.normal.normal_fragment"
         android:label="@string/title_normal"
         tools:layout="@layout/fragment_normal" />
 
     <fragment
         android:id="@+id/navigation_admin"
-        android:name="com.avans.infinitydice.ui.admin.AdminFragment"
+        android:name="com.avans.infinitydice.ui.admin.admin_fragment"
         android:label="@string/title_admin"
         tools:layout="@layout/fragment_admin" />
+
 </navigation>

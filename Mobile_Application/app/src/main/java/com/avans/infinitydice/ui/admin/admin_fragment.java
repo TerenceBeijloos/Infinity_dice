@@ -14,17 +14,14 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.avans.infinitydice.R;
 
-public class AdminFragment extends Fragment {
-
-    private AdminViewModel adminViewModel;
+public class admin_fragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        adminViewModel =
-                ViewModelProviders.of(this).get(AdminViewModel.class);
+        admin_view_model mAdmin_view_model = ViewModelProviders.of(this).get(admin_view_model.class);
         View root = inflater.inflate(R.layout.fragment_admin, container, false);
         final TextView textView = root.findViewById(R.id.text_admin);
-        adminViewModel.getText().observe(this, new Observer<String>() {
+        mAdmin_view_model.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

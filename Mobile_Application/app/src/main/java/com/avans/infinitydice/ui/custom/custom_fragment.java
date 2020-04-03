@@ -14,17 +14,14 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.avans.infinitydice.R;
 
-public class CustomFragment extends Fragment {
-
-    private CustomViewModel customViewModel;
+public class custom_fragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        customViewModel =
-                ViewModelProviders.of(this).get(CustomViewModel.class);
+        custom_view_model mCustom_view_model = ViewModelProviders.of(this).get(custom_view_model.class);
         View root = inflater.inflate(R.layout.fragment_custom, container, false);
         final TextView textView = root.findViewById(R.id.text_custom);
-        customViewModel.getText().observe(this, new Observer<String>() {
+        mCustom_view_model.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

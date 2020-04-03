@@ -14,17 +14,14 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.avans.infinitydice.R;
 
-public class NormalFragment extends Fragment {
-
-    private NormalViewModel dashboardViewModel;
+public class normal_fragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                ViewModelProviders.of(this).get(NormalViewModel.class);
+        normal_view_model mNormal_view_model = ViewModelProviders.of(this).get(normal_view_model.class);
         View root = inflater.inflate(R.layout.fragment_normal, container, false);
         final TextView textView = root.findViewById(R.id.text_normal);
-        dashboardViewModel.getText().observe(this, new Observer<String>() {
+        mNormal_view_model.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

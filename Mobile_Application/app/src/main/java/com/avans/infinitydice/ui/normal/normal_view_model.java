@@ -4,16 +4,16 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class NormalViewModel extends ViewModel {
+public class normal_view_model extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public NormalViewModel() {
+    public normal_view_model() {
         mText = new MutableLiveData<>();
         mText.setValue("This is the normal mode page.");
     }
 
-    public LiveData<String> getText() {
+    LiveData<String> getText() {
         return mText;
     }
 }

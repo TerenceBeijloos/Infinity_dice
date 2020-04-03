@@ -1,19 +1,19 @@
-package com.avans.infinitydice.ui.admin;
+package com.avans.infinitydice.ui.custom;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class AdminViewModel extends ViewModel {
+public class custom_view_model extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public AdminViewModel() {
+    public custom_view_model() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is the admin mode page.");
+        mText.setValue("This is the custom mode page.");
     }
 
-    public LiveData<String> getText() {
+    LiveData<String> getText() {
         return mText;
     }
 }
