@@ -28,7 +28,7 @@ public class new_spaghetti : MonoBehaviour
     {   
         StringBuilder sbOutput = new StringBuilder();
         string[] saOutput = new string[]{
-            "xdif,","ydif,","zdif,","number","\n"
+            "xbegin,","ybegin,","zbegin,","xdif,","ydif,","zdif,","number","\n"
         };
 
         int iLength = saOutput.GetLength(0);
@@ -54,7 +54,7 @@ public class new_spaghetti : MonoBehaviour
     // Update is called once per frames
     void Update()
     {
-        float fMargen = 0.01f;
+        float fMargen = 0.001f;
         Vector3 v3Subtraction = v3Prev_orientation - this.transform.rotation.eulerAngles;
         v3Subtraction = new Vector3(((v3Subtraction.x*v3Subtraction.x)/2),((v3Subtraction.y*v3Subtraction.y)/2),((v3Subtraction.z*v3Subtraction.z)/2) );
 
@@ -62,6 +62,10 @@ public class new_spaghetti : MonoBehaviour
             iNo_movement_counter++;
         }else{
             iNo_movement_counter = 0; 
+        }
+
+        if(iNo_movement_counter > 500){
+            restart();
         }
 
         if (iNo_movement_counter > 100 && iCollider_counter > 0){
@@ -209,11 +213,11 @@ public class new_spaghetti : MonoBehaviour
     this.transform.eulerAngles = v3Restart_angles;
     }
 
-    private const int ISTEPS_UP = 2;
+    private const int ISTEPS_UP = 5;
     private const int ISTEP_UP_SIZE = 3;
-    private const int IMAX_FORWARD_POSITION = -5;
+    private const int IMAX_FORWARD_POSITION = -7;
     private const int ISTEP_FORWARD_SIZE = 4;
-    public const int iAngle_steps = 5;
+    public const int iAngle_steps = 8;
     public int iCurrent_angle_step = 1;
     public bool bNext_position_up = false;
     public bool bNext_position_forward = false;
@@ -223,36 +227,27 @@ public class new_spaghetti : MonoBehaviour
     private const string FILE_PATH_NOT_ACCURATE_DATA = @"F:\Avans\dice\not_accurate_data.csv";
     private const string FILE_PATH_ACCURATE_DATA = @"F:\Avans\dice\accurate_data.csv";
 
-    void strore_accurate_data(){
+    void store_data_with_accuracy(UInt32 ACCURACY,string file_name){
         StringBuilder sbOutput = new StringBuilder();
-        const UInt32 ACCURACY = 10000000;
         int[] iaOutput = new int[]{
-            (int)(v3Result.x*ACCURACY),(int)(v3Result.y*ACCURACY),(int)(v3Result.z*ACCURACY),iOn_top_number
+            (int)v3First_orientation.x,(int)v3First_orientation.y,(int)v3First_orientation.z,(int)(v3Result.x*ACCURACY),(int)(v3Result.y*ACCURACY),(int)(v3Result.z*ACCURACY),iOn_top_number
         };
 
         int iLength = iaOutput.GetLength(0);
         for ( int i = 0; i < iLength; i++){
-            sbOutput.Append(string.Join(",", iaOutput[i])).Append(",");
+            sbOutput.Append(string.Join(",", iaOutput[i]));
+            if (i < iLength-1)
+            {
+                sbOutput.Append(",");
+            }
         }
 
-        File.AppendAllText(FILE_PATH_ACCURATE_DATA,sbOutput.ToString());
+        sbOutput.Append("\n");
+        File.AppendAllText(file_name,sbOutput.ToString());
     }
-    void strore_not_accurate_data(){
-        StringBuilder sbOutput = new StringBuilder();
-        const UInt32 ACCURACY = 10000;
-        int[] iaOutput = new int[]{
-            (int)(v3Result.x*ACCURACY),(int)(v3Result.y*ACCURACY),(int)(v3Result.z*ACCURACY),iOn_top_number
-        };
 
-        int iLength = iaOutput.GetLength(0);
-        for ( int i = 0; i < iLength; i++){
-            sbOutput.Append(string.Join(",", iaOutput[i])).Append(",");
-        }
-
-        File.AppendAllText(FILE_PATH_NOT_ACCURATE_DATA,sbOutput.ToString());
-    }
     void strore_data(){
-        strore_accurate_data();
-        strore_not_accurate_data();
+        store_data_with_accuracy(10000000,FILE_PATH_ACCURATE_DATA);
+        store_data_with_accuracy(10000,FILE_PATH_NOT_ACCURATE_DATA);
     }
 }

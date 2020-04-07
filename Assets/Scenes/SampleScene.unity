@@ -447,7 +447,10 @@ MonoBehaviour:
   iFrame_counter: 0
   iCollider_counter: 0
   iNo_movement_counter: 0
+  v3Start_position: {x: 0, y: 0, z: 0}
   v3Restart_position: {x: 0, y: 0, z: 0}
+  v3Start_angles: {x: 0, y: 0, z: 0}
+  iCurrent_angle_step: 1
   bNext_position_up: 0
   bNext_position_forward: 0
   v3Restart_angles: {x: 0, y: 0, z: 0}
@@ -517,13 +520,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1103243837}
-  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
+  m_LocalRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
   m_LocalPosition: {x: -19.369995, y: 38.295998, z: -1.3520021}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 90, z: 90}
 --- !u!1 &1153729410
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,13 +734,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1446441674}
-  m_LocalRotation: {x: 0, y: 0, z: -0.3420201, w: 0.9396927}
+  m_LocalRotation: {x: 0, y: 0, z: -0.42261827, w: 0.9063079}
   m_LocalPosition: {x: -13.336749, y: 8.9, z: -3.57}
   m_LocalScale: {x: 20, y: 1, z: 20}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -40}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -50}
 --- !u!1 &1553850994
 GameObject:
   m_ObjectHideFlags: 0
