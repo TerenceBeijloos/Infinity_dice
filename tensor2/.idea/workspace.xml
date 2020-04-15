@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d08a799f-3d81-49fe-b27a-2dbf07c61458" name="Default Changelist" comment="" />
+    <list default="true" id="52b46b0e-6035-4701-b75e-e855f714615b" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,31 +14,31 @@
       </list>
     </option>
   </component>
-  <component name="ProjectId" id="1aAUyfRb9DYhMspjl1DVGROS16s" />
+  <component name="ProjectId" id="1aLkRVBk1sxxICUjM3Ygm8tLKZe" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/knn.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/nn_test.py" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.knn">
-    <configuration name="knn" type="PythonConfigurationType" factoryName="Python">
-      <module name="tensor2" />
+  <component name="RunManager" selected="Python.nn_test">
+    <configuration name="nn_test" type="PythonConfigurationType" factoryName="Python">
+      <module name="tensorEnv" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\Terence\anaconda3\envs\tensor2\pythonw.exe" />
+      <option name="SDK_HOME" value="C:\Users\Terence\anaconda3\envs\tensor\pythonw.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/knn.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/nn_test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -47,19 +47,19 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test1_1" type="PythonConfigurationType" factoryName="Python">
-      <module name="tensor2" />
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python">
+      <module name="tensorEnv" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\Terence\anaconda3\envs\tensor2\pythonw.exe" />
+      <option name="SDK_HOME" value="C:\Users\Terence\anaconda3\envs\tensor\pythonw.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test1_1.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -69,8 +69,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.test1_1" />
-      <item itemvalue="Python.knn" />
+      <item itemvalue="Python.nn_test" />
+      <item itemvalue="Python.test" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -78,50 +78,58 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d08a799f-3d81-49fe-b27a-2dbf07c61458" name="Default Changelist" comment="" />
-      <created>1586178147881</created>
+      <changelist id="52b46b0e-6035-4701-b75e-e855f714615b" name="Default Changelist" comment="" />
+      <created>1586522253505</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1586178147881</updated>
+      <updated>1586522253505</updated>
     </task>
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586282301138">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="479" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586530172239">
+      <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586282301138" />
-    <state x="740" y="261" key="FileChooserDialogImpl" timestamp="1586282295489">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="479" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2048.1112/-1920.0.1920.1040@0.0.2048.1112" timestamp="1586530172239" />
+    <state x="772" y="358" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586778049305">
+      <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="740" y="261" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1586282295489" />
-    <state width="837" height="281" key="GridCell.Tab.0.bottom" timestamp="1586289198143">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="772" y="358" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2048.1112/-1920.0.1920.1040@0.0.2048.1112" timestamp="1586778049305" />
+    <state x="755" y="303" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1586775430290">
+      <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="837" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586289198143" />
-    <state width="837" height="281" key="GridCell.Tab.0.center" timestamp="1586289198143">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="755" y="303" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2048.1112/-1920.0.1920.1040@0.0.2048.1112" timestamp="1586775430290" />
+    <state x="804" y="310" key="FileChooserDialogImpl" timestamp="1586529383218">
+      <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="837" height="281" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586289198143" />
-    <state width="837" height="281" key="GridCell.Tab.0.left" timestamp="1586289198142">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="804" y="310" key="FileChooserDialogImpl/0.0.2048.1112/-1920.0.1920.1040@0.0.2048.1112" timestamp="1586529383218" />
+    <state width="2027" height="268" key="GridCell.Tab.0.bottom" timestamp="1586891384081">
+      <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="837" height="281" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586289198142" />
-    <state width="837" height="281" key="GridCell.Tab.0.right" timestamp="1586289198143">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1899" height="268" key="GridCell.Tab.0.bottom/0.0.2048.1112/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1586865404040" />
+    <state width="2027" height="268" key="GridCell.Tab.0.bottom/0.0.2048.1112/-1920.0.1920.1040@0.0.2048.1112" timestamp="1586891384081" />
+    <state width="2027" height="268" key="GridCell.Tab.0.center" timestamp="1586891384081">
+      <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="837" height="281" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586289198143" />
-    <state x="461" y="162" key="SettingsEditor" timestamp="1586179336529">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1899" height="268" key="GridCell.Tab.0.center/0.0.2048.1112/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1586865404040" />
+    <state width="2027" height="268" key="GridCell.Tab.0.center/0.0.2048.1112/-1920.0.1920.1040@0.0.2048.1112" timestamp="1586891384081" />
+    <state width="2027" height="268" key="GridCell.Tab.0.left" timestamp="1586891384081">
+      <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586179336529" />
-    <state x="655" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1586274785571">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1899" height="268" key="GridCell.Tab.0.left/0.0.2048.1112/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1586865404040" />
+    <state width="2027" height="268" key="GridCell.Tab.0.left/0.0.2048.1112/-1920.0.1920.1040@0.0.2048.1112" timestamp="1586891384081" />
+    <state width="2027" height="268" key="GridCell.Tab.0.right" timestamp="1586891384081">
+      <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="655" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586274785571" />
-    <state x="682" y="432" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1586180026370">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1899" height="268" key="GridCell.Tab.0.right/0.0.2048.1112/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1586865404040" />
+    <state width="2027" height="268" key="GridCell.Tab.0.right/0.0.2048.1112/-1920.0.1920.1040@0.0.2048.1112" timestamp="1586891384081" />
+    <state x="533" y="201" key="SettingsEditor" timestamp="1586522720843">
+      <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="682" y="432" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586180026370" />
+    <state x="533" y="201" key="SettingsEditor/0.0.2048.1112/-1920.0.1920.1040@0.0.2048.1112" timestamp="1586522720843" />
+    <state x="-2175" y="91" width="1690" height="767" key="dock-window-1" timestamp="1586802825795">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-2175" y="91" width="1690" height="767" key="dock-window-1/0.0.2048.1112/-1920.0.1920.1040@0.0.2048.1112" timestamp="1586802825795" />
   </component>
 </project>
