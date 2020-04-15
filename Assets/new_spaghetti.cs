@@ -23,36 +23,43 @@ public class new_spaghetti : MonoBehaviour
     public Vector3 v3Start_position;
     public Vector3 v3Restart_position;
     public Vector3 v3Start_angles;
+
+    private static string[] saHeaders = {"xbegin,","ybegin,","zbegin,","xdif,","ydif,","zdif,","counter,","number","\n"};
+    private const int HEADER_LENGTH = 7;
+    private Rigidbody rb;
+
+    public Animation anim;
+    public Vector3 v3Angular_speed;
+
     // Start is called before the first frame update
     void Start()
     {   
         StringBuilder sbOutput = new StringBuilder();
-        string[] saOutput = new string[]{
-            "xbegin,","ybegin,","zbegin,","xdif,","ydif,","zdif,","number","\n"
-        };
+        rb = GetComponent<Rigidbody>();
 
-        int iLength = saOutput.GetLength(0);
+        int iLength = saHeaders.GetLength(0);
         for (int i = 0; i < iLength; i++)
         {
-            sbOutput.Append(string.Join(",",saOutput[i]));
+            sbOutput.Append(string.Join(",", saHeaders[i]));
         }
 
-        if(!File.Exists(FILE_PATH_NOT_ACCURATE_DATA)){
-            File.WriteAllText(FILE_PATH_NOT_ACCURATE_DATA,sbOutput.ToString());
+        if(!File.Exists(FILE_PATH_ANGULAR)){
+            File.WriteAllText(FILE_PATH_ANGULAR, sbOutput.ToString());
         }
-        if(!File.Exists(FILE_PATH_ACCURATE_DATA)){
-            File.WriteAllText(FILE_PATH_ACCURATE_DATA,sbOutput.ToString());
-        }
+        //if(!File.Exists(FILE_PATH_ACCURATE_DATA)){
+        //    File.WriteAllText(FILE_PATH_ACCURATE_DATA,sbOutput.ToString());
+        //}
         // this.renderer.material.color = iCollider_counter.blue;
         this.transform.eulerAngles = (new Vector3(0,0,0));
         v3Start_position = this.transform.position;
         v3Restart_position = this.transform.position;
         v3Restart_angles = this.transform.eulerAngles;
         v3Start_angles = this.transform.eulerAngles;
+
     }
 
     // Update is called once per frames
-    void Update()
+    void FixedUpdate()
     {
         float fMargen = 0.001f;
         Vector3 v3Subtraction = v3Prev_orientation - this.transform.rotation.eulerAngles;
@@ -90,6 +97,13 @@ public class new_spaghetti : MonoBehaviour
             }
         }
 
+        if (iCollider_counter > 0 && iData_count<500)
+        {
+            v3Angular_speed = rb.angularVelocity;
+            v3aAngler_vel[iData_count] = rb.angularVelocity;
+            v3aOrientation[iData_count] = rb.transform.eulerAngles;
+            iData_count++;
+        }
     }
 
     void OnCollisionEnter(Collision collisionInfo)
@@ -164,53 +178,59 @@ public class new_spaghetti : MonoBehaviour
     }
 
     void restart(){
-    v3Prev_orientation = new Vector3(0,0,0);
-    v3First_orientation = new Vector3(0,0,0);
-    v3Second_orientation = new Vector3(0,0,0);
-    v3Result = new Vector3(0,0,0);
-    v3End_orientation = new Vector3(0,0,0);
+        v3Prev_orientation = new Vector3(0,0,0);
+        v3First_orientation = new Vector3(0,0,0);
+        v3Second_orientation = new Vector3(0,0,0);
+        v3Result = new Vector3(0,0,0);
+        v3End_orientation = new Vector3(0,0,0);
 
-    // angle = 0;
-    bFirst_collision = false;
-    bAfter_first_collision = false;
-    iWait_frames = 2;
-    iFrame_counter = 0;
-    iCollider_counter = 0;
-    iNo_movement_counter = 0;
+        // angle = 0;
+        bFirst_collision = false;
+        bAfter_first_collision = false;
+        iWait_frames = 2;
+        iFrame_counter = 0;
+        iCollider_counter = 0;
+        iNo_movement_counter = 0;
 
-    if(iCurrent_angle_step < iAngle_steps){
-        iCurrent_angle_step++;
-        v3Restart_angles.x += (360/iAngle_steps);
-        v3Restart_angles.y += (360/iAngle_steps);
-        v3Restart_angles.z += (360/iAngle_steps);
-    }else{
-        iCurrent_angle_step = 1;
-        bNext_position_up = true;
-        v3Restart_angles = v3Start_angles;
-    }
+        iData_count = 0;
+        v3aAngler_vel = new Vector3[500];
 
-    if (bNext_position_up)
-    {
-        bNext_position_up = false;
-        if ((v3Restart_position.y-v3Start_position.y) > (ISTEPS_UP*ISTEP_UP_SIZE))
-        {
-            bNext_position_forward = true;
-            v3Restart_position.y = v3Start_position.y;
+        if(iCurrent_angle_step < iAngle_steps){
+            iCurrent_angle_step++;
+            v3Restart_angles.x += (360/iAngle_steps);
+            v3Restart_angles.y += (360/iAngle_steps);
+            v3Restart_angles.z += (360/iAngle_steps);
         }else{
-            v3Restart_position.y += ISTEP_UP_SIZE;
+            iCurrent_angle_step = 1;
+            bNext_position_up = true;
+            v3Restart_angles = v3Start_angles;
         }
-    }
 
-    if(bNext_position_forward){
-        bNext_position_forward = false;
-        v3Restart_position.x += ISTEP_FORWARD_SIZE; 
-        if(v3Restart_position.x > IMAX_FORWARD_POSITION){
-            UnityEditor.EditorApplication.isPlaying = false;
+        if (bNext_position_up)
+        {
+            bNext_position_up = false;
+            if ((v3Restart_position.y-v3Start_position.y) > (ISTEPS_UP*ISTEP_UP_SIZE))
+            {
+                bNext_position_forward = true;
+                v3Restart_position.y = v3Start_position.y;
+            }else{
+                v3Restart_position.y += ISTEP_UP_SIZE;
+            }
         }
-    }
 
-    this.transform.position = v3Restart_position;
-    this.transform.eulerAngles = v3Restart_angles;
+        if(bNext_position_forward){
+            bNext_position_forward = false;
+            v3Restart_position.x += ISTEP_FORWARD_SIZE; 
+            if(v3Restart_position.x > IMAX_FORWARD_POSITION){
+                UnityEditor.EditorApplication.isPlaying = false;
+            }
+        }
+
+        this.transform.position = v3Restart_position;
+        this.transform.eulerAngles = v3Restart_angles;
+
+        rb.maxAngularVelocity = float.MaxValue;
+        rb.angularVelocity = new Vector3(0, 0, -35);
     }
 
     private const int ISTEPS_UP = 5;
@@ -224,30 +244,75 @@ public class new_spaghetti : MonoBehaviour
     public Vector3 v3Restart_angles;
     public int iAngle_update_counter = 0;
 
-    private const string FILE_PATH_NOT_ACCURATE_DATA = @"F:\Avans\dice\not_accurate_data.csv";
-    private const string FILE_PATH_ACCURATE_DATA = @"F:\Avans\dice\accurate_data.csv";
+    private int iData_count = 0;
+    public Vector3[] v3aAngler_vel  = new Vector3[500];
+    public Vector3[] v3aOrientation = new Vector3[500];
 
-    void store_data_with_accuracy(UInt32 ACCURACY,string file_name){
+    //private const string FILE_PATH_NOT_ACCURATE_DATA = @"F:\Avans\dice\not_accurate_data.csv";
+    //private const string FILE_PATH_ACCURATE_DATA = @"F:\Avans\dice\accurate_data.csv";
+    private const string FILE_PATH_ANGULAR = @"C:\dice_project\Infinity_dice_simulation\FILE_PATH_ANGULAR.CSV";
+
+    void strore_data(){
+        //store_data_with_accuracy(10000000,FILE_PATH_ACCURATE_DATA);
+        //store_data_with_accuracy(10000,FILE_PATH_NOT_ACCURATE_DATA);
         StringBuilder sbOutput = new StringBuilder();
+        const int ANGULAR_ACC = 1000;
+        const int ORIENTATION_ACC = 10;
         int[] iaOutput = new int[]{
-            (int)v3First_orientation.x,(int)v3First_orientation.y,(int)v3First_orientation.z,(int)(v3Result.x*ACCURACY),(int)(v3Result.y*ACCURACY),(int)(v3Result.z*ACCURACY),iOn_top_number
+            0,0,0,0,0,0,0,iOn_top_number
         };
 
-        int iLength = iaOutput.GetLength(0);
-        for ( int i = 0; i < iLength; i++){
-            sbOutput.Append(string.Join(",", iaOutput[i]));
-            if (i < iLength-1)
+        int iLength = iData_count;
+        for (int a = 0; a < iData_count; a++)
+        {
+            float fAngular_sum = (v3aAngler_vel[a].x + v3aAngler_vel[a].y + v3aAngler_vel[a].z);
+            if( ((fAngular_sum* fAngular_sum)/1) > 0.0001f)
             {
-                sbOutput.Append(",");
+                iaOutput[0] = (int)(v3aOrientation[a].x * ORIENTATION_ACC);
+                iaOutput[1] = (int)(v3aOrientation[a].y * ORIENTATION_ACC);
+                iaOutput[2] = (int)(v3aOrientation[a].z * ORIENTATION_ACC);
+                iaOutput[3] = (int)(v3aAngler_vel[a].x * ANGULAR_ACC);
+                iaOutput[4] = (int)(v3aAngler_vel[a].y * ANGULAR_ACC);
+                iaOutput[5] = (int)(v3aAngler_vel[a].z * ANGULAR_ACC);
+                iaOutput[6] = a;
+
+                int iLoopLength = iaOutput.GetLength(0);
+                for (int i = 0; i < iLoopLength; i++)
+                {
+                    sbOutput.Append(string.Join(",", iaOutput[i]));
+                    if (i < (iLoopLength - 1))
+                    {
+                        sbOutput.Append(",");
+                    }
+                }
+                sbOutput.Append("\n");
+                File.AppendAllText(FILE_PATH_ANGULAR, sbOutput.ToString());
+                sbOutput = new StringBuilder();
             }
         }
 
-        sbOutput.Append("\n");
-        File.AppendAllText(file_name,sbOutput.ToString());
-    }
 
-    void strore_data(){
-        store_data_with_accuracy(10000000,FILE_PATH_ACCURATE_DATA);
-        store_data_with_accuracy(10000,FILE_PATH_NOT_ACCURATE_DATA);
     }
 }
+
+
+//void store_data_with_accuracy(UInt32 ACCURACY, string file_name)
+//{
+//    //StringBuilder sbOutput = new StringBuilder();
+//    //int[] iaOutput = new int[]{
+//    //    (int)v3First_orientation.x,(int)v3First_orientation.y,(int)v3First_orientation.z,(int)(v3Result.x*ACCURACY),(int)(v3Result.y*ACCURACY),(int)(v3Result.z*ACCURACY),iOn_top_number
+//    //};
+
+//    //int iLength = iData_count;
+//    //for ( int i = 0; i < ; i++){
+//    //    sbOutput.Append(string.Join(",", iaOutput[i]));
+//    //    sbOutput.Append(string.Join(",", iOn_top_number));
+//    //    if (i < iLength-1)
+//    //    {
+//    //        sbOutput.Append(",");
+//    //    }
+//    //}
+
+//    //sbOutput.Append("\n");
+//    //File.AppendAllText(file_name,sbOutput.ToString());
+//}
