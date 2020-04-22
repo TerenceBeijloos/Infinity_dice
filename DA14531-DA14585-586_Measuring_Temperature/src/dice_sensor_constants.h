@@ -17,6 +17,27 @@
 
 
 /****************************************************************************************/
+/* Sensor interrupt configuration                                                       */
+/****************************************************************************************/
+//Interrupt configuration for six dimention interrupt (for vibration)
+//this interrupt should trigger when the dice hits the table
+#define SIX_D_INT_PORT			GPIO_PORT_1
+#define SIX_D_INT_PIN				GPIO_PIN_3
+#define SIX_D_INT_TYPE 			GPIO0_IRQn		
+#define SIX_D_INT_INPUT_LVL	true
+#define SIX_D_INT_EDGE_LVL	true
+#define SIX_D_INT_DEBOUNCE	1 														//Deounce time in ms
+#define SIX_D_INT_START_IRQ	GPIO_IRQ_INPUT_LEVEL_LOW			//Start lvl to prevent interrupt from triggering on startup
+#define SIX_D_INT_IRQ_LVL		GPIO_IRQ_INPUT_LEVEL_HIGH			//Lvl after the startup
+
+
+/****************************************************************************************/
+/* Sensor registers bits                                                              	*/
+/****************************************************************************************/
+
+#define SIX_D_BIT 0x40
+
+/****************************************************************************************/
 /* Sensor registers                                                                   	*/
 /****************************************************************************************/
 

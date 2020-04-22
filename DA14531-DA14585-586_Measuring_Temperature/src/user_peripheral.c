@@ -319,7 +319,7 @@ void user_catch_rest_hndl(ke_msg_id_t const msgid,
             switch (msg_param->handle)
             {
                 case DICE_CHANGE_CHANCE_CFG:
-									GPIO_SetActive(GPIO_LED_PORT, GPIO_LED_PIN);
+//									GPIO_SetActive(GPIO_LED_PORT, GPIO_LED_PIN);
                 break;
 								case DICE_CHANGE_CHANCE_VAL:
 									dice_chance_recieve_handler(msg_param);

@@ -7,6 +7,9 @@
 #include "user_custs1_impl.h"
 #include "user_peripheral.h"
 #include "user_periph_setup.h"
+#include "dice_neural_network.h"
+#include "systick.h"
+#include <time.h> 
 
 static bool bNormal_mode																__SECTION_ZERO("retention_mem_area0");
 static uint8_t u8aDice_chance[DICE_SIDE_COUNT]					__SECTION_ZERO("retention_mem_area0");
@@ -17,6 +20,7 @@ void dice_chance_init(void){
 	bNormal_mode = false;								
 	memset(u8aDice_chance,0x00,sizeof(u8aDice_chance));				
   memset(caDice_chance_ntf_string,0x00,sizeof(caDice_chance_ntf_string));	
+	network_init();
 }
 
 void dice_chance_deinit(void);
@@ -43,7 +47,17 @@ void dice_chance_prepare_ntf_string(void){
 
 void dice_chance_send(void){
 	
-	dice_chance_prepare_ntf_string();
+//	dice_chance_prepare_ntf_string();
+
+	float prediction[6];
+	float input[] = { 0.013893f, 0.998055f, 0.146985f, 0.560383f, 0.357070f, 0.638900f };
+	
+	predict(prediction,input);
+	float predict5 = prediction[5];
+	
+	static const uint16_t size = 7;
+	char last_prediction[size];
+	snprintf(last_prediction, size, "%f", predict5);
 	
 	struct custs1_val_ntf_ind_req* req = KE_MSG_ALLOC_DYN(CUSTS1_VAL_NTF_REQ,
 																				prf_get_task_from_id(TASK_ID_CUSTS1),
@@ -55,7 +69,7 @@ void dice_chance_send(void){
 	req->notification = true;                               			//Data is sent as a notification and not as indication
 	req->handle 			= DICE_CHANGE_CHANCE_VAL;      					    //The handle of the characteristic we want to write to
 	req->length 			= NTF_STRING_SIZE;                          //Data length in bytes
-	memcpy(req->value, caDice_chance_ntf_string, NTF_STRING_SIZE);//Copy the string to the message
+	memcpy(req->value, last_prediction, size);//Copy the string to the message
 		
 	ke_msg_send(req);                                       			//Send the message to the task
 }

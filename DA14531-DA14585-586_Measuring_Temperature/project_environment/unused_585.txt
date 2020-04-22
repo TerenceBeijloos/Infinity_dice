@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Wed Apr 01 14:41:04 2020
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Wed Apr 22 11:25:35 2020
 ;VERSION 0.2
 ;FILE adc_58x.o
 adc_disable <= USED 0
@@ -83,13 +83,24 @@ read_rcx_freq <= USED 0
 ;FILE custs1_task.o
 ;FILE dice_communication.o
 dice_chance_get_ntf_string <= USED 0
+dice_chance_prepare_ntf_string <= USED 0
 dice_chance_set_ntf_string <= USED 0
 ;FILE dice_led_callback.o
 get_random <= USED 0
+led_callback_init <= USED 0
+led_callback_start_dice_mode <= USED 0
 led_update_key <= USED 0
 ;FILE dice_led_driver.o
 led_get_patern <= USED 0
+led_get_side <= USED 0
+led_periph_init <= USED 0
+led_turn_off <= USED 0
+led_turn_on <= USED 0
+;FILE dice_neural_network.o
+;FILE dice_sensor_api.o
+dice_sensor_api_set_roll_interupt <= USED 0
 ;FILE dice_sensor_driver.o
+dice_sensor_init <= USED 0
 dice_sensor_read_byte <= USED 0
 dice_sensor_read_multiple <= USED 0
 dice_sensor_test <= USED 0
@@ -98,6 +109,7 @@ dice_sensor_write_byte <= USED 0
 dice_sensor_write_multiple <= USED 0
 ;FILE diss.o
 ;FILE gpio.o
+GPIO_ConfigurePin <= USED 0
 GPIO_ConfigurePinPower <= USED 0
 GPIO_DisablePorPin <= USED 0
 GPIO_EnableIRQ <= USED 0
@@ -107,7 +119,10 @@ GPIO_GetPinFunction <= USED 0
 GPIO_GetPinStatus <= USED 0
 GPIO_GetPorTime <= USED 0
 GPIO_RegisterCallback <= USED 0
+GPIO_SetActive <= USED 0
 GPIO_SetIRQInputLevel <= USED 0
+GPIO_SetInactive <= USED 0
+GPIO_SetPinFunction <= USED 0
 GPIO_SetPorTime <= USED 0
 GPIO_is_valid <= USED 0
 ;FILE hardfault_handler.o
@@ -262,6 +277,9 @@ syscntl_set_dcdc_vbat3v_level <= USED 0
 ;FILE system_da14585_586.o
 SystemCoreClockUpdate <= USED 0
 ;FILE systick.o
+systick_register_callback <= USED 0
+systick_start <= USED 0
+systick_stop <= USED 0
 systick_value <= USED 0
 systick_wait <= USED 0
 ;FILE trng.o

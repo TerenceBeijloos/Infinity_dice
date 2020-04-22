@@ -1,4 +1,4 @@
-#! armcc -E -I .\,.\..,.\..\src\config,C:\dice_project\6.0.12.1020.2\SDK\6.0.12.1020.2\sdk\common_project_files\ --cpu Cortex-M0
+#! armcc -E -I .\,.\..,.\..\src\config,C:\Users\Terence\Documents\dice2\SDK\6.0.12.1020.2\sdk\common_project_files\ --cpu Cortex-M0
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;                                                         System RAM                                                         ;
