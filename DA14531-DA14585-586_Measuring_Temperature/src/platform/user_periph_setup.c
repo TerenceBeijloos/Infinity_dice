@@ -46,6 +46,7 @@
 #include "dice_communication.h"
 #include "dice_led_driver.h"
 #include "dice_led_callback.h"
+#include "dice_flash_driver.h"
 
 /**
  ****************************************************************************************
@@ -55,15 +56,25 @@
  ****************************************************************************************
  */
 
+static const uart_cfg_t uart_cfg = {
+    .baud_rate = UART2_BAUDRATE,
+    .data_bits = UART2_DATABITS,
+    .parity = UART2_PARITY,
+    .stop_bits = UART2_STOPBITS,
+    .auto_flow_control = UART2_AFCE,
+    .use_fifo = UART2_FIFO,
+    .tx_fifo_tr_lvl = UART2_TX_FIFO_LEVEL,
+    .rx_fifo_tr_lvl = UART2_RX_FIFO_LEVEL,
+    .intr_priority = 2,
+};
+
 #if DEVELOPMENT_DEBUG
 
 void GPIO_reservations(void)
 {
 
-#if defined (CFG_PRINTF_UART2)
     RESERVE_GPIO(UART2_TX, UART2_TX_PORT, UART2_TX_PIN, PID_UART2_TX);
-#endif
-	
+
 //	RESERVE_GPIO(LED, GPIO_LED_PORT, GPIO_LED_PIN, PID_GPIO);
 
 }
@@ -76,7 +87,8 @@ void set_pad_functions(void)
     // Disallow spontaneous DA14586 SPI Flash wake-up
     GPIO_ConfigurePin(GPIO_PORT_2, GPIO_PIN_3, OUTPUT, PID_GPIO, true);
 #endif
-
+    // Configure UART2 pin functionality
+    GPIO_ConfigurePin(UART2_TX_PORT, UART2_TX_PIN, OUTPUT, PID_UART2_TX, false);
 //	GPIO_ConfigurePin(GPIO_LED_PORT, GPIO_LED_PIN, OUTPUT, PID_GPIO, false);
 }
 
@@ -102,17 +114,20 @@ void periph_init(void)
     // ROM patch
     patch_func();
 		
-		
+		    // Initialize UART2
+    uart_initialize(UART, &uart_cfg);
+		dice_flash_periph_init();
+					
     // Set pad functionality
     set_pad_functions();
 
 		wdg_freeze();
 //	  dice_sensor_init();
-		dice_chance_init();
+//		dice_chance_init();
 //		led_periph_init();
-		
     // Enable the pads
     GPIO_set_pad_latch_en(true);
+		dice_flash_init();
 //		led_callback_init();
 //		led_turn_on(three,back);
 //		for(;;){}

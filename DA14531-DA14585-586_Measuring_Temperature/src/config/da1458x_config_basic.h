@@ -83,7 +83,7 @@
 /* If CFG_PRINTF_UART2 is defined, then serial interface logging mechanism is implented using UART2, else UART1 */
 /* will be used.                                                                                                */
 /****************************************************************************************************************/
-#undef CFG_PRINTF
+
 #ifdef CFG_PRINTF
     #define CFG_PRINTF_UART2
 #endif
@@ -110,7 +110,7 @@
 /*     - I2C                                                                                                    */
 /****************************************************************************************************************/
 #undef CFG_UART_DMA_SUPPORT
-#undef CFG_SPI_DMA_SUPPORT
+//#undef CFG_SPI_DMA_SUPPORT
 #undef CFG_I2C_DMA_SUPPORT
 
 
@@ -192,7 +192,7 @@
 /*     - ADC                                                                                                    */
 /****************************************************************************************************************/
 #undef CFG_UART_DMA_SUPPORT
-#undef CFG_SPI_DMA_SUPPORT
+//#undef CFG_SPI_DMA_SUPPORT
 #undef CFG_I2C_DMA_SUPPORT
 #undef CFG_ADC_DMA_SUPPORT
 

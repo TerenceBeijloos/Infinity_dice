@@ -68,6 +68,19 @@
 #endif
 #endif
 
+#define UART2_TX_PORT           GPIO_PORT_0
+#define UART2_TX_PIN            GPIO_PIN_4
+#define UART                        UART2
+
+// Define UART2 Settings
+#define UART2_BAUDRATE              UART_BAUDRATE_115200
+#define UART2_DATABITS              UART_DATABITS_8
+#define UART2_PARITY                UART_PARITY_NONE
+#define UART2_STOPBITS              UART_STOPBITS_1
+#define UART2_AFCE                  UART_AFCE_DIS
+#define UART2_FIFO                  UART_FIFO_EN
+#define UART2_TX_FIFO_LEVEL         UART_TX_FIFO_LEVEL_0
+#define UART2_RX_FIFO_LEVEL         UART_RX_FIFO_LEVEL_0
 
 /*
  * FUNCTION DECLARATIONS

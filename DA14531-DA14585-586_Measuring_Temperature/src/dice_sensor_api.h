@@ -15,5 +15,9 @@ uint8_t dice_sensor_api_get_up_side(void);
 
 static void dice_sensor_api_set_isr(void);
 static int16_t toInt(uint16_t twos_complement);
+static void dice_sensor_api_restart_systick(void);
+static void dice_sensor_api_wait_for_gyroscope(void);
+static void dice_sensor_api_calculate_velocity(const int16_t *vector1, const int16_t *vector2, const uint32_t *dTime, float *result);
+static void dice_sensor_api_store_roll();
 
 #endif // _DICE_SENSOR_API_
