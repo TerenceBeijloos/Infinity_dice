@@ -1,15 +1,52 @@
 <resources>
+    <!--General strings-->
     <string name="app_name">Infinity Dice</string>
     <string name="title_custom">Custom</string>
     <string name="title_normal">Normal</string>
     <string name="title_admin">Admin</string>
     <string name="title_bluetooth">Bluetooth</string>
-    <string name="ble_no_support">BLE is not supported.</string>
-    <string name="connect">Connect</string>
+
+    <!--Check/control strings-->
+    <string name="ble_no_support">BLE wordt niet ondersteund op uw apparaat.</string>
     <string name="ok">OK</string>
+
+    <!--Scan Activity strings-->
     <string name="start_scan">Start scan</string>
     <string name="stop_scan">Stop scan</string>
-    <string name="bt_settings">Bluetooth Settings</string>
-    <string name="connect_device">Connect to device (index):</string>
-    <string name="disconnect_device">Disconnect device</string>
+    <string name="connect_help">Klik op een item om ermee te verbinden.</string>
+
+    <!--Device Activity strings-->
+    <string name="disconnect_button">Verbinding verbreken</string>
+    <string name="read_data_button">Lees data</string>
+    <string name="write_data_button">Schrijf data</string>
+    <string name="clear_data_button">Verwijder data</string>
+    <string name="clear_text_button">Tekst verwijderen</string>
+
+    <!--Custom Fragment strings-->
+    <string name="send_data_button">Verstuur data</string>
+    <string name="text_dice_one">Eén oog</string>
+    <string name="text_dice_two">Twee ogen</string>
+    <string name="text_dice_three">Drie ogen</string>
+    <string name="text_dice_four">Vier ogen</string>
+    <string name="text_dice_five">Vijf ogen</string>
+    <string name="text_dice_six">Zes ogen</string>
+    <string name="text_percentage_one">20%</string>
+    <string name="text_percentage_two">10%</string>
+    <string name="text_percentage_three">20%</string>
+    <string name="text_percentage_four">20%</string>
+    <string name="text_percentage_five">10%</string>
+    <string name="text_percentage_six">20%</string>
+    <string name="initial_data_string">020010020020010020</string>
+
+    <!--Normal Fragment strings-->
+    <string name="normal_text_info">Dit is de normale speelmodus van de dobbelsteen. Er bevinden zich in deze modus geen instellingen.</string>
+
+    <!--Admin Fragment strings-->
+    <string name="password_text_info">Vul het wachtwoord hieronder in:</string>
+    <string name="password_button">Inloggen</string>
+    <string name="title_activity_admin">activity_admin</string>
+
+    <!--Main Activity strings-->
+    <string name="not_connected">Niet verbonden.</string>
+
 </resources>

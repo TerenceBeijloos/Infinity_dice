@@ -6,6 +6,11 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+    <uses-permission-sdk-23 android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission-sdk-23 android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <uses-feature
         android:name="android.hardware.bluetooth_le"
@@ -18,15 +23,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".ui.settings.settings_activity"
-            android:parentActivityName=".main_activity" />
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning,LockedOrientationActivity">
+        <service
+            android:name=".bluetooth.ble_device_service"
+            android:enabled="true"
+            android:exported="true"></service>
+
         <activity
-            android:name=".ui.bluetooth.bluetooth_activity"
-            android:parentActivityName=".main_activity" />
+            android:name=".bluetooth.ble_device_activity"
+            android:parentActivityName=".bluetooth.ble_scan_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".bluetooth.ble_scan_activity"
+            android:parentActivityName=".main_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".admin.admin_activity"
+            android:parentActivityName=".main_activity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".main_activity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

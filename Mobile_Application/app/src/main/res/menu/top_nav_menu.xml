@@ -8,10 +8,5 @@
         app:showAsAction="always"
         android:icon="@drawable/ic_bluetooth_white_24dp" />
 
-    <item
-        android:id="@+id/settings_button"
-        android:title=""
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_settings_white_24dp" />
-
 </menu>
+
