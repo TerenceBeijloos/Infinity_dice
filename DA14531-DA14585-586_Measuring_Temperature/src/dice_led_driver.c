@@ -1,5 +1,5 @@
 #include "dice_led_driver.h"
-#include "dice_communication.h"
+//#include "dice_communication.h"
 #include "gpio.h"
 
 

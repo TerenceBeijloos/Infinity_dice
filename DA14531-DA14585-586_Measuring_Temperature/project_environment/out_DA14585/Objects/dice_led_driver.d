@@ -86,7 +86,3 @@
 .\out_da14585\objects\dice_led_driver.o: C:\Users\Terence\Documents\Avans\dice\SDK\6.0.12.1020.2\sdk\ble_stack\profiles\prf.h
 .\out_da14585\objects\dice_led_driver.o: C:\Users\Terence\Documents\Avans\dice\SDK\6.0.12.1020.2\sdk\app_modules\api\app_adv_data.h
 .\out_da14585\objects\dice_led_driver.o: ..\src\dice_led_driver.h
-.\out_da14585\objects\dice_led_driver.o: ..\src\dice_communication.h
-.\out_da14585\objects\dice_led_driver.o: C:\Users\Terence\Documents\Avans\dice\SDK\6.0.12.1020.2\sdk\ble_stack\profiles\custom\custs\api\custs1_task.h
-.\out_da14585\objects\dice_led_driver.o: C:\Users\Terence\Documents\Avans\dice\SDK\6.0.12.1020.2\sdk\platform\arch\compiler\compiler.h
-.\out_da14585\objects\dice_led_driver.o: C:\Users\Terence\Documents\Avans\dice\SDK\6.0.12.1020.2\sdk\ble_stack\host\att\attm\attm_db_128.h

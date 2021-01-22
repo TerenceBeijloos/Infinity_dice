@@ -124,27 +124,13 @@ void periph_init(void)
 		wdg_freeze();
 //	  dice_sensor_init();
 //		dice_chance_init();
-			//led_periph_init();
-					RESERVE_GPIO(idk1,GPIO_PORT_1,GPIO_PIN_0,PID_GPIO);
-		GPIO_ConfigurePin(GPIO_PORT_1,GPIO_PIN_0, OUTPUT, PID_GPIO, !SIDE_SWITCH);
-		
-				RESERVE_GPIO(idk2,GPIO_PORT_0,GPIO_PIN_5,PID_GPIO);
-		GPIO_ConfigurePin(GPIO_PORT_0,GPIO_PIN_5, OUTPUT, PID_GPIO, !SIDE_SWITCH);
+			led_periph_init();
+
     // Enable the pads
     GPIO_set_pad_latch_en(true);
+
 		
 //		dice_flash_init();
-		//led_callback_init();
-		/*led_turn_on(one,right);
-		led_turn_on(two,right);
-		led_turn_on(three,right);*/
-		
-		GPIO_SetActive(GPIO_PORT_1,GPIO_PIN_0); 
-		GPIO_SetActive(GPIO_PORT_0,GPIO_PIN_5);
-		//led_turn_on(four,left);
-		//led_turn_on(two,left);
-		//led_turn_on(three,left);
-		
-		for(;;);
+		led_callback_init();
 		
 }

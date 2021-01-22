@@ -31,7 +31,6 @@ static NUMBER led_callback_get_next_number(const NUMBER number){
 }
 
 static void led_callback_dice_mode(void){
-	
 	led_turn_off(prev_number,led_get_side(prev_number));
 	led_turn_on(current_number,led_get_side(current_number));
 	
