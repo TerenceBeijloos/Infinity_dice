@@ -22,20 +22,29 @@ Dialog DLL:      TARMCM1.DLL V1.14.1.0
  
 <h2>Project:</h2>
 C:\Users\Terence\Documents\Avans\dice\Infinity_dice\SDK\6.0.12.1020.2\projects\target_apps\peripheral_examples\blinky\Keil_5\blinky.uvprojx
-Project File Date:  11/21/2019
+Project File Date:  01/29/2021
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'DA14585'
-compiling user_periph_setup.c...
-compiling main.c...
-compiling gpio.c...
-compiling arch_system.c...
+compiling dice_sensor_api.c...
+.\..\include\dice_sensor_api.h(21): warning:  #1295-D: Deprecated declaration dice_sensor_api_store_roll - give arg types
+  static void dice_sensor_api_store_roll();
+..\src\dice_sensor_api.c(70): warning:  #68-D: integer conversion resulted in a change of sign
+  	systick_start(-1, 0);
+..\src\dice_sensor_api.c(101): warning:  #223-D: function "memcpy" declared implicitly
+  	memcpy(vector1,vector2,(sizeof(vector2)/sizeof(vector2[0])));
+..\src\dice_sensor_api.c(105): warning:  #1-D: last line of file ends without a newline
+  	
+..\src\dice_sensor_api.c(83): warning:  #177-D: function "dice_sensor_api_store_roll"  was declared but never referenced
+  static void dice_sensor_api_store_roll(){
+..\src\dice_sensor_api.c: 5 warnings, 0 errors
+compiling i2c.c...
 linking...
-Program Size: Code=4596 RO-data=236 RW-data=4 ZI-data=1628  
+Program Size: Code=6160 RO-data=236 RW-data=4 ZI-data=1680  
 FromELF: creating hex file...
 After Build - User command #1: fromelf --bincombined --output=".\out_DA14585\Objects\blinky_585.bin"  ".\out_DA14585\Objects\blinky_585.axf"
-".\out_DA14585\Objects\blinky_585.axf" - 0 Error(s), 0 Warning(s).
+".\out_DA14585\Objects\blinky_585.axf" - 0 Error(s), 5 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -49,7 +58,7 @@ Package Vendor: ARM
   C:\Users\Terence\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\Device\ARM\ARMCM0\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

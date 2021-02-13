@@ -39,6 +39,7 @@
 #include "datasheet.h"
 #include "gpio.h"
 #include "uart.h"
+#include "dice_sensor_driver.h"
 
 static void set_pad_functions(void)
 {
@@ -83,7 +84,9 @@ void periph_init(void)
 
     // Initialize UART2
     uart_initialize(UART2, &uart_cfg);
-
+		
+		dice_sensor_periph_init();
+	
     // Set pad functionality
     set_pad_functions();
 

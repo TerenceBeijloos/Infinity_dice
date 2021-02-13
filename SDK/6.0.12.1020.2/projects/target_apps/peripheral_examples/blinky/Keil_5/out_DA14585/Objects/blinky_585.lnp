@@ -7,9 +7,13 @@
 ".\out_da14585\objects\uart.o"
 ".\out_da14585\objects\uart_utils.o"
 ".\out_da14585\objects\hw_otpc_58x.o"
+".\out_da14585\objects\systick.o"
+".\out_da14585\objects\i2c.o"
 ".\out_da14585\objects\main.o"
 ".\out_da14585\objects\user_periph_setup.o"
 ".\out_da14585\objects\arch_system.o"
+".\out_da14585\objects\dice_sensor_api.o"
+".\out_da14585\objects\dice_sensor_driver.o"
 --library_type=microlib --strict --scatter "..\..\shared\peripheral_examples.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

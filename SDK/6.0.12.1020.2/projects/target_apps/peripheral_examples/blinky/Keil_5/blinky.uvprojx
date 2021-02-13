@@ -750,6 +750,16 @@
                 </FileArmAds>
               </FileOption>
             </File>
+            <File>
+              <FileName>systick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\sdk\platform\driver\systick\systick.c</FilePath>
+            </File>
+            <File>
+              <FileName>i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\sdk\platform\driver\i2c\i2c.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -769,6 +779,16 @@
               <FileName>arch_system.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\sdk\platform\arch\main\arch_system.c</FilePath>
+            </File>
+            <File>
+              <FileName>dice_sensor_api.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\dice_sensor_api.c</FilePath>
+            </File>
+            <File>
+              <FileName>dice_sensor_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\dice_sensor_driver.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1365,6 +1385,16 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\sdk\platform\driver\spi\spi_58x.c</FilePath>
             </File>
+            <File>
+              <FileName>systick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\sdk\platform\driver\systick\systick.c</FilePath>
+            </File>
+            <File>
+              <FileName>i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\sdk\platform\driver\i2c\i2c.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1384,6 +1414,16 @@
               <FileName>arch_system.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\sdk\platform\arch\main\arch_system.c</FilePath>
+            </File>
+            <File>
+              <FileName>dice_sensor_api.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\dice_sensor_api.c</FilePath>
+            </File>
+            <File>
+              <FileName>dice_sensor_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\dice_sensor_driver.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2082,6 +2122,16 @@
                 </FileArmAds>
               </FileOption>
             </File>
+            <File>
+              <FileName>systick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\sdk\platform\driver\systick\systick.c</FilePath>
+            </File>
+            <File>
+              <FileName>i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\sdk\platform\driver\i2c\i2c.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2101,6 +2151,16 @@
               <FileName>arch_system.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\sdk\platform\arch\main\arch_system.c</FilePath>
+            </File>
+            <File>
+              <FileName>dice_sensor_api.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\dice_sensor_api.c</FilePath>
+            </File>
+            <File>
+              <FileName>dice_sensor_driver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\dice_sensor_driver.c</FilePath>
             </File>
           </Files>
         </Group>
