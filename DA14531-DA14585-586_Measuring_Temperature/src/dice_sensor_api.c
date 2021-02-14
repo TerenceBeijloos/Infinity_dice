@@ -6,7 +6,7 @@
 
 void dice_sensor_api_set_roll_interupt(void){
 	i2c_abort_t i2c_abort_code = I2C_ABORT_NONE;
-	dice_sensor_write_bits(INT_GEN_CFG_XL, SIX_D_BIT, &i2c_abort_code);
+//	dice_sensor_write_bits(INT_GEN_CFG_XL, SIX_D_BIT, &i2c_abort_code);
 	
 	dice_sensor_api_set_isr();
 }

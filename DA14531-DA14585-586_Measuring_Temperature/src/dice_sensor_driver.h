@@ -39,7 +39,7 @@ static void dice_sensor_periph_init	(void);
 /****************************************************************************************/
 //u8pData[0] must be the address of the register
 void dice_sensor_write_multiple	(const uint8_t *u8pData, const uint8_t u8Length,i2c_abort_t *abrt_code);
-void dice_sensor_write_bits			(const uint8_t u8Address,const uint8_t u8Data, 	i2c_abort_t *abrt_code);
+void dice_sensor_write_bits			(const uint8_t u8Address, const uint8_t u8Bit_pos, bool u8Data, i2c_abort_t *abrt_code);
 void dice_sensor_write_byte			(const uint8_t u8Address,const uint8_t u8Data,  i2c_abort_t *abrt_code); 
 
 

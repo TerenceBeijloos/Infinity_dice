@@ -1,29 +1,61 @@
 #include "dice_sensor_driver.h"
 #include "user_periph_setup.h"
+#include "uart.h"
+#include "uart_utils.h"
 
 void dice_sensor_test(void){
-	uint8_t u8aData = 0x01;
+	uint8_t u8Write_data = 0x01;
 	i2c_abort_t *abrt_code;
+	uint8_t u8Recieved_data = 0;
+	uint8_t u8Reg = CTRL_REG4;
+	char string[100];
 	
-	GPIO_SetActive(GPIO_LED_PORT, GPIO_LED_PIN);
-	//dice_sensor_write_bits(CTRL_REG4,u8aData,abrt_code);
-	uint8_t data = dice_sensor_read_byte(CTRL_REG4,abrt_code);
-	GPIO_SetInactive(GPIO_LED_PORT, GPIO_LED_PIN);
+	u8Recieved_data = dice_sensor_read_byte(WHO_AM_I,abrt_code);
+	
+//	dice_sensor_write_bits(u8Reg,0x01, false, abrt_code);
+//	
+//  u8Recieved_data = dice_sensor_read_byte(u8Reg,abrt_code);
+//	
+//	snprintf(string,sizeof(string)/sizeof(string[0]),"abort_code = %u\n\r",*abrt_code);
+//	printf_string(UART, string);
+//	
+//	snprintf(string,sizeof(string)/sizeof(string[0]),"byte read = %u\n\r\n\r",u8Recieved_data);
+//	printf_string(UART, string); 
+//	
+//	snprintf(string,sizeof(string)/sizeof(string[0]),"Write bit %u of register %u\n\r",u8Write_data,u8Reg);
+//	printf_string(UART, string);
+//	
+//	dice_sensor_write_bits(u8Reg,u8Write_data, true, abrt_code);
+//	
+//	snprintf(string,sizeof(string)/sizeof(string[0]),"abort_code = %u\n\r\n\r",*abrt_code);
+//	printf_string(UART, string);
+//	
+//	snprintf(string,sizeof(string)/sizeof(string[0]),"Read_byte of register %u\n\r\n\r",u8Reg);
+//  printf_string(UART, string);
+
+//	u8Recieved_data = dice_sensor_read_byte(u8Reg,abrt_code);
+//	
+//	snprintf(string,sizeof(string)/sizeof(string[0]),"abort_code = %u\n\r",*abrt_code);
+//	printf_string(UART, string);
+//	
+//	snprintf(string,sizeof(string)/sizeof(string[0]),"byte read = %u\n\r",u8Recieved_data);
+//	printf_string(UART, string); 
 	
 }
+
 
 /****************************************************************************************/
 /* Init functions	                                                                    	*/
 /****************************************************************************************/
 
 static void dice_sensor_periph_init(void){
-//	RESERVE_GPIO(SDA,SDA_PORT, SDA_PIN, PID_I2C_SDA);
-//	RESERVE_GPIO(SCL,SCL_PORT, SCL_PIN, PID_I2C_SCL);
-//	
-//	GPIO_ConfigurePin(SCL_PORT, SCL_PIN, INPUT_PULLUP, PID_I2C_SCL, false);
-//  GPIO_ConfigurePin(SDA_PORT, SDA_PIN, INPUT_PULLUP, PID_I2C_SDA, false);
-//	
-//	i2c_init(&i2c_cfg);
+	RESERVE_GPIO(SDA,SDA_PORT, SDA_PIN, PID_I2C_SDA);
+	RESERVE_GPIO(SCL,SCL_PORT, SCL_PIN, PID_I2C_SCL);
+	
+	GPIO_ConfigurePin(SCL_PORT, SCL_PIN, INPUT_PULLUP, PID_I2C_SCL, false);
+  GPIO_ConfigurePin(SDA_PORT, SDA_PIN, INPUT_PULLUP, PID_I2C_SDA, false);
+	
+	i2c_init(&i2c_cfg);
 }
 	
 static void dice_sensor_var_init(void){
@@ -48,13 +80,20 @@ void dice_sensor_init(void){
 /* Write functions	                                                                  	*/
 /****************************************************************************************/
 
-void dice_sensor_write_bits(const uint8_t u8Address, const uint8_t u8Data, i2c_abort_t *abrt_code){
+void dice_sensor_write_bits(const uint8_t u8Address, const uint8_t u8Bit_pos, bool u8Data, i2c_abort_t *abrt_code){
 	
 	dice_sensor_write_permission(u8Address,false);
+	uint8_t u8Byte_read = dice_sensor_read_byte(u8Address, abrt_code);
 	
 	uint8_t u8Mask[ADDRESS_SIZE + 1]; //+ 1 = write 1 byte
 	u8Mask[0] = u8Address;
-	u8Mask[1] = (dice_sensor_read_byte(u8Address, abrt_code) | u8Data); 
+	
+	
+	if(u8Data){
+		u8Mask[1] = (u8Byte_read + u8Bit_pos);
+	}else{
+		u8Mask[1] = (u8Byte_read & ~u8Bit_pos);
+	}
 	
 	while(i2c_controler_is_busy()){}
 	i2c_master_transmit_buffer_sync(u8Mask,(ADDRESS_SIZE+1),abrt_code,I2C_F_WAIT_FOR_STOP);

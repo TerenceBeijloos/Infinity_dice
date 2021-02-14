@@ -122,12 +122,13 @@ void periph_init(void)
     set_pad_functions();
 
 		wdg_freeze();
-//	  dice_sensor_init();
+	  dice_sensor_init();
 //		dice_chance_init();
 //		led_periph_init();
     // Enable the pads
     GPIO_set_pad_latch_en(true);
-		dice_flash_init();
+		//dice_flash_init();
+		dice_sensor_test();
 //		led_callback_init();
 //		led_turn_on(three,back);
 //		for(;;){}

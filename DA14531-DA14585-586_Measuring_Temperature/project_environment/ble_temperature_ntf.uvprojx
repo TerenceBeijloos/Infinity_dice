@@ -887,7 +887,7 @@
             <File>
               <FileName>uart_utils.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\6.0.12.1020.2\SDK\6.0.12.1020.2\sdk\platform\driver\uart\uart_utils.c</FilePath>
+              <FilePath>C:\dice_project\6.0.12.1020.2\SDK\6.0.12.1020.2\sdk\platform\driver\uart\uart_utils.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -2119,7 +2119,7 @@
             <File>
               <FileName>uart_utils.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\6.0.12.1020.2\SDK\6.0.12.1020.2\sdk\platform\driver\uart\uart_utils.c</FilePath>
+              <FilePath>C:\dice_project\6.0.12.1020.2\SDK\6.0.12.1020.2\sdk\platform\driver\uart\uart_utils.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3351,7 +3351,7 @@
             <File>
               <FileName>uart_utils.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\6.0.12.1020.2\SDK\6.0.12.1020.2\sdk\platform\driver\uart\uart_utils.c</FilePath>
+              <FilePath>C:\dice_project\6.0.12.1020.2\SDK\6.0.12.1020.2\sdk\platform\driver\uart\uart_utils.c</FilePath>
             </File>
           </Files>
         </Group>
