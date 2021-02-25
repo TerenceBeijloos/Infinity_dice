@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Thu Feb 25 11:55:50 2021
+;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Thu Feb 25 14:56:20 2021
 ;VERSION 0.2
 ;FILE adc_58x.o
 adc_disable <= USED 0
@@ -93,14 +93,11 @@ dice_flash_store_nn_data <= USED 0
 test <= USED 0
 ;FILE dice_led_callback.o
 get_random <= USED 0
-led_callback_init <= USED 0
-led_callback_start_dice_mode <= USED 0
 led_update_key <= USED 0
 ;FILE dice_led_driver.o
 led_get_patern <= USED 0
-led_get_side <= USED 0
-led_turn_off <= USED 0
-led_turn_on <= USED 0
+led_pair_turn_off <= USED 0
+led_pair_turn_on <= USED 0
 ;FILE dice_neural_network.o
 network_init <= USED 0
 ;FILE dice_sensor_api.o
@@ -294,9 +291,6 @@ syscntl_set_dcdc_vbat3v_level <= USED 0
 ;FILE system_da14585_586.o
 SystemCoreClockUpdate <= USED 0
 ;FILE systick.o
-systick_register_callback <= USED 0
-systick_start <= USED 0
-systick_stop <= USED 0
 systick_value <= USED 0
 systick_wait <= USED 0
 ;FILE trng.o

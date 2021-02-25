@@ -44,18 +44,47 @@ void led_periph_init(void){
 		SIDE_OF_NUMBER[i] = (SIDES)i;
 	}
 	
+	/*LED_DIAGANOL_LTR
+	LED_DIAGANOL_RTL
+	LED_MIDDLE_PAIR 
+	LED_MIDDLE_ONE*/
+	
+	RESERVE_GPIO(LED,LED_DIAGANOL_LTR.gpPort,LED_DIAGANOL_LTR.gpPin,PID_GPIO);
+	GPIO_ConfigurePin(LED_DIAGANOL_LTR.gpPort,LED_DIAGANOL_LTR.gpPin,OUTPUT,PID_GPIO, !LED_SWITCH);
+	
+	RESERVE_GPIO(LED,LED_DIAGANOL_RTL.gpPort,LED_DIAGANOL_RTL.gpPin,PID_GPIO);
+	GPIO_ConfigurePin(LED_DIAGANOL_RTL.gpPort,LED_DIAGANOL_RTL.gpPin,OUTPUT,PID_GPIO, !LED_SWITCH);
+	
+	RESERVE_GPIO(LED,LED_MIDDLE_PAIR.gpPort,LED_MIDDLE_PAIR.gpPin,PID_GPIO);
+	GPIO_ConfigurePin(LED_MIDDLE_PAIR.gpPort,LED_MIDDLE_PAIR.gpPin,OUTPUT,PID_GPIO, !LED_SWITCH);
+	
 	RESERVE_GPIO(LED,LED_MIDDLE_ONE.gpPort,LED_MIDDLE_ONE.gpPin,PID_GPIO);
 	GPIO_ConfigurePin(LED_MIDDLE_ONE.gpPort,LED_MIDDLE_ONE.gpPin,OUTPUT,PID_GPIO, !LED_SWITCH);
 	
-	for (uint8_t i = 0; i<LED_PATERNS[six].u8Size; i++){
-		GPIO_PORT port = LED_PATERNS[six].LED_PATERN[i].gpPort;
-		GPIO_PIN pin 	 = LED_PATERNS[six].LED_PATERN[i].gpPin;
-		RESERVE_GPIO(led,port, pin,PID_GPIO);
-		GPIO_ConfigurePin(port, pin, OUTPUT, PID_GPIO, !LED_SWITCH);
-	}
+//	for (uint8_t i = 0; i<LED_PATERNS[six].u8Size; i++){
+//		GPIO_PORT port = LED_PATERNS[six].LED_PATERN[i].gpPort;
+//		GPIO_PIN pin 	 = LED_PATERNS[six].LED_PATERN[i].gpPin;
+//		RESERVE_GPIO(led,port, pin,PID_GPIO);
+//		GPIO_ConfigurePin(port, pin, OUTPUT, PID_GPIO, !LED_SWITCH);
+//	}
 
 }
 
+void led_pair_turn_on(const GPIO_LED pair){
+			if(LED_SWITCH){
+			GPIO_SetActive(pair.gpPort,pair.gpPin);
+		}else{
+			GPIO_SetInactive(pair.gpPort,pair.gpPin);
+		}
+}
+
+void led_pair_turn_off(const GPIO_LED pair){
+			if(!LED_SWITCH){
+			GPIO_SetActive(pair.gpPort,pair.gpPin);
+		}else{
+			GPIO_SetInactive(pair.gpPort,pair.gpPin);
+		}
+}
 
 void led_turn_on(const NUMBER number,const SIDES side){
 	

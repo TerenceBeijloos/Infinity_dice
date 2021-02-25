@@ -73,7 +73,7 @@ static const uart_cfg_t uart_cfg = {
 void GPIO_reservations(void)
 {
 
-    RESERVE_GPIO(UART2_TX, UART2_TX_PORT, UART2_TX_PIN, PID_UART2_TX);
+    //RESERVE_GPIO(UART2_TX, UART2_TX_PORT, UART2_TX_PIN, PID_UART2_TX);
 
 //	RESERVE_GPIO(LED, GPIO_LED_PORT, GPIO_LED_PIN, PID_GPIO);
 
@@ -88,7 +88,7 @@ void set_pad_functions(void)
     GPIO_ConfigurePin(GPIO_PORT_2, GPIO_PIN_3, OUTPUT, PID_GPIO, true);
 #endif
     // Configure UART2 pin functionality
-    GPIO_ConfigurePin(UART2_TX_PORT, UART2_TX_PIN, OUTPUT, PID_UART2_TX, false);
+    //GPIO_ConfigurePin(UART2_TX_PORT, UART2_TX_PIN, OUTPUT, PID_UART2_TX, false);
 //	GPIO_ConfigurePin(GPIO_LED_PORT, GPIO_LED_PIN, OUTPUT, PID_GPIO, false);
 }
 
@@ -126,15 +126,61 @@ void periph_init(void)
 //		dice_chance_init();
 			led_periph_init();
 
-		RESERVE_GPIO(side,GPIO_PORT_1,GPIO_PIN_1,PID_GPIO);
-		GPIO_ConfigurePin(GPIO_PORT_1,GPIO_PIN_1, OUTPUT, PID_GPIO, true);
+		
 		
     // Enable the pads
     GPIO_set_pad_latch_en(true);
 
 		
 //		dice_flash_init();
-		//led_callback_init();
-		while(true);
+		led_callback_init();
+		/*LED_DIAGANOL_LTR
+		LED_DIAGANOL_RTL
+		LED_MIDDLE_PAIR 
+		LED_MIDDLE_ONE */
+		
+		//5
+		uint64_t i = 0;
+		uint8_t number = 0;
+		GPIO_LED previous = LED_MIDDLE_ONE;
+		
+
+//		while(true){
+//			i++;
+//			if(i >= 400000){
+//				i = 0;
+//				number++;
+//				
+//				if(number > 4){
+//					number = 1;
+//				}
+//					
+//				switch(number){
+//					case 1:
+//						led_pair_turn_on(LED_DIAGANOL_LTR);
+//						led_pair_turn_off(previous);
+//						previous = LED_DIAGANOL_LTR;
+//						break;
+//					case 2:
+//						led_pair_turn_on(LED_DIAGANOL_RTL);
+//						led_pair_turn_off(previous);
+//						previous = LED_DIAGANOL_RTL;
+//						break;
+//					case 3:
+//						led_pair_turn_on(LED_MIDDLE_PAIR);
+//						led_pair_turn_off(previous);
+//						previous = LED_MIDDLE_PAIR;
+//						break;
+//					case 4:
+//						led_pair_turn_on(LED_MIDDLE_ONE);
+//						led_pair_turn_off(previous);
+//						previous = LED_MIDDLE_ONE;
+//						break;
+//					default:
+//						break;
+
+//				}
+//			}
+//		}
 		
 }

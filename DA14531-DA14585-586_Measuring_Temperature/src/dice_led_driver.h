@@ -32,7 +32,7 @@ typedef struct{
 	GPIO_LED	LED_PATERN[3];
 } PATERN;
 
-#define LED_SWITCH 	true //false  //Led flase turns the led on
+#define LED_SWITCH 	false //false  //Led flase turns the led on
 #define SIDE_SWITCH false  // true//Side true turns the side on
 
 /*
@@ -52,7 +52,7 @@ static const GPIO_SIDE BOARD_ONE 						= {GPIO_PORT_0,GPIO_PIN_7}; // changed
 static const GPIO_SIDE BOARD_TWO 						= {GPIO_PORT_1,GPIO_PIN_1}; // changed
 
 static const GPIO_LED LED_DIAGANOL_LTR 		= {GPIO_PORT_0,GPIO_PIN_5}; // changed
-static const GPIO_LED LED_DIAGANOL_RTL 		= {GPIO_PORT_3,GPIO_PIN_0}; // changed
+static const GPIO_LED LED_DIAGANOL_RTL 		= {GPIO_PORT_0,GPIO_PIN_0}; // changed
 static const GPIO_LED LED_MIDDLE_PAIR 		= {GPIO_PORT_0,GPIO_PIN_4}; // changed
 static const GPIO_LED LED_MIDDLE_ONE 			= {GPIO_PORT_0,GPIO_PIN_3}; // changed
 
@@ -65,6 +65,10 @@ void led_periph_deinit(void);
 
 void led_turn_on(const NUMBER number,const SIDES side);
 void led_turn_off(const NUMBER number,const SIDES side);
+
+void led_pair_turn_on(const GPIO_LED pair);
+void led_pair_turn_off(const GPIO_LED pair);
+
 
 PATERN 	led_get_patern(const NUMBER number);
 SIDES 	led_get_side(const NUMBER number);
