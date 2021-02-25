@@ -126,11 +126,15 @@ void periph_init(void)
 //		dice_chance_init();
 			led_periph_init();
 
+		RESERVE_GPIO(side,GPIO_PORT_1,GPIO_PIN_1,PID_GPIO);
+		GPIO_ConfigurePin(GPIO_PORT_1,GPIO_PIN_1, OUTPUT, PID_GPIO, true);
+		
     // Enable the pads
     GPIO_set_pad_latch_en(true);
 
 		
 //		dice_flash_init();
-		led_callback_init();
+		//led_callback_init();
+		while(true);
 		
 }

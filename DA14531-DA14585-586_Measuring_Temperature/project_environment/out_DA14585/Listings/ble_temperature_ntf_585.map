@@ -401,7 +401,9 @@ Section Cross References
     dma.o(.text) refers to dma.o(retention_mem_area0) for retention_mem_area0
     dma.o(.text) refers to dma.o(.text) for dma_helper
     systick.o(.text) refers to systick.o(retention_mem_area0) for retention_mem_area0
+    systick.o(.text) refers to systick.o(retention_mem_area0) for retention_mem_area0
     systick.o(.text) refers to systick.o(.text) for systick_start
+    systick.o(.text) refers to systick.o(.text) for systick_stop
     uart_utils.o(.text) refers to strlen.o(.text) for strlen
     uart_utils.o(.text) refers to uart.o(.text) for uart_send
     uart_utils.o(.text) refers to strlen.o(.text) for strlen
@@ -564,7 +566,7 @@ Section Cross References
     user_custs1_def.o(.constdata) refers to user_custs1_def.o(.constdata) for att_desc_cfg
     user_periph_setup.o(.text) refers to patch.o(.text) for patch_func
     user_periph_setup.o(.text) refers to dice_led_driver.o(.text) for led_periph_init
-    user_periph_setup.o(.text) refers to dice_led_callback.o(.text) for led_callback_init
+    user_periph_setup.o(.text) refers to gpio.o(.text) for GPIO_ConfigurePin
     user_periph_setup.o(.text) refers to gpio.o(retention_mem_area0) for GPIO
     user_periph_setup.o(.text) refers to gpio.o(.text) for GPIO_ConfigurePin
     user_custs1_impl.o(.text) refers to app.o(retention_mem_area0) for app_env
@@ -590,14 +592,29 @@ Section Cross References
     dice_led_driver.o(.text) refers to dice_led_driver.o(retention_mem_area0) for retention_mem_area0
     dice_led_driver.o(.text) refers to dice_led_driver.o(.constdata) for .constdata
     dice_led_driver.o(.text) refers to gpio.o(retention_mem_area0) for GPIO_status
+    dice_led_driver.o(.text) refers to gpio.o(.text) for GPIO_SetInactive
+    dice_led_driver.o(.text) refers to dice_led_driver.o(retention_mem_area0) for retention_mem_area0
+    dice_led_driver.o(.text) refers to gpio.o(.text) for GPIO_SetActive
+    dice_led_driver.o(.text) refers to dice_led_driver.o(retention_mem_area0) for retention_mem_area0
+    dice_led_driver.o(.text) refers to dice_led_driver.o(retention_mem_area0) for retention_mem_area0
     dice_led_driver.o(.text) refers to dice_led_driver.o(retention_mem_area0) for retention_mem_area0
     dice_led_callback.o(.text) refers to systick.o(.text) for systick_stop
+    dice_led_callback.o(.text) refers to systick.o(.text) for systick_register_callback
+    dice_led_callback.o(.text) refers to systick.o(.text) for systick_start
+    dice_led_callback.o(.text) refers to dice_led_callback.o(.text) for led_callback_dice_mode
     dice_led_callback.o(.text) refers to dice_led_driver.o(.text) for led_get_side
+    dice_led_callback.o(.text) refers to dice_led_driver.o(.text) for led_turn_off
+    dice_led_callback.o(.text) refers to dice_led_driver.o(.text) for led_turn_on
+    dice_led_callback.o(.text) refers to dice_led_callback.o(.text) for led_callback_get_next_number
+    dice_led_callback.o(.text) refers to dice_led_callback.o(.text) for led_callback_start_dice_mode
     dice_led_callback.o(.text) refers to dice_led_callback.o(retention_mem_area0) for retention_mem_area0
     dice_led_callback.o(.text) refers to systick.o(.text) for systick_value
     dice_led_callback.o(.text) refers to dice_led_callback.o(retention_mem_area0) for retention_mem_area0
     dice_led_callback.o(.text) refers to dice_led_callback.o(.text) for led_update_key
     dice_led_callback.o(.text) refers to chacha20.o(.text) for csprng_seed
+    dice_led_callback.o(.text) refers to dice_led_callback.o(retention_mem_area0) for retention_mem_area0
+    dice_led_callback.o(.text) refers to dice_led_callback.o(.text) for led_callback_get_next_number
+    dice_led_callback.o(.text) refers to dice_led_callback.o(.text) for led_callback_start_dice_mode
     dice_led_callback.o(.text) refers to dice_led_callback.o(retention_mem_area0) for retention_mem_area0
     dice_neural_network.o(.text) refers to fmul.o(.text) for __aeabi_fmul
     dice_neural_network.o(.text) refers to fadd.o(.text) for __aeabi_fadd
@@ -1168,6 +1185,9 @@ Removing Unused input sections from the image.
     Removing dma.o(.text), (22 bytes).
     Removing dma.o(.text), (12 bytes).
     Removing dma.o(.text), (52 bytes).
+    Removing systick.o(.text), (12 bytes).
+    Removing systick.o(.text), (64 bytes).
+    Removing systick.o(.text), (24 bytes).
     Removing systick.o(.text), (28 bytes).
     Removing systick.o(.text), (16 bytes).
     Removing uart_utils.o(.text), (74 bytes).
@@ -1245,12 +1265,20 @@ Removing Unused input sections from the image.
     Removing dice_communication.o(.text), (8 bytes).
     Removing dice_communication.o(.text), (96 bytes).
     Removing dice_communication.o(retention_mem_area0), (40 bytes).
+    Removing dice_led_driver.o(.text), (60 bytes).
+    Removing dice_led_driver.o(.text), (60 bytes).
     Removing dice_led_driver.o(.text), (24 bytes).
+    Removing dice_led_driver.o(.text), (12 bytes).
+    Removing dice_led_callback.o(.text), (32 bytes).
+    Removing dice_led_callback.o(.text), (52 bytes).
     Removing dice_led_callback.o(.text), (28 bytes).
     Removing dice_led_callback.o(.text), (32 bytes).
+    Removing dice_led_callback.o(.text), (60 bytes).
+    Removing dice_led_callback.o(.text), (14 bytes).
     Removing dice_led_callback.o(retention_mem_area0), (42 bytes).
     Removing dice_led_callback.o(retention_mem_area0), (12 bytes).
     Removing dice_led_callback.o(retention_mem_area0), (6 bytes).
+    Removing dice_led_callback.o(retention_mem_area0), (18 bytes).
     Removing dice_neural_network.o(.text), (48 bytes).
     Removing dice_sensor_driver.o(.text), (92 bytes).
     Removing dice_sensor_driver.o(.text), (28 bytes).
@@ -1295,7 +1323,7 @@ Removing Unused input sections from the image.
     Removing arch_system.o(i.__ARM_common_ll_muluu), (48 bytes).
     Removing app_diss_task.o(i.__ARM_common_switch8), (26 bytes).
 
-334 unused section(s) (total 19746 bytes) removed from the image.
+345 unused section(s) (total 20154 bytes) removed from the image.
 
 ==============================================================================
 
@@ -1306,32 +1334,32 @@ Image Symbol Table
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
     ../clib/microlib/division.c              0x00000000   Number         0  uldiv.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
-    ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llsshr.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfa.o ABSOLUTE
+    ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf7.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf2.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfb.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf8.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf0.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf1.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf2.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf8.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf7.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf5.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf4.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf3.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf4.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf5.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfa.o ABSOLUTE
     ../clib/microlib/printf/stubs.s          0x00000000   Number         0  stubs.o ABSOLUTE
     ../clib/microlib/stdio/fputc.c           0x00000000   Number         0  fputc.o ABSOLUTE
     ../clib/microlib/stdio/semi.s            0x00000000   Number         0  semi.o ABSOLUTE
@@ -1340,15 +1368,15 @@ Image Symbol Table
     ../clib/microlib/stubs.s                 0x00000000   Number         0  iusefp.o ABSOLUTE
     ../clib/microlib/stubs.s                 0x00000000   Number         0  iusesemip.o ABSOLUTE
     ../fplib/microlib/f2d.c                  0x00000000   Number         0  f2d.o ABSOLUTE
-    ../fplib/microlib/fpadd.c                0x00000000   Number         0  fadd.o ABSOLUTE
     ../fplib/microlib/fpadd.c                0x00000000   Number         0  dadd.o ABSOLUTE
+    ../fplib/microlib/fpadd.c                0x00000000   Number         0  fadd.o ABSOLUTE
     ../fplib/microlib/fpdiv.c                0x00000000   Number         0  ddiv.o ABSOLUTE
-    ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  depilogue.o ABSOLUTE
     ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  fepilogue.o ABSOLUTE
+    ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  depilogue.o ABSOLUTE
     ../fplib/microlib/fpfix.c                0x00000000   Number         0  dfixul.o ABSOLUTE
     ../fplib/microlib/fpflt.c                0x00000000   Number         0  ffltui.o ABSOLUTE
-    ../fplib/microlib/fpmul.c                0x00000000   Number         0  fmul.o ABSOLUTE
     ../fplib/microlib/fpmul.c                0x00000000   Number         0  dmul.o ABSOLUTE
+    ../fplib/microlib/fpmul.c                0x00000000   Number         0  fmul.o ABSOLUTE
     ..\..\src\DA14585_586\patch.c            0x00000000   Number         0  patch.o ABSOLUTE
     ..\..\src\DA14585_586\pll_vcocal_lut.c   0x00000000   Number         0  pll_vcocal_lut.o ABSOLUTE
     ..\..\src\DA14585_586\rf_calibration.c   0x00000000   Number         0  rf_calibration.o ABSOLUTE
@@ -1488,212 +1516,209 @@ Image Symbol Table
     dma_helper                               0x07fc194f   Thumb Code    62  dma.o(.text)
     __NVIC_EnableIRQ                         0x07fc19e3   Thumb Code    20  dma.o(.text)
     .text                                    0x07fc1a04   Section        0  systick.o(.text)
-    .text                                    0x07fc1a70   Section        0  rwble.o(.text)
-    .text                                    0x07fc1d14   Section        0  rwip.o(.text)
-    get_max_sleep_duration                   0x07fc1ea7   Thumb Code     8  rwip.o(.text)
-    .text                                    0x07fc1ee4   Section        0  rf_585.o(.text)
-    rf_reg_rd                                0x07fc1ee5   Thumb Code     4  rf_585.o(.text)
-    rf_reg_wr                                0x07fc1ee9   Thumb Code     2  rf_585.o(.text)
-    rf_reset                                 0x07fc1eeb   Thumb Code     2  rf_585.o(.text)
-    rf_force_agc_enable                      0x07fc1eed   Thumb Code     2  rf_585.o(.text)
-    rf_txpwr_dbm_get                         0x07fc1eef   Thumb Code     4  rf_585.o(.text)
-    rf_sleep                                 0x07fc1ef3   Thumb Code    14  rf_585.o(.text)
-    RADIOCNTL_Handler                        0x07fc1f01   Thumb Code     2  rf_585.o(.text)
-    rf_rssi_convert                          0x07fc1f03   Thumb Code     8  rf_585.o(.text)
-    .text                                    0x07fc2060   Section        0  attm_db_128.o(.text)
-    .text                                    0x07fc226c   Section        0  custom_common.o(.text)
-    .text                                    0x07fc238c   Section        0  diss.o(.text)
-    diss_init                                0x07fc23b3   Thumb Code   142  diss.o(.text)
-    diss_destroy                             0x07fc2441   Thumb Code    36  diss.o(.text)
-    diss_create                              0x07fc2465   Thumb Code     2  diss.o(.text)
-    diss_cleanup                             0x07fc2467   Thumb Code     2  diss.o(.text)
-    .text                                    0x07fc2508   Section        0  diss_task.o(.text)
-    diss_set_value_req_handler               0x07fc2509   Thumb Code   158  diss_task.o(.text)
-    gattc_read_req_ind_handler               0x07fc25a7   Thumb Code   186  diss_task.o(.text)
-    diss_value_cfm_handler                   0x07fc2661   Thumb Code   120  diss_task.o(.text)
-    .text                                    0x07fc26e0   Section        0  custs1.o(.text)
-    custs1_init                              0x07fc26e1   Thumb Code   190  custs1.o(.text)
-    custs1_destroy                           0x07fc279f   Thumb Code    40  custs1.o(.text)
-    custs1_create                            0x07fc27c7   Thumb Code    64  custs1.o(.text)
-    custs1_cleanup                           0x07fc2807   Thumb Code    76  custs1.o(.text)
-    .text                                    0x07fc2874   Section        0  custs1_task.o(.text)
-    custs1_att_set_value                     0x07fc2875   Thumb Code   114  custs1_task.o(.text)
-    custs1_att_get_value                     0x07fc28e7   Thumb Code    68  custs1_task.o(.text)
-    custs1_exe_operation                     0x07fc29a3   Thumb Code   214  custs1_task.o(.text)
-    gattc_cmp_evt_handler                    0x07fc2a79   Thumb Code    20  custs1_task.o(.text)
-    custs1_val_set_req_handler               0x07fc2a8d   Thumb Code    32  custs1_task.o(.text)
-    custs1_val_ntf_req_handler               0x07fc2aad   Thumb Code    92  custs1_task.o(.text)
-    custs1_val_ind_req_handler               0x07fc2b09   Thumb Code    92  custs1_task.o(.text)
-    custs1_att_info_rsp_handler              0x07fc2b65   Thumb Code    60  custs1_task.o(.text)
-    gattc_read_req_ind_handler               0x07fc2ba1   Thumb Code   230  custs1_task.o(.text)
-    gattc_write_req_ind_handler              0x07fc2c87   Thumb Code   272  custs1_task.o(.text)
-    gattc_att_info_req_ind_handler           0x07fc2d97   Thumb Code    66  custs1_task.o(.text)
-    custs1_value_req_rsp_handler             0x07fc2dd9   Thumb Code   120  custs1_task.o(.text)
-    .text                                    0x07fc2e58   Section        0  prf.o(.text)
-    prf_itf_get                              0x07fc3045   Thumb Code    28  prf.o(.text)
-    .text                                    0x07fc3064   Section        0  app_default_handlers.o(.text)
-    .text                                    0x07fc3118   Section        0  app.o(.text)
-    app_task_in_user_app                     0x07fc3119   Thumb Code    32  app.o(.text)
-    app_db_init_next                         0x07fc3139   Thumb Code   164  app.o(.text)
-    app_easy_gap_undirected_advertise_start_create_msg 0x07fc3277   Thumb Code   122  app.o(.text)
-    app_easy_gap_param_update_msg_create     0x07fc3335   Thumb Code    66  app.o(.text)
-    app_easy_gap_dev_config_create_msg       0x07fc3377   Thumb Code    94  app.o(.text)
-    append_device_name                       0x07fc34c7   Thumb Code    36  app.o(.text)
-    .text                                    0x07fc352c   Section        0  app_task.o(.text)
-    gapm_device_ready_ind_handler            0x07fc352d   Thumb Code    40  app_task.o(.text)
-    gapm_cmp_evt_handler                     0x07fc3555   Thumb Code   102  app_task.o(.text)
-    gapc_connection_req_ind_handler          0x07fc35bb   Thumb Code    98  app_task.o(.text)
-    gapc_cmp_evt_handler                     0x07fc361d   Thumb Code    24  app_task.o(.text)
-    gapc_disconnect_ind_handler              0x07fc3635   Thumb Code    48  app_task.o(.text)
-    gapm_adv_report_ind_handler              0x07fc3665   Thumb Code     4  app_task.o(.text)
-    gapc_get_dev_info_req_ind_handler        0x07fc3669   Thumb Code   162  app_task.o(.text)
-    gapc_set_dev_info_req_ind_handler        0x07fc370b   Thumb Code    52  app_task.o(.text)
-    gapm_profile_added_ind_handler           0x07fc373f   Thumb Code    36  app_task.o(.text)
-    gapc_param_update_req_ind_handler        0x07fc3763   Thumb Code    38  app_task.o(.text)
-    gapc_le_pkt_size_ind_handler             0x07fc3789   Thumb Code     4  app_task.o(.text)
-    gattc_svc_changed_cfg_ind_handler        0x07fc378d   Thumb Code     4  app_task.o(.text)
-    gapc_peer_features_ind_handler           0x07fc3791   Thumb Code     4  app_task.o(.text)
-    .text                                    0x07fc37bc   Section        0  app_diss.o(.text)
-    .text                                    0x07fc37f8   Section        0  app_diss_task.o(.text)
-    diss_value_req_ind_handler               0x07fc37f9   Thumb Code   116  app_diss_task.o(.text)
-    .text                                    0x07fc38d8   Section        0  app_entry_point.o(.text)
-    .text                                    0x07fc3960   Section        0  app_msg_utils.o(.text)
-    .text                                    0x07fc3988   Section        0  app_easy_timer.o(.text)
-    timer_canceled_handler                   0x07fc3989   Thumb Code     2  app_easy_timer.o(.text)
-    .text                                    0x07fc398a   Section        0  app_easy_timer.o(.text)
-    timer_modified_handler                   0x07fc398b   Thumb Code     2  app_easy_timer.o(.text)
-    .text                                    0x07fc398c   Section        0  app_easy_timer.o(.text)
-    create_timer                             0x07fc398d   Thumb Code    56  app_easy_timer.o(.text)
-    cancel_timer_handler                     0x07fc3b05   Thumb Code    82  app_easy_timer.o(.text)
-    .text                                    0x07fc3b70   Section        0  app_customs.o(.text)
-    .text                                    0x07fc3bd0   Section        0  app_customs_task.o(.text)
-    .text                                    0x07fc3be8   Section        0  user_periph_setup.o(.text)
-    .text                                    0x07fc3c64   Section        0  user_custs1_impl.o(.text)
-    .text                                    0x07fc3c9c   Section        0  user_peripheral.o(.text)
-    adv_data_update_timer_cb                 0x07fc3c9d   Thumb Code    70  user_peripheral.o(.text)
-    param_update_request_timer_cb            0x07fc3ce3   Thumb Code    16  user_peripheral.o(.text)
-    mnf_data_update                          0x07fc3de7   Thumb Code    24  user_peripheral.o(.text)
-    app_add_ad_struct                        0x07fc3dff   Thumb Code   128  user_peripheral.o(.text)
-    .text                                    0x07fc3eb4   Section        0  dice_communication.o(.text)
-    .text                                    0x07fc3f78   Section        0  dice_led_driver.o(.text)
-    .text                                    0x07fc41d4   Section        0  dice_led_callback.o(.text)
-    led_callback_dice_mode                   0x07fc41eb   Thumb Code    48  dice_led_callback.o(.text)
-    led_callback_get_next_number             0x07fc4243   Thumb Code    14  dice_led_callback.o(.text)
-    .text                                    0x07fc426c   Section        0  dice_neural_network.o(.text)
-    fprop_layer                              0x07fc426d   Thumb Code   134  dice_neural_network.o(.text)
-    get_weights                              0x07fc42f3   Thumb Code    72  dice_neural_network.o(.text)
-    set_values                               0x07fc4425   Thumb Code    22  dice_neural_network.o(.text)
-    .text                                    0x07fc4450   Section        0  patch.o(.text)
-    PATCHED_gapm_reset_cmd_handler           0x07fc4ba7   Thumb Code    78  patch.o(.text)
-    .text                                    0x07fc4ca8   Section        0  rf_calibration.o(.text)
-    modulationGainCalibration_580            0x07fc4ca9   Thumb Code   222  rf_calibration.o(.text)
-    .text                                    0x07fc4da4   Section        0  rf_calibration.o(.text)
-    .text                                    0x07fc4e8c   Section        0  rf_calibration.o(.text)
-    .text                                    0x07fc503c   Section        0  pll_vcocal_lut.o(.text)
-    .text                                    0x07fc5060   Section        0  smpc_util.o(.text)
-    .text                                    0x07fc5148   Section        0  fadd.o(.text)
-    .text                                    0x07fc51fa   Section        0  fmul.o(.text)
-    .text                                    0x07fc5274   Section        0  f2d.o(.text)
-    .text                                    0x07fc529c   Section        0  uldiv.o(.text)
-    .text                                    0x07fc52fc   Section        0  iusefp.o(.text)
-    .text                                    0x07fc52fc   Section        0  fepilogue.o(.text)
-    .text                                    0x07fc5380   Section        0  dadd.o(.text)
-    .text                                    0x07fc54e4   Section        0  dmul.o(.text)
-    .text                                    0x07fc55b4   Section        0  ddiv.o(.text)
-    .text                                    0x07fc56a4   Section        0  dfixul.o(.text)
-    .text                                    0x07fc56e4   Section       40  cdrcmple.o(.text)
-    .text                                    0x07fc570c   Section       36  init.o(.text)
-    .text                                    0x07fc5730   Section        0  llushr.o(.text)
-    .text                                    0x07fc5752   Section        0  llsshr.o(.text)
-    .text                                    0x07fc5778   Section        0  depilogue.o(.text)
-    i.__0snprintf                            0x07fc5838   Section        0  printfa.o(i.__0snprintf)
-    i.__ARM_clz                              0x07fc586c   Section        0  depilogue.o(i.__ARM_clz)
-    i.__scatterload_copy                     0x07fc589a   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x07fc58a8   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x07fc58aa   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i._fp_digits                             0x07fc58b8   Section        0  printfa.o(i._fp_digits)
-    _fp_digits                               0x07fc58b9   Thumb Code   344  printfa.o(i._fp_digits)
-    i._printf_core                           0x07fc5a2c   Section        0  printfa.o(i._printf_core)
-    _printf_core                             0x07fc5a2d   Thumb Code  1754  printfa.o(i._printf_core)
-    i._printf_post_padding                   0x07fc6118   Section        0  printfa.o(i._printf_post_padding)
-    _printf_post_padding                     0x07fc6119   Thumb Code    32  printfa.o(i._printf_post_padding)
-    i._printf_pre_padding                    0x07fc6138   Section        0  printfa.o(i._printf_pre_padding)
-    _printf_pre_padding                      0x07fc6139   Thumb Code    44  printfa.o(i._printf_pre_padding)
-    i._snputc                                0x07fc6164   Section        0  printfa.o(i._snputc)
-    _snputc                                  0x07fc6165   Thumb Code    22  printfa.o(i._snputc)
-    .constdata                               0x07fc617a   Section       14  nvds.o(.constdata)
-    nvds_data_storage                        0x07fc617a   Data          14  nvds.o(.constdata)
-    .constdata                               0x07fc6188   Section      388  jump_table.o(.constdata)
-    .constdata                               0x07fc630c   Section      188  jump_table.o(.constdata)
-    .constdata                               0x07fc63c8   Section       90  arch_system.o(.constdata)
-    .constdata                               0x07fc6424   Section       48  chacha20.o(.constdata)
-    chacha_constants                         0x07fc6424   Data          16  chacha20.o(.constdata)
-    chacha_order                             0x07fc6434   Data          32  chacha20.o(.constdata)
-    .constdata                               0x07fc6454   Section        8  gpio.o(.constdata)
-    p_mask                                   0x07fc6454   Data           8  gpio.o(.constdata)
-    .constdata                               0x07fc645c   Section        4  adc_58x.o(.constdata)
-    .constdata                               0x07fc6460   Section      244  diss.o(.constdata)
-    .constdata                               0x07fc6554   Section       24  diss_task.o(.constdata)
-    .constdata                               0x07fc656c   Section        8  diss_task.o(.constdata)
-    .constdata                               0x07fc6574   Section       16  custs1.o(.constdata)
-    .constdata                               0x07fc6584   Section       72  custs1_task.o(.constdata)
-    .constdata                               0x07fc65cc   Section        8  custs1_task.o(.constdata)
-    .constdata                               0x07fc65d4   Section       80  app.o(.constdata)
-    user_adv_conf                            0x07fc65d4   Data          16  app.o(.constdata)
-    user_prf_funcs                           0x07fc65e4   Data          12  app.o(.constdata)
-    TASK_DESC_APP                            0x07fc6608   Data          16  app.o(.constdata)
-    <Data1>                                  0x07fc6618   Data          12  app.o(.constdata)
-    .constdata                               0x07fc6624   Section      104  app_task.o(.constdata)
-    app_gap_process_handlers                 0x07fc6624   Data         104  app_task.o(.constdata)
-    .constdata                               0x07fc668c   Section        8  app_task.o(.constdata)
-    .constdata                               0x07fc6694   Section        8  app_task.o(.constdata)
-    .constdata                               0x07fc669c   Section        8  app_diss_task.o(.constdata)
-    app_diss_process_handlers                0x07fc669c   Data           8  app_diss_task.o(.constdata)
-    .constdata                               0x07fc66a4   Section       16  app_entry_point.o(.constdata)
-    .constdata                               0x07fc66b4   Section       56  user_custs_config.o(.constdata)
-    .constdata                               0x07fc66ec   Section       16  user_custs1_def.o(.constdata)
-    custs1_svc1                              0x07fc66ec   Data          16  user_custs1_def.o(.constdata)
-    .constdata                               0x07fc66fc   Section        2  user_custs1_def.o(.constdata)
-    att_decl_svc                             0x07fc66fc   Data           2  user_custs1_def.o(.constdata)
-    .constdata                               0x07fc66fe   Section        2  user_custs1_def.o(.constdata)
-    att_decl_char                            0x07fc66fe   Data           2  user_custs1_def.o(.constdata)
-    .constdata                               0x07fc6700   Section        2  user_custs1_def.o(.constdata)
-    att_desc_cfg                             0x07fc6700   Data           2  user_custs1_def.o(.constdata)
-    .constdata                               0x07fc6702   Section       16  user_custs1_def.o(.constdata)
-    u8aDICE_TRANSMIT_MESSAGE_UUID_128        0x07fc6702   Data          16  user_custs1_def.o(.constdata)
-    .constdata                               0x07fc6712   Section        2  user_custs1_def.o(.constdata)
-    .constdata                               0x07fc6714   Section        1  user_custs1_def.o(.constdata)
-    .constdata                               0x07fc6716   Section        2  user_custs1_def.o(.constdata)
-    .constdata                               0x07fc6718   Section       80  user_custs1_def.o(.constdata)
-    .constdata                               0x07fc6768   Section       24  dice_communication.o(.constdata)
-    .constdata                               0x07fc6780   Section       20  dice_led_driver.o(.constdata)
-    BOARD_TOP                                0x07fc6780   Data           2  dice_led_driver.o(.constdata)
-    BOARD_MAIN                               0x07fc6782   Data           2  dice_led_driver.o(.constdata)
-    BOARD_POWER                              0x07fc6784   Data           2  dice_led_driver.o(.constdata)
-    BOARD_THREE                              0x07fc6786   Data           2  dice_led_driver.o(.constdata)
-    BOARD_ONE                                0x07fc6788   Data           2  dice_led_driver.o(.constdata)
-    BOARD_TWO                                0x07fc678a   Data           2  dice_led_driver.o(.constdata)
-    LED_DIAGANOL_LTR                         0x07fc678c   Data           2  dice_led_driver.o(.constdata)
-    LED_DIAGANOL_RTL                         0x07fc678e   Data           2  dice_led_driver.o(.constdata)
-    LED_MIDDLE_PAIR                          0x07fc6790   Data           2  dice_led_driver.o(.constdata)
-    LED_MIDDLE_ONE                           0x07fc6792   Data           2  dice_led_driver.o(.constdata)
-    .constdata                               0x07fc6794   Section     1876  dice_neural_network.o(.constdata)
-    BIAS                                     0x07fc6794   Data         184  dice_neural_network.o(.constdata)
-    LAYER_SIZE                               0x07fc684c   Data          12  dice_neural_network.o(.constdata)
-    WEIGHTS                                  0x07fc6858   Data        1680  dice_neural_network.o(.constdata)
-    .constdata                               0x07fc6ee8   Section      272  patch.o(.constdata)
-    custom_msg_handlers                      0x07fc6ee8   Data          32  patch.o(.constdata)
-    patch_new_table                          0x07fc6f08   Data          80  patch.o(.constdata)
-    patch_orig_table                         0x07fc6f58   Data         160  patch.o(.constdata)
-    .constdata                               0x07fc6ff8   Section       22  pll_vcocal_lut.o(.constdata)
-    .data                                    0x07fc7040   Section        4  arch_system.o(.data)
-    .bss                                     0x07fc7048   Section       48  i2c.o(.bss)
-    i2c_env                                  0x07fc7048   Data          48  i2c.o(.bss)
-    .bss                                     0x07fc7078   Section       16  trng.o(.bss)
-    .bss                                     0x07fc7088   Section        1  rwble.o(.bss)
-    cal_failed                               0x07fc7088   Data           1  rwble.o(.bss)
-    STACK                                    0x07fc7090   Section     1536  startup_da14585_586.o(STACK)
-    heap_mem_area_not_ret                    0x07fc7690   Section     1036  jump_table.o(heap_mem_area_not_ret)
+    .text                                    0x07fc1a14   Section        0  rwble.o(.text)
+    .text                                    0x07fc1cb8   Section        0  rwip.o(.text)
+    get_max_sleep_duration                   0x07fc1e4b   Thumb Code     8  rwip.o(.text)
+    .text                                    0x07fc1e88   Section        0  rf_585.o(.text)
+    rf_reg_rd                                0x07fc1e89   Thumb Code     4  rf_585.o(.text)
+    rf_reg_wr                                0x07fc1e8d   Thumb Code     2  rf_585.o(.text)
+    rf_reset                                 0x07fc1e8f   Thumb Code     2  rf_585.o(.text)
+    rf_force_agc_enable                      0x07fc1e91   Thumb Code     2  rf_585.o(.text)
+    rf_txpwr_dbm_get                         0x07fc1e93   Thumb Code     4  rf_585.o(.text)
+    rf_sleep                                 0x07fc1e97   Thumb Code    14  rf_585.o(.text)
+    RADIOCNTL_Handler                        0x07fc1ea5   Thumb Code     2  rf_585.o(.text)
+    rf_rssi_convert                          0x07fc1ea7   Thumb Code     8  rf_585.o(.text)
+    .text                                    0x07fc2004   Section        0  attm_db_128.o(.text)
+    .text                                    0x07fc2210   Section        0  custom_common.o(.text)
+    .text                                    0x07fc2330   Section        0  diss.o(.text)
+    diss_init                                0x07fc2357   Thumb Code   142  diss.o(.text)
+    diss_destroy                             0x07fc23e5   Thumb Code    36  diss.o(.text)
+    diss_create                              0x07fc2409   Thumb Code     2  diss.o(.text)
+    diss_cleanup                             0x07fc240b   Thumb Code     2  diss.o(.text)
+    .text                                    0x07fc24ac   Section        0  diss_task.o(.text)
+    diss_set_value_req_handler               0x07fc24ad   Thumb Code   158  diss_task.o(.text)
+    gattc_read_req_ind_handler               0x07fc254b   Thumb Code   186  diss_task.o(.text)
+    diss_value_cfm_handler                   0x07fc2605   Thumb Code   120  diss_task.o(.text)
+    .text                                    0x07fc2684   Section        0  custs1.o(.text)
+    custs1_init                              0x07fc2685   Thumb Code   190  custs1.o(.text)
+    custs1_destroy                           0x07fc2743   Thumb Code    40  custs1.o(.text)
+    custs1_create                            0x07fc276b   Thumb Code    64  custs1.o(.text)
+    custs1_cleanup                           0x07fc27ab   Thumb Code    76  custs1.o(.text)
+    .text                                    0x07fc2818   Section        0  custs1_task.o(.text)
+    custs1_att_set_value                     0x07fc2819   Thumb Code   114  custs1_task.o(.text)
+    custs1_att_get_value                     0x07fc288b   Thumb Code    68  custs1_task.o(.text)
+    custs1_exe_operation                     0x07fc2947   Thumb Code   214  custs1_task.o(.text)
+    gattc_cmp_evt_handler                    0x07fc2a1d   Thumb Code    20  custs1_task.o(.text)
+    custs1_val_set_req_handler               0x07fc2a31   Thumb Code    32  custs1_task.o(.text)
+    custs1_val_ntf_req_handler               0x07fc2a51   Thumb Code    92  custs1_task.o(.text)
+    custs1_val_ind_req_handler               0x07fc2aad   Thumb Code    92  custs1_task.o(.text)
+    custs1_att_info_rsp_handler              0x07fc2b09   Thumb Code    60  custs1_task.o(.text)
+    gattc_read_req_ind_handler               0x07fc2b45   Thumb Code   230  custs1_task.o(.text)
+    gattc_write_req_ind_handler              0x07fc2c2b   Thumb Code   272  custs1_task.o(.text)
+    gattc_att_info_req_ind_handler           0x07fc2d3b   Thumb Code    66  custs1_task.o(.text)
+    custs1_value_req_rsp_handler             0x07fc2d7d   Thumb Code   120  custs1_task.o(.text)
+    .text                                    0x07fc2dfc   Section        0  prf.o(.text)
+    prf_itf_get                              0x07fc2fe9   Thumb Code    28  prf.o(.text)
+    .text                                    0x07fc3008   Section        0  app_default_handlers.o(.text)
+    .text                                    0x07fc30bc   Section        0  app.o(.text)
+    app_task_in_user_app                     0x07fc30bd   Thumb Code    32  app.o(.text)
+    app_db_init_next                         0x07fc30dd   Thumb Code   164  app.o(.text)
+    app_easy_gap_undirected_advertise_start_create_msg 0x07fc321b   Thumb Code   122  app.o(.text)
+    app_easy_gap_param_update_msg_create     0x07fc32d9   Thumb Code    66  app.o(.text)
+    app_easy_gap_dev_config_create_msg       0x07fc331b   Thumb Code    94  app.o(.text)
+    append_device_name                       0x07fc346b   Thumb Code    36  app.o(.text)
+    .text                                    0x07fc34d0   Section        0  app_task.o(.text)
+    gapm_device_ready_ind_handler            0x07fc34d1   Thumb Code    40  app_task.o(.text)
+    gapm_cmp_evt_handler                     0x07fc34f9   Thumb Code   102  app_task.o(.text)
+    gapc_connection_req_ind_handler          0x07fc355f   Thumb Code    98  app_task.o(.text)
+    gapc_cmp_evt_handler                     0x07fc35c1   Thumb Code    24  app_task.o(.text)
+    gapc_disconnect_ind_handler              0x07fc35d9   Thumb Code    48  app_task.o(.text)
+    gapm_adv_report_ind_handler              0x07fc3609   Thumb Code     4  app_task.o(.text)
+    gapc_get_dev_info_req_ind_handler        0x07fc360d   Thumb Code   162  app_task.o(.text)
+    gapc_set_dev_info_req_ind_handler        0x07fc36af   Thumb Code    52  app_task.o(.text)
+    gapm_profile_added_ind_handler           0x07fc36e3   Thumb Code    36  app_task.o(.text)
+    gapc_param_update_req_ind_handler        0x07fc3707   Thumb Code    38  app_task.o(.text)
+    gapc_le_pkt_size_ind_handler             0x07fc372d   Thumb Code     4  app_task.o(.text)
+    gattc_svc_changed_cfg_ind_handler        0x07fc3731   Thumb Code     4  app_task.o(.text)
+    gapc_peer_features_ind_handler           0x07fc3735   Thumb Code     4  app_task.o(.text)
+    .text                                    0x07fc3760   Section        0  app_diss.o(.text)
+    .text                                    0x07fc379c   Section        0  app_diss_task.o(.text)
+    diss_value_req_ind_handler               0x07fc379d   Thumb Code   116  app_diss_task.o(.text)
+    .text                                    0x07fc387c   Section        0  app_entry_point.o(.text)
+    .text                                    0x07fc3904   Section        0  app_msg_utils.o(.text)
+    .text                                    0x07fc392c   Section        0  app_easy_timer.o(.text)
+    timer_canceled_handler                   0x07fc392d   Thumb Code     2  app_easy_timer.o(.text)
+    .text                                    0x07fc392e   Section        0  app_easy_timer.o(.text)
+    timer_modified_handler                   0x07fc392f   Thumb Code     2  app_easy_timer.o(.text)
+    .text                                    0x07fc3930   Section        0  app_easy_timer.o(.text)
+    create_timer                             0x07fc3931   Thumb Code    56  app_easy_timer.o(.text)
+    cancel_timer_handler                     0x07fc3aa9   Thumb Code    82  app_easy_timer.o(.text)
+    .text                                    0x07fc3b14   Section        0  app_customs.o(.text)
+    .text                                    0x07fc3b74   Section        0  app_customs_task.o(.text)
+    .text                                    0x07fc3b8c   Section        0  user_periph_setup.o(.text)
+    .text                                    0x07fc3c40   Section        0  user_custs1_impl.o(.text)
+    .text                                    0x07fc3c78   Section        0  user_peripheral.o(.text)
+    adv_data_update_timer_cb                 0x07fc3c79   Thumb Code    70  user_peripheral.o(.text)
+    param_update_request_timer_cb            0x07fc3cbf   Thumb Code    16  user_peripheral.o(.text)
+    mnf_data_update                          0x07fc3dc3   Thumb Code    24  user_peripheral.o(.text)
+    app_add_ad_struct                        0x07fc3ddb   Thumb Code   128  user_peripheral.o(.text)
+    .text                                    0x07fc3e90   Section        0  dice_communication.o(.text)
+    .text                                    0x07fc3f54   Section        0  dice_led_driver.o(.text)
+    .text                                    0x07fc4138   Section        0  dice_neural_network.o(.text)
+    fprop_layer                              0x07fc4139   Thumb Code   134  dice_neural_network.o(.text)
+    get_weights                              0x07fc41bf   Thumb Code    72  dice_neural_network.o(.text)
+    set_values                               0x07fc42f1   Thumb Code    22  dice_neural_network.o(.text)
+    .text                                    0x07fc431c   Section        0  patch.o(.text)
+    PATCHED_gapm_reset_cmd_handler           0x07fc4a73   Thumb Code    78  patch.o(.text)
+    .text                                    0x07fc4b74   Section        0  rf_calibration.o(.text)
+    modulationGainCalibration_580            0x07fc4b75   Thumb Code   222  rf_calibration.o(.text)
+    .text                                    0x07fc4c70   Section        0  rf_calibration.o(.text)
+    .text                                    0x07fc4d58   Section        0  rf_calibration.o(.text)
+    .text                                    0x07fc4f08   Section        0  pll_vcocal_lut.o(.text)
+    .text                                    0x07fc4f2c   Section        0  smpc_util.o(.text)
+    .text                                    0x07fc5014   Section        0  fadd.o(.text)
+    .text                                    0x07fc50c6   Section        0  fmul.o(.text)
+    .text                                    0x07fc5140   Section        0  f2d.o(.text)
+    .text                                    0x07fc5168   Section        0  uldiv.o(.text)
+    .text                                    0x07fc51c8   Section        0  iusefp.o(.text)
+    .text                                    0x07fc51c8   Section        0  fepilogue.o(.text)
+    .text                                    0x07fc524c   Section        0  dadd.o(.text)
+    .text                                    0x07fc53b0   Section        0  dmul.o(.text)
+    .text                                    0x07fc5480   Section        0  ddiv.o(.text)
+    .text                                    0x07fc5570   Section        0  dfixul.o(.text)
+    .text                                    0x07fc55b0   Section       40  cdrcmple.o(.text)
+    .text                                    0x07fc55d8   Section       36  init.o(.text)
+    .text                                    0x07fc55fc   Section        0  llushr.o(.text)
+    .text                                    0x07fc561e   Section        0  llsshr.o(.text)
+    .text                                    0x07fc5644   Section        0  depilogue.o(.text)
+    i.__0snprintf                            0x07fc5704   Section        0  printfa.o(i.__0snprintf)
+    i.__ARM_clz                              0x07fc5738   Section        0  depilogue.o(i.__ARM_clz)
+    i.__scatterload_copy                     0x07fc5766   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x07fc5774   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x07fc5776   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i._fp_digits                             0x07fc5784   Section        0  printfa.o(i._fp_digits)
+    _fp_digits                               0x07fc5785   Thumb Code   344  printfa.o(i._fp_digits)
+    i._printf_core                           0x07fc58f8   Section        0  printfa.o(i._printf_core)
+    _printf_core                             0x07fc58f9   Thumb Code  1754  printfa.o(i._printf_core)
+    i._printf_post_padding                   0x07fc5fe4   Section        0  printfa.o(i._printf_post_padding)
+    _printf_post_padding                     0x07fc5fe5   Thumb Code    32  printfa.o(i._printf_post_padding)
+    i._printf_pre_padding                    0x07fc6004   Section        0  printfa.o(i._printf_pre_padding)
+    _printf_pre_padding                      0x07fc6005   Thumb Code    44  printfa.o(i._printf_pre_padding)
+    i._snputc                                0x07fc6030   Section        0  printfa.o(i._snputc)
+    _snputc                                  0x07fc6031   Thumb Code    22  printfa.o(i._snputc)
+    .constdata                               0x07fc6046   Section       14  nvds.o(.constdata)
+    nvds_data_storage                        0x07fc6046   Data          14  nvds.o(.constdata)
+    .constdata                               0x07fc6054   Section      388  jump_table.o(.constdata)
+    .constdata                               0x07fc61d8   Section      188  jump_table.o(.constdata)
+    .constdata                               0x07fc6294   Section       90  arch_system.o(.constdata)
+    .constdata                               0x07fc62f0   Section       48  chacha20.o(.constdata)
+    chacha_constants                         0x07fc62f0   Data          16  chacha20.o(.constdata)
+    chacha_order                             0x07fc6300   Data          32  chacha20.o(.constdata)
+    .constdata                               0x07fc6320   Section        8  gpio.o(.constdata)
+    p_mask                                   0x07fc6320   Data           8  gpio.o(.constdata)
+    .constdata                               0x07fc6328   Section        4  adc_58x.o(.constdata)
+    .constdata                               0x07fc632c   Section      244  diss.o(.constdata)
+    .constdata                               0x07fc6420   Section       24  diss_task.o(.constdata)
+    .constdata                               0x07fc6438   Section        8  diss_task.o(.constdata)
+    .constdata                               0x07fc6440   Section       16  custs1.o(.constdata)
+    .constdata                               0x07fc6450   Section       72  custs1_task.o(.constdata)
+    .constdata                               0x07fc6498   Section        8  custs1_task.o(.constdata)
+    .constdata                               0x07fc64a0   Section       80  app.o(.constdata)
+    user_adv_conf                            0x07fc64a0   Data          16  app.o(.constdata)
+    user_prf_funcs                           0x07fc64b0   Data          12  app.o(.constdata)
+    TASK_DESC_APP                            0x07fc64d4   Data          16  app.o(.constdata)
+    <Data1>                                  0x07fc64e4   Data          12  app.o(.constdata)
+    .constdata                               0x07fc64f0   Section      104  app_task.o(.constdata)
+    app_gap_process_handlers                 0x07fc64f0   Data         104  app_task.o(.constdata)
+    .constdata                               0x07fc6558   Section        8  app_task.o(.constdata)
+    .constdata                               0x07fc6560   Section        8  app_task.o(.constdata)
+    .constdata                               0x07fc6568   Section        8  app_diss_task.o(.constdata)
+    app_diss_process_handlers                0x07fc6568   Data           8  app_diss_task.o(.constdata)
+    .constdata                               0x07fc6570   Section       16  app_entry_point.o(.constdata)
+    .constdata                               0x07fc6580   Section       56  user_custs_config.o(.constdata)
+    .constdata                               0x07fc65b8   Section       16  user_custs1_def.o(.constdata)
+    custs1_svc1                              0x07fc65b8   Data          16  user_custs1_def.o(.constdata)
+    .constdata                               0x07fc65c8   Section        2  user_custs1_def.o(.constdata)
+    att_decl_svc                             0x07fc65c8   Data           2  user_custs1_def.o(.constdata)
+    .constdata                               0x07fc65ca   Section        2  user_custs1_def.o(.constdata)
+    att_decl_char                            0x07fc65ca   Data           2  user_custs1_def.o(.constdata)
+    .constdata                               0x07fc65cc   Section        2  user_custs1_def.o(.constdata)
+    att_desc_cfg                             0x07fc65cc   Data           2  user_custs1_def.o(.constdata)
+    .constdata                               0x07fc65ce   Section       16  user_custs1_def.o(.constdata)
+    u8aDICE_TRANSMIT_MESSAGE_UUID_128        0x07fc65ce   Data          16  user_custs1_def.o(.constdata)
+    .constdata                               0x07fc65de   Section        2  user_custs1_def.o(.constdata)
+    .constdata                               0x07fc65e0   Section        1  user_custs1_def.o(.constdata)
+    .constdata                               0x07fc65e2   Section        2  user_custs1_def.o(.constdata)
+    .constdata                               0x07fc65e4   Section       80  user_custs1_def.o(.constdata)
+    .constdata                               0x07fc6634   Section       24  dice_communication.o(.constdata)
+    .constdata                               0x07fc664c   Section       20  dice_led_driver.o(.constdata)
+    BOARD_TOP                                0x07fc664c   Data           2  dice_led_driver.o(.constdata)
+    BOARD_MAIN                               0x07fc664e   Data           2  dice_led_driver.o(.constdata)
+    BOARD_POWER                              0x07fc6650   Data           2  dice_led_driver.o(.constdata)
+    BOARD_THREE                              0x07fc6652   Data           2  dice_led_driver.o(.constdata)
+    BOARD_ONE                                0x07fc6654   Data           2  dice_led_driver.o(.constdata)
+    BOARD_TWO                                0x07fc6656   Data           2  dice_led_driver.o(.constdata)
+    LED_DIAGANOL_LTR                         0x07fc6658   Data           2  dice_led_driver.o(.constdata)
+    LED_DIAGANOL_RTL                         0x07fc665a   Data           2  dice_led_driver.o(.constdata)
+    LED_MIDDLE_PAIR                          0x07fc665c   Data           2  dice_led_driver.o(.constdata)
+    LED_MIDDLE_ONE                           0x07fc665e   Data           2  dice_led_driver.o(.constdata)
+    .constdata                               0x07fc6660   Section     1876  dice_neural_network.o(.constdata)
+    BIAS                                     0x07fc6660   Data         184  dice_neural_network.o(.constdata)
+    LAYER_SIZE                               0x07fc6718   Data          12  dice_neural_network.o(.constdata)
+    WEIGHTS                                  0x07fc6724   Data        1680  dice_neural_network.o(.constdata)
+    .constdata                               0x07fc6db4   Section      272  patch.o(.constdata)
+    custom_msg_handlers                      0x07fc6db4   Data          32  patch.o(.constdata)
+    patch_new_table                          0x07fc6dd4   Data          80  patch.o(.constdata)
+    patch_orig_table                         0x07fc6e24   Data         160  patch.o(.constdata)
+    .constdata                               0x07fc6ec4   Section       22  pll_vcocal_lut.o(.constdata)
+    .data                                    0x07fc6f0c   Section        4  arch_system.o(.data)
+    .bss                                     0x07fc6f10   Section       48  i2c.o(.bss)
+    i2c_env                                  0x07fc6f10   Data          48  i2c.o(.bss)
+    .bss                                     0x07fc6f40   Section       16  trng.o(.bss)
+    .bss                                     0x07fc6f50   Section        1  rwble.o(.bss)
+    cal_failed                               0x07fc6f50   Data           1  rwble.o(.bss)
+    STACK                                    0x07fc6f58   Section     1536  startup_da14585_586.o(STACK)
+    heap_mem_area_not_ret                    0x07fc7558   Section     1036  jump_table.o(heap_mem_area_not_ret)
     retention_mem_area0                      0x07fd4804   Section        8  arch_main.o(retention_mem_area0)
     ret_mode_for_non_ret_heap                0x07fd4804   Data           1  arch_main.o(retention_mem_area0)
     ret_mode                                 0x07fd4805   Data           1  arch_main.o(retention_mem_area0)
@@ -1753,13 +1778,12 @@ Image Symbol Table
     SIDE_OF_NUMBER                           0x07fd4e0e   Data           6  dice_led_driver.o(retention_mem_area0)
     LED_PATERNS                              0x07fd4e14   Data          42  dice_led_driver.o(retention_mem_area0)
     SIDE_CONTAINER                           0x07fd4e3e   Data          12  dice_led_driver.o(retention_mem_area0)
-    retention_mem_area0                      0x07fd4e4a   Section       18  dice_led_callback.o(retention_mem_area0)
-    retention_mem_area0                      0x07fd4e5c   Section       40  dice_neural_network.o(retention_mem_area0)
-    nn                                       0x07fd4e5c   Data          40  dice_neural_network.o(retention_mem_area0)
-    retention_mem_area0                      0x07fd4e84   Section       40  pll_vcocal_lut.o(retention_mem_area0)
-    heap_db_area                             0x07fd4eac   Section     1036  jump_table.o(heap_db_area)
-    heap_env_area                            0x07fd52b8   Section      628  jump_table.o(heap_env_area)
-    heap_msg_area                            0x07fd552c   Section     1404  jump_table.o(heap_msg_area)
+    retention_mem_area0                      0x07fd4e4c   Section       40  dice_neural_network.o(retention_mem_area0)
+    nn                                       0x07fd4e4c   Data          40  dice_neural_network.o(retention_mem_area0)
+    retention_mem_area0                      0x07fd4e74   Section       40  pll_vcocal_lut.o(retention_mem_area0)
+    heap_db_area                             0x07fd4e9c   Section     1036  jump_table.o(heap_db_area)
+    heap_env_area                            0x07fd52a8   Section      628  jump_table.o(heap_env_area)
+    heap_msg_area                            0x07fd551c   Section     1404  jump_table.o(heap_msg_area)
 
     Global Symbols
 
@@ -1815,7 +1839,7 @@ Image Symbol Table
     _microlib_exit                            - Undefined Weak Reference
     __Vectors_Size                           0x000000a0   Number         0  startup_da14585_586.o ABSOLUTE
     heap_mem_area_not_ret$$Length            0x0000040c   Number         0  anon$$obj.o ABSOLUTE
-    Image$$ER_IROM3$$Length                  0x00006b34   Number         0  anon$$obj.o ABSOLUTE
+    Image$$ER_IROM3$$Length                  0x00006a00   Number         0  anon$$obj.o ABSOLUTE
     uECC_vli_add                             0x07f02001   Thumb Code     0  da14585_symbols.txt ABSOLUTE
     uECC_vli_sub                             0x07f02019   Thumb Code     0  da14585_symbols.txt ABSOLUTE
     uECC_vli_mult                            0x07f02035   Thumb Code     0  da14585_symbols.txt ABSOLUTE
@@ -2684,180 +2708,172 @@ Image Symbol Table
     init_rand_seed_from_trng                 0x07fc18a5   Thumb Code    16  trng.o(.text)
     dma_channel_stop                         0x07fc193d   Thumb Code    18  dma.o(.text)
     DMA_Handler                              0x07fc198d   Thumb Code    86  dma.o(.text)
-    systick_register_callback                0x07fc1a05   Thumb Code     6  systick.o(.text)
-    SysTick_Handler                          0x07fc1a0b   Thumb Code    12  systick.o(.text)
-    systick_start                            0x07fc1a17   Thumb Code    60  systick.o(.text)
-    systick_stop                             0x07fc1a53   Thumb Code    20  systick.o(.text)
-    lld_sleep_compensate_func                0x07fc1a71   Thumb Code   108  rwble.o(.text)
-    power_up                                 0x07fc1add   Thumb Code   212  rwble.o(.text)
-    BLE_WAKEUP_LP_Handler                    0x07fc1bb1   Thumb Code    92  rwble.o(.text)
-    rwble_isr                                0x07fc1c0d   Thumb Code   214  rwble.o(.text)
-    patched_ble_regs_push                    0x07fc1d15   Thumb Code    16  rwip.o(.text)
-    patched_ble_regs_pop                     0x07fc1d25   Thumb Code    16  rwip.o(.text)
-    rwip_sleep                               0x07fc1d35   Thumb Code   370  rwip.o(.text)
-    rf_regs                                  0x07fc1f0b   Thumb Code    62  rf_585.o(.text)
-    rf_init_func                             0x07fc1f49   Thumb Code   120  rf_585.o(.text)
-    rf_reinit_func                           0x07fc1fc1   Thumb Code    70  rf_585.o(.text)
-    attm_svc_create_db_128                   0x07fc2061   Thumb Code   518  attm_db_128.o(.text)
-    check_client_char_cfg                    0x07fc226d   Thumb Code    42  custom_common.o(.text)
-    get_value_handle                         0x07fc2297   Thumb Code    76  custom_common.o(.text)
-    get_cfg_handle                           0x07fc22e3   Thumb Code    98  custom_common.o(.text)
-    custs1_get_att_handle                    0x07fc2345   Thumb Code    28  custom_common.o(.text)
-    custs1_get_att_idx                       0x07fc2361   Thumb Code    38  custom_common.o(.text)
-    diss_compute_cfg_flag                    0x07fc238d   Thumb Code    38  diss.o(.text)
-    diss_prf_itf_get                         0x07fc2469   Thumb Code     6  diss.o(.text)
-    diss_handle_to_value                     0x07fc246f   Thumb Code    48  diss.o(.text)
-    diss_value_to_handle                     0x07fc249f   Thumb Code    52  diss.o(.text)
-    diss_check_val_len                       0x07fc24d3   Thumb Code    42  diss.o(.text)
-    custs1_prf_itf_get                       0x07fc2853   Thumb Code     4  custs1.o(.text)
-    custs1_init_ccc_values                   0x07fc292b   Thumb Code    58  custs1_task.o(.text)
-    custs1_set_ccc_value                     0x07fc2965   Thumb Code    62  custs1_task.o(.text)
-    prf_init_func                            0x07fc2e59   Thumb Code   108  prf.o(.text)
-    prf_add_profile_func                     0x07fc2ec5   Thumb Code   126  prf.o(.text)
-    prf_create_func                          0x07fc2f43   Thumb Code    42  prf.o(.text)
-    prf_cleanup_func                         0x07fc2f6d   Thumb Code    46  prf.o(.text)
-    prf_env_get                              0x07fc2f9b   Thumb Code    42  prf.o(.text)
-    prf_src_task_get                         0x07fc2fc5   Thumb Code    16  prf.o(.text)
-    prf_dst_task_get                         0x07fc2fd5   Thumb Code    16  prf.o(.text)
-    prf_get_id_from_task_func                0x07fc2fe5   Thumb Code    48  prf.o(.text)
-    prf_get_task_from_id_func                0x07fc3015   Thumb Code    48  prf.o(.text)
-    default_app_on_init                      0x07fc3065   Thumb Code    18  app_default_handlers.o(.text)
-    default_app_on_connection                0x07fc3077   Thumb Code    28  app_default_handlers.o(.text)
-    default_app_on_set_dev_config_complete   0x07fc3093   Thumb Code    16  app_default_handlers.o(.text)
-    default_app_on_db_init_complete          0x07fc30a3   Thumb Code     8  app_default_handlers.o(.text)
-    default_app_on_get_dev_name              0x07fc30ab   Thumb Code    18  app_default_handlers.o(.text)
-    default_app_on_get_dev_appearance        0x07fc30bd   Thumb Code     8  app_default_handlers.o(.text)
-    default_app_on_get_dev_slv_pref_params   0x07fc30c5   Thumb Code    18  app_default_handlers.o(.text)
-    default_app_on_set_dev_info              0x07fc30d7   Thumb Code    46  app_default_handlers.o(.text)
-    default_app_update_params_request        0x07fc3105   Thumb Code    12  app_default_handlers.o(.text)
-    app_db_init_start                        0x07fc31dd   Thumb Code    16  app.o(.text)
-    app_db_init                              0x07fc31ed   Thumb Code     2  app.o(.text)
-    app_prf_enable                           0x07fc31ef   Thumb Code   136  app.o(.text)
-    app_easy_gap_update_adv_data             0x07fc32f1   Thumb Code    68  app.o(.text)
-    app_init                                 0x07fc33d5   Thumb Code    72  app.o(.text)
-    app_easy_gap_confirm                     0x07fc341d   Thumb Code    36  app.o(.text)
-    app_easy_gap_undirected_advertise_get_active 0x07fc3441   Thumb Code     2  app.o(.text)
-    app_easy_gap_undirected_advertise_start  0x07fc3443   Thumb Code    26  app.o(.text)
-    app_easy_gap_param_update_start          0x07fc345d   Thumb Code    24  app.o(.text)
-    app_easy_gap_dev_configure               0x07fc3475   Thumb Code    18  app.o(.text)
-    get_user_prf_srv_perm                    0x07fc3487   Thumb Code    34  app.o(.text)
-    prf_init_srv_perm                        0x07fc34a9   Thumb Code    30  app.o(.text)
-    app_gap_process_handler                  0x07fc3795   Thumb Code    24  app_task.o(.text)
-    app_dis_init                             0x07fc37bd   Thumb Code     2  app_diss.o(.text)
-    app_diss_create_db                       0x07fc37bf   Thumb Code    54  app_diss.o(.text)
-    app_diss_process_handler                 0x07fc386d   Thumb Code    24  app_diss_task.o(.text)
-    app_entry_point_handler                  0x07fc38d9   Thumb Code    58  app_entry_point.o(.text)
-    app_std_process_event                    0x07fc3913   Thumb Code    70  app_entry_point.o(.text)
-    app_check_BLE_active                     0x07fc3961   Thumb Code    36  app_msg_utils.o(.text)
-    app_timer_api_process_handler            0x07fc39c5   Thumb Code   180  app_easy_timer.o(.text)
-    app_easy_timer                           0x07fc3a79   Thumb Code    66  app_easy_timer.o(.text)
-    app_easy_timer_cancel                    0x07fc3abb   Thumb Code    74  app_easy_timer.o(.text)
-    custs_get_func_callbacks                 0x07fc3b71   Thumb Code    34  app_customs.o(.text)
-    app_custs1_create_db                     0x07fc3b93   Thumb Code    54  app_customs.o(.text)
-    app_custs1_process_handler               0x07fc3bd1   Thumb Code    24  app_customs_task.o(.text)
-    GPIO_reservations                        0x07fc3be9   Thumb Code    46  user_periph_setup.o(.text)
-    periph_init                              0x07fc3c17   Thumb Code    62  user_periph_setup.o(.text)
-    user_svc1_rest_att_info_req_handler      0x07fc3c65   Thumb Code    48  user_custs1_impl.o(.text)
-    user_app_init                            0x07fc3cf3   Thumb Code    58  user_peripheral.o(.text)
-    user_app_adv_start                       0x07fc3d2d   Thumb Code    40  user_peripheral.o(.text)
-    user_app_connection                      0x07fc3d55   Thumb Code    78  user_peripheral.o(.text)
-    user_app_adv_undirect_complete           0x07fc3da3   Thumb Code     8  user_peripheral.o(.text)
-    user_app_disconnect                      0x07fc3dab   Thumb Code    28  user_peripheral.o(.text)
-    user_catch_rest_hndl                     0x07fc3dc7   Thumb Code    32  user_peripheral.o(.text)
-    dice_chance_send                         0x07fc3eb5   Thumb Code    98  dice_communication.o(.text)
-    dice_chance_recieve_handler              0x07fc3f17   Thumb Code    78  dice_communication.o(.text)
-    led_periph_init                          0x07fc3f79   Thumb Code   464  dice_led_driver.o(.text)
-    led_turn_on                              0x07fc4149   Thumb Code    58  dice_led_driver.o(.text)
-    led_turn_off                             0x07fc4183   Thumb Code    58  dice_led_driver.o(.text)
-    led_get_side                             0x07fc41bd   Thumb Code     8  dice_led_driver.o(.text)
-    led_callback_start_dice_mode             0x07fc41d5   Thumb Code    22  dice_led_callback.o(.text)
-    led_callback_init                        0x07fc421b   Thumb Code    40  dice_led_callback.o(.text)
-    predict                                  0x07fc433b   Thumb Code   234  dice_neural_network.o(.text)
-    PATCHED_atts_mtu_exc_req                 0x07fc4451   Thumb Code    52  patch.o(.text)
-    PATCHED_smpc_is_sec_mode_reached         0x07fc4485   Thumb Code    66  patch.o(.text)
-    PATCHED_smpc_check_key_distrib           0x07fc44c7   Thumb Code    74  patch.o(.text)
-    PATCHED_llcp_length_req_handler          0x07fc4511   Thumb Code   226  patch.o(.text)
-    PATCHED_smpc_construct_id_addr_info_pdu  0x07fc45f3   Thumb Code    48  patch.o(.text)
-    PATCHED_llc_util_gen_skdx                0x07fc4623   Thumb Code    20  patch.o(.text)
-    PATCHED_llm_adv_report_set               0x07fc4637   Thumb Code   142  patch.o(.text)
-    PATCHED_lld_evt_move_to_master           0x07fc46c5   Thumb Code   326  patch.o(.text)
-    PATCHED_gapm_adv_sanity                  0x07fc480b   Thumb Code   280  patch.o(.text)
-    PATCHED_gapm_get_ad_type_flag            0x07fc4923   Thumb Code    38  patch.o(.text)
-    PK_PointMult_func                        0x07fc4949   Thumb Code   246  patch.o(.text)
-    llm_create_p256_key_func                 0x07fc4a3f   Thumb Code    70  patch.o(.text)
-    llm_p256_req_handler_func                0x07fc4a85   Thumb Code   290  patch.o(.text)
-    PATCHED_hci_command_handler              0x07fc4bf5   Thumb Code    64  patch.o(.text)
-    patch_func                               0x07fc4c35   Thumb Code    48  patch.o(.text)
-    patch_global_vars_init                   0x07fc4c65   Thumb Code     2  patch.o(.text)
-    DCoffsetCalibration_580                  0x07fc4da5   Thumb Code   204  rf_calibration.o(.text)
-    IffCalibration_580                       0x07fc4e8d   Thumb Code    72  rf_calibration.o(.text)
-    rf_calibration_580                       0x07fc4ed5   Thumb Code    80  rf_calibration.o(.text)
-    rf_calibration_585                       0x07fc4f25   Thumb Code    84  rf_calibration.o(.text)
-    enable_rf_diag_irq                       0x07fc4f79   Thumb Code   112  rf_calibration.o(.text)
-    set_gauss_modgain                        0x07fc4fe9   Thumb Code    54  rf_calibration.o(.text)
-    set_rf_cal_cap                           0x07fc503d   Thumb Code    26  pll_vcocal_lut.o(.text)
-    PATCHED_smpc_dhkey_calc_start            0x07fc5061   Thumb Code   136  smpc_util.o(.text)
-    JT_llm_p256_start_func                   0x07fc50e9   Thumb Code    82  smpc_util.o(.text)
-    __aeabi_fadd                             0x07fc5149   Thumb Code   162  fadd.o(.text)
-    __aeabi_fsub                             0x07fc51eb   Thumb Code     8  fadd.o(.text)
-    __aeabi_frsub                            0x07fc51f3   Thumb Code     8  fadd.o(.text)
-    __aeabi_fmul                             0x07fc51fb   Thumb Code   122  fmul.o(.text)
-    __aeabi_f2d                              0x07fc5275   Thumb Code    40  f2d.o(.text)
-    __aeabi_uldivmod                         0x07fc529d   Thumb Code    96  uldiv.o(.text)
-    __I$use$fp                               0x07fc52fd   Thumb Code     0  iusefp.o(.text)
-    _float_round                             0x07fc52fd   Thumb Code    16  fepilogue.o(.text)
-    _float_epilogue                          0x07fc530d   Thumb Code   114  fepilogue.o(.text)
-    __aeabi_dadd                             0x07fc5381   Thumb Code   328  dadd.o(.text)
-    __aeabi_dsub                             0x07fc54c9   Thumb Code    12  dadd.o(.text)
-    __aeabi_drsub                            0x07fc54d5   Thumb Code    12  dadd.o(.text)
-    __aeabi_dmul                             0x07fc54e5   Thumb Code   202  dmul.o(.text)
-    __aeabi_ddiv                             0x07fc55b5   Thumb Code   234  ddiv.o(.text)
-    __aeabi_d2ulz                            0x07fc56a5   Thumb Code    54  dfixul.o(.text)
-    __aeabi_cdrcmple                         0x07fc56e5   Thumb Code    38  cdrcmple.o(.text)
-    __scatterload                            0x07fc570d   Thumb Code    28  init.o(.text)
-    __scatterload_rt2                        0x07fc570d   Thumb Code     0  init.o(.text)
-    __aeabi_llsr                             0x07fc5731   Thumb Code    34  llushr.o(.text)
-    _ll_ushift_r                             0x07fc5731   Thumb Code     0  llushr.o(.text)
-    __aeabi_lasr                             0x07fc5753   Thumb Code    38  llsshr.o(.text)
-    _ll_sshift_r                             0x07fc5753   Thumb Code     0  llsshr.o(.text)
-    _double_round                            0x07fc5779   Thumb Code    26  depilogue.o(.text)
-    _double_epilogue                         0x07fc5793   Thumb Code   164  depilogue.o(.text)
-    __0snprintf                              0x07fc5839   Thumb Code    46  printfa.o(i.__0snprintf)
-    __1snprintf                              0x07fc5839   Thumb Code     0  printfa.o(i.__0snprintf)
-    __2snprintf                              0x07fc5839   Thumb Code     0  printfa.o(i.__0snprintf)
-    __c89snprintf                            0x07fc5839   Thumb Code     0  printfa.o(i.__0snprintf)
-    snprintf                                 0x07fc5839   Thumb Code     0  printfa.o(i.__0snprintf)
-    __ARM_clz                                0x07fc586d   Thumb Code    46  depilogue.o(i.__ARM_clz)
-    __scatterload_copy                       0x07fc589b   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x07fc58a9   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x07fc58ab   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    rom_func_addr_table_var                  0x07fc6188   Data         388  jump_table.o(.constdata)
-    rom_cfg_table_var                        0x07fc630c   Data         188  jump_table.o(.constdata)
-    gap_cfg_user_var_struct                  0x07fc63c8   Data          90  arch_system.o(.constdata)
-    diss_att_db                              0x07fc6460   Data         228  diss.o(.constdata)
-    diss_itf                                 0x07fc6544   Data          16  diss.o(.constdata)
-    diss_default_state                       0x07fc6554   Data          24  diss_task.o(.constdata)
-    diss_default_handler                     0x07fc656c   Data           8  diss_task.o(.constdata)
-    custs1_itf                               0x07fc6574   Data          16  custs1.o(.constdata)
-    custs1_default_state                     0x07fc6584   Data          72  custs1_task.o(.constdata)
-    custs1_default_handler                   0x07fc65cc   Data           8  custs1_task.o(.constdata)
-    prf_funcs                                0x07fc65f0   Data          24  app.o(.constdata)
-    app_default_state                        0x07fc668c   Data           8  app_task.o(.constdata)
-    app_default_handler                      0x07fc6694   Data           8  app_task.o(.constdata)
-    app_process_handlers                     0x07fc66a4   Data          16  app_entry_point.o(.constdata)
-    cust_prf_funcs                           0x07fc66b4   Data          56  user_custs_config.o(.constdata)
-    custs1_services                          0x07fc6712   Data           2  user_custs1_def.o(.constdata)
-    custs1_services_size                     0x07fc6714   Data           1  user_custs1_def.o(.constdata)
-    custs1_att_max_nb                        0x07fc6716   Data           2  user_custs1_def.o(.constdata)
-    custs1_att_db                            0x07fc6718   Data          80  user_custs1_def.o(.constdata)
-    LUT_CFG                                  0x07fc6ff8   Data          22  pll_vcocal_lut.o(.constdata)
-    Region$$Table$$Base                      0x07fc7010   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x07fc7040   Number         0  anon$$obj.o(Region$$Table)
-    startup_sleep_delay                      0x07fc7040   Data           4  arch_system.o(.data)
-    trng_bits                                0x07fc7078   Data          16  trng.o(.bss)
-    __initial_sp                             0x07fc7690   Data           0  startup_da14585_586.o(STACK)
-    heap_mem_area_not_ret$$Base              0x07fc7690   Number         0  jump_table.o(heap_mem_area_not_ret)
-    rwip_heap_non_ret                        0x07fc7690   Data        1036  jump_table.o(heap_mem_area_not_ret)
+    SysTick_Handler                          0x07fc1a05   Thumb Code    12  systick.o(.text)
+    lld_sleep_compensate_func                0x07fc1a15   Thumb Code   108  rwble.o(.text)
+    power_up                                 0x07fc1a81   Thumb Code   212  rwble.o(.text)
+    BLE_WAKEUP_LP_Handler                    0x07fc1b55   Thumb Code    92  rwble.o(.text)
+    rwble_isr                                0x07fc1bb1   Thumb Code   214  rwble.o(.text)
+    patched_ble_regs_push                    0x07fc1cb9   Thumb Code    16  rwip.o(.text)
+    patched_ble_regs_pop                     0x07fc1cc9   Thumb Code    16  rwip.o(.text)
+    rwip_sleep                               0x07fc1cd9   Thumb Code   370  rwip.o(.text)
+    rf_regs                                  0x07fc1eaf   Thumb Code    62  rf_585.o(.text)
+    rf_init_func                             0x07fc1eed   Thumb Code   120  rf_585.o(.text)
+    rf_reinit_func                           0x07fc1f65   Thumb Code    70  rf_585.o(.text)
+    attm_svc_create_db_128                   0x07fc2005   Thumb Code   518  attm_db_128.o(.text)
+    check_client_char_cfg                    0x07fc2211   Thumb Code    42  custom_common.o(.text)
+    get_value_handle                         0x07fc223b   Thumb Code    76  custom_common.o(.text)
+    get_cfg_handle                           0x07fc2287   Thumb Code    98  custom_common.o(.text)
+    custs1_get_att_handle                    0x07fc22e9   Thumb Code    28  custom_common.o(.text)
+    custs1_get_att_idx                       0x07fc2305   Thumb Code    38  custom_common.o(.text)
+    diss_compute_cfg_flag                    0x07fc2331   Thumb Code    38  diss.o(.text)
+    diss_prf_itf_get                         0x07fc240d   Thumb Code     6  diss.o(.text)
+    diss_handle_to_value                     0x07fc2413   Thumb Code    48  diss.o(.text)
+    diss_value_to_handle                     0x07fc2443   Thumb Code    52  diss.o(.text)
+    diss_check_val_len                       0x07fc2477   Thumb Code    42  diss.o(.text)
+    custs1_prf_itf_get                       0x07fc27f7   Thumb Code     4  custs1.o(.text)
+    custs1_init_ccc_values                   0x07fc28cf   Thumb Code    58  custs1_task.o(.text)
+    custs1_set_ccc_value                     0x07fc2909   Thumb Code    62  custs1_task.o(.text)
+    prf_init_func                            0x07fc2dfd   Thumb Code   108  prf.o(.text)
+    prf_add_profile_func                     0x07fc2e69   Thumb Code   126  prf.o(.text)
+    prf_create_func                          0x07fc2ee7   Thumb Code    42  prf.o(.text)
+    prf_cleanup_func                         0x07fc2f11   Thumb Code    46  prf.o(.text)
+    prf_env_get                              0x07fc2f3f   Thumb Code    42  prf.o(.text)
+    prf_src_task_get                         0x07fc2f69   Thumb Code    16  prf.o(.text)
+    prf_dst_task_get                         0x07fc2f79   Thumb Code    16  prf.o(.text)
+    prf_get_id_from_task_func                0x07fc2f89   Thumb Code    48  prf.o(.text)
+    prf_get_task_from_id_func                0x07fc2fb9   Thumb Code    48  prf.o(.text)
+    default_app_on_init                      0x07fc3009   Thumb Code    18  app_default_handlers.o(.text)
+    default_app_on_connection                0x07fc301b   Thumb Code    28  app_default_handlers.o(.text)
+    default_app_on_set_dev_config_complete   0x07fc3037   Thumb Code    16  app_default_handlers.o(.text)
+    default_app_on_db_init_complete          0x07fc3047   Thumb Code     8  app_default_handlers.o(.text)
+    default_app_on_get_dev_name              0x07fc304f   Thumb Code    18  app_default_handlers.o(.text)
+    default_app_on_get_dev_appearance        0x07fc3061   Thumb Code     8  app_default_handlers.o(.text)
+    default_app_on_get_dev_slv_pref_params   0x07fc3069   Thumb Code    18  app_default_handlers.o(.text)
+    default_app_on_set_dev_info              0x07fc307b   Thumb Code    46  app_default_handlers.o(.text)
+    default_app_update_params_request        0x07fc30a9   Thumb Code    12  app_default_handlers.o(.text)
+    app_db_init_start                        0x07fc3181   Thumb Code    16  app.o(.text)
+    app_db_init                              0x07fc3191   Thumb Code     2  app.o(.text)
+    app_prf_enable                           0x07fc3193   Thumb Code   136  app.o(.text)
+    app_easy_gap_update_adv_data             0x07fc3295   Thumb Code    68  app.o(.text)
+    app_init                                 0x07fc3379   Thumb Code    72  app.o(.text)
+    app_easy_gap_confirm                     0x07fc33c1   Thumb Code    36  app.o(.text)
+    app_easy_gap_undirected_advertise_get_active 0x07fc33e5   Thumb Code     2  app.o(.text)
+    app_easy_gap_undirected_advertise_start  0x07fc33e7   Thumb Code    26  app.o(.text)
+    app_easy_gap_param_update_start          0x07fc3401   Thumb Code    24  app.o(.text)
+    app_easy_gap_dev_configure               0x07fc3419   Thumb Code    18  app.o(.text)
+    get_user_prf_srv_perm                    0x07fc342b   Thumb Code    34  app.o(.text)
+    prf_init_srv_perm                        0x07fc344d   Thumb Code    30  app.o(.text)
+    app_gap_process_handler                  0x07fc3739   Thumb Code    24  app_task.o(.text)
+    app_dis_init                             0x07fc3761   Thumb Code     2  app_diss.o(.text)
+    app_diss_create_db                       0x07fc3763   Thumb Code    54  app_diss.o(.text)
+    app_diss_process_handler                 0x07fc3811   Thumb Code    24  app_diss_task.o(.text)
+    app_entry_point_handler                  0x07fc387d   Thumb Code    58  app_entry_point.o(.text)
+    app_std_process_event                    0x07fc38b7   Thumb Code    70  app_entry_point.o(.text)
+    app_check_BLE_active                     0x07fc3905   Thumb Code    36  app_msg_utils.o(.text)
+    app_timer_api_process_handler            0x07fc3969   Thumb Code   180  app_easy_timer.o(.text)
+    app_easy_timer                           0x07fc3a1d   Thumb Code    66  app_easy_timer.o(.text)
+    app_easy_timer_cancel                    0x07fc3a5f   Thumb Code    74  app_easy_timer.o(.text)
+    custs_get_func_callbacks                 0x07fc3b15   Thumb Code    34  app_customs.o(.text)
+    app_custs1_create_db                     0x07fc3b37   Thumb Code    54  app_customs.o(.text)
+    app_custs1_process_handler               0x07fc3b75   Thumb Code    24  app_customs_task.o(.text)
+    GPIO_reservations                        0x07fc3b8d   Thumb Code    46  user_periph_setup.o(.text)
+    periph_init                              0x07fc3bbb   Thumb Code   116  user_periph_setup.o(.text)
+    user_svc1_rest_att_info_req_handler      0x07fc3c41   Thumb Code    48  user_custs1_impl.o(.text)
+    user_app_init                            0x07fc3ccf   Thumb Code    58  user_peripheral.o(.text)
+    user_app_adv_start                       0x07fc3d09   Thumb Code    40  user_peripheral.o(.text)
+    user_app_connection                      0x07fc3d31   Thumb Code    78  user_peripheral.o(.text)
+    user_app_adv_undirect_complete           0x07fc3d7f   Thumb Code     8  user_peripheral.o(.text)
+    user_app_disconnect                      0x07fc3d87   Thumb Code    28  user_peripheral.o(.text)
+    user_catch_rest_hndl                     0x07fc3da3   Thumb Code    32  user_peripheral.o(.text)
+    dice_chance_send                         0x07fc3e91   Thumb Code    98  dice_communication.o(.text)
+    dice_chance_recieve_handler              0x07fc3ef3   Thumb Code    78  dice_communication.o(.text)
+    led_periph_init                          0x07fc3f55   Thumb Code   466  dice_led_driver.o(.text)
+    predict                                  0x07fc4207   Thumb Code   234  dice_neural_network.o(.text)
+    PATCHED_atts_mtu_exc_req                 0x07fc431d   Thumb Code    52  patch.o(.text)
+    PATCHED_smpc_is_sec_mode_reached         0x07fc4351   Thumb Code    66  patch.o(.text)
+    PATCHED_smpc_check_key_distrib           0x07fc4393   Thumb Code    74  patch.o(.text)
+    PATCHED_llcp_length_req_handler          0x07fc43dd   Thumb Code   226  patch.o(.text)
+    PATCHED_smpc_construct_id_addr_info_pdu  0x07fc44bf   Thumb Code    48  patch.o(.text)
+    PATCHED_llc_util_gen_skdx                0x07fc44ef   Thumb Code    20  patch.o(.text)
+    PATCHED_llm_adv_report_set               0x07fc4503   Thumb Code   142  patch.o(.text)
+    PATCHED_lld_evt_move_to_master           0x07fc4591   Thumb Code   326  patch.o(.text)
+    PATCHED_gapm_adv_sanity                  0x07fc46d7   Thumb Code   280  patch.o(.text)
+    PATCHED_gapm_get_ad_type_flag            0x07fc47ef   Thumb Code    38  patch.o(.text)
+    PK_PointMult_func                        0x07fc4815   Thumb Code   246  patch.o(.text)
+    llm_create_p256_key_func                 0x07fc490b   Thumb Code    70  patch.o(.text)
+    llm_p256_req_handler_func                0x07fc4951   Thumb Code   290  patch.o(.text)
+    PATCHED_hci_command_handler              0x07fc4ac1   Thumb Code    64  patch.o(.text)
+    patch_func                               0x07fc4b01   Thumb Code    48  patch.o(.text)
+    patch_global_vars_init                   0x07fc4b31   Thumb Code     2  patch.o(.text)
+    DCoffsetCalibration_580                  0x07fc4c71   Thumb Code   204  rf_calibration.o(.text)
+    IffCalibration_580                       0x07fc4d59   Thumb Code    72  rf_calibration.o(.text)
+    rf_calibration_580                       0x07fc4da1   Thumb Code    80  rf_calibration.o(.text)
+    rf_calibration_585                       0x07fc4df1   Thumb Code    84  rf_calibration.o(.text)
+    enable_rf_diag_irq                       0x07fc4e45   Thumb Code   112  rf_calibration.o(.text)
+    set_gauss_modgain                        0x07fc4eb5   Thumb Code    54  rf_calibration.o(.text)
+    set_rf_cal_cap                           0x07fc4f09   Thumb Code    26  pll_vcocal_lut.o(.text)
+    PATCHED_smpc_dhkey_calc_start            0x07fc4f2d   Thumb Code   136  smpc_util.o(.text)
+    JT_llm_p256_start_func                   0x07fc4fb5   Thumb Code    82  smpc_util.o(.text)
+    __aeabi_fadd                             0x07fc5015   Thumb Code   162  fadd.o(.text)
+    __aeabi_fsub                             0x07fc50b7   Thumb Code     8  fadd.o(.text)
+    __aeabi_frsub                            0x07fc50bf   Thumb Code     8  fadd.o(.text)
+    __aeabi_fmul                             0x07fc50c7   Thumb Code   122  fmul.o(.text)
+    __aeabi_f2d                              0x07fc5141   Thumb Code    40  f2d.o(.text)
+    __aeabi_uldivmod                         0x07fc5169   Thumb Code    96  uldiv.o(.text)
+    __I$use$fp                               0x07fc51c9   Thumb Code     0  iusefp.o(.text)
+    _float_round                             0x07fc51c9   Thumb Code    16  fepilogue.o(.text)
+    _float_epilogue                          0x07fc51d9   Thumb Code   114  fepilogue.o(.text)
+    __aeabi_dadd                             0x07fc524d   Thumb Code   328  dadd.o(.text)
+    __aeabi_dsub                             0x07fc5395   Thumb Code    12  dadd.o(.text)
+    __aeabi_drsub                            0x07fc53a1   Thumb Code    12  dadd.o(.text)
+    __aeabi_dmul                             0x07fc53b1   Thumb Code   202  dmul.o(.text)
+    __aeabi_ddiv                             0x07fc5481   Thumb Code   234  ddiv.o(.text)
+    __aeabi_d2ulz                            0x07fc5571   Thumb Code    54  dfixul.o(.text)
+    __aeabi_cdrcmple                         0x07fc55b1   Thumb Code    38  cdrcmple.o(.text)
+    __scatterload                            0x07fc55d9   Thumb Code    28  init.o(.text)
+    __scatterload_rt2                        0x07fc55d9   Thumb Code     0  init.o(.text)
+    __aeabi_llsr                             0x07fc55fd   Thumb Code    34  llushr.o(.text)
+    _ll_ushift_r                             0x07fc55fd   Thumb Code     0  llushr.o(.text)
+    __aeabi_lasr                             0x07fc561f   Thumb Code    38  llsshr.o(.text)
+    _ll_sshift_r                             0x07fc561f   Thumb Code     0  llsshr.o(.text)
+    _double_round                            0x07fc5645   Thumb Code    26  depilogue.o(.text)
+    _double_epilogue                         0x07fc565f   Thumb Code   164  depilogue.o(.text)
+    __0snprintf                              0x07fc5705   Thumb Code    46  printfa.o(i.__0snprintf)
+    __1snprintf                              0x07fc5705   Thumb Code     0  printfa.o(i.__0snprintf)
+    __2snprintf                              0x07fc5705   Thumb Code     0  printfa.o(i.__0snprintf)
+    __c89snprintf                            0x07fc5705   Thumb Code     0  printfa.o(i.__0snprintf)
+    snprintf                                 0x07fc5705   Thumb Code     0  printfa.o(i.__0snprintf)
+    __ARM_clz                                0x07fc5739   Thumb Code    46  depilogue.o(i.__ARM_clz)
+    __scatterload_copy                       0x07fc5767   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x07fc5775   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x07fc5777   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    rom_func_addr_table_var                  0x07fc6054   Data         388  jump_table.o(.constdata)
+    rom_cfg_table_var                        0x07fc61d8   Data         188  jump_table.o(.constdata)
+    gap_cfg_user_var_struct                  0x07fc6294   Data          90  arch_system.o(.constdata)
+    diss_att_db                              0x07fc632c   Data         228  diss.o(.constdata)
+    diss_itf                                 0x07fc6410   Data          16  diss.o(.constdata)
+    diss_default_state                       0x07fc6420   Data          24  diss_task.o(.constdata)
+    diss_default_handler                     0x07fc6438   Data           8  diss_task.o(.constdata)
+    custs1_itf                               0x07fc6440   Data          16  custs1.o(.constdata)
+    custs1_default_state                     0x07fc6450   Data          72  custs1_task.o(.constdata)
+    custs1_default_handler                   0x07fc6498   Data           8  custs1_task.o(.constdata)
+    prf_funcs                                0x07fc64bc   Data          24  app.o(.constdata)
+    app_default_state                        0x07fc6558   Data           8  app_task.o(.constdata)
+    app_default_handler                      0x07fc6560   Data           8  app_task.o(.constdata)
+    app_process_handlers                     0x07fc6570   Data          16  app_entry_point.o(.constdata)
+    cust_prf_funcs                           0x07fc6580   Data          56  user_custs_config.o(.constdata)
+    custs1_services                          0x07fc65de   Data           2  user_custs1_def.o(.constdata)
+    custs1_services_size                     0x07fc65e0   Data           1  user_custs1_def.o(.constdata)
+    custs1_att_max_nb                        0x07fc65e2   Data           2  user_custs1_def.o(.constdata)
+    custs1_att_db                            0x07fc65e4   Data          80  user_custs1_def.o(.constdata)
+    LUT_CFG                                  0x07fc6ec4   Data          22  pll_vcocal_lut.o(.constdata)
+    Region$$Table$$Base                      0x07fc6edc   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x07fc6f0c   Number         0  anon$$obj.o(Region$$Table)
+    startup_sleep_delay                      0x07fc6f0c   Data           4  arch_system.o(.data)
+    trng_bits                                0x07fc6f40   Data          16  trng.o(.bss)
+    __initial_sp                             0x07fc7558   Data           0  startup_da14585_586.o(STACK)
+    heap_mem_area_not_ret$$Base              0x07fc7558   Number         0  jump_table.o(heap_mem_area_not_ret)
+    rwip_heap_non_ret                        0x07fc7558   Data        1036  jump_table.o(heap_mem_area_not_ret)
     Image$$RET_DATA_UNINIT$$Base             0x07fd4804   Number         0  anon$$obj.o ABSOLUTE
     sys_startup_flag                         0x07fd4810   Data           1  arch_system.o(retention_mem_area0)
     rcx_cal_in_progress                      0x07fd4811   Data           1  arch_system.o(retention_mem_area0)
@@ -2901,16 +2917,13 @@ Image Symbol Table
     mnf_data                                 0x07fd4dae   Data           8  user_peripheral.o(retention_mem_area0)
     stored_adv_data                          0x07fd4db6   Data          31  user_peripheral.o(retention_mem_area0)
     stored_scan_rsp_data                     0x07fd4dd5   Data          31  user_peripheral.o(retention_mem_area0)
-    prev_number                              0x07fd4e4a   Data           1  dice_led_callback.o(retention_mem_area0)
-    current_number                           0x07fd4e4b   Data           1  dice_led_callback.o(retention_mem_area0)
-    u8aKey                                   0x07fd4e4c   Data          16  dice_led_callback.o(retention_mem_area0)
-    calcap_minmax                            0x07fd4e84   Data           1  pll_vcocal_lut.o(retention_mem_area0)
-    vcocal_ctrl_reg_val                      0x07fd4e86   Data           2  pll_vcocal_lut.o(retention_mem_area0)
-    vco_calcap_ranges                        0x07fd4e88   Data          16  pll_vcocal_lut.o(retention_mem_area0)
-    rf_cal_cap                               0x07fd4e98   Data          20  pll_vcocal_lut.o(retention_mem_area0)
-    rwip_heap_db_ret                         0x07fd4eac   Data        1036  jump_table.o(heap_db_area)
-    rwip_heap_env_ret                        0x07fd52b8   Data         628  jump_table.o(heap_env_area)
-    rwip_heap_msg_ret                        0x07fd552c   Data        1404  jump_table.o(heap_msg_area)
+    calcap_minmax                            0x07fd4e74   Data           1  pll_vcocal_lut.o(retention_mem_area0)
+    vcocal_ctrl_reg_val                      0x07fd4e76   Data           2  pll_vcocal_lut.o(retention_mem_area0)
+    vco_calcap_ranges                        0x07fd4e78   Data          16  pll_vcocal_lut.o(retention_mem_area0)
+    rf_cal_cap                               0x07fd4e88   Data          20  pll_vcocal_lut.o(retention_mem_area0)
+    rwip_heap_db_ret                         0x07fd4e9c   Data        1036  jump_table.o(heap_db_area)
+    rwip_heap_env_ret                        0x07fd52a8   Data         628  jump_table.o(heap_env_area)
+    rwip_heap_msg_ret                        0x07fd551c   Data        1404  jump_table.o(heap_msg_area)
     ble_wakeup_executed                      0x07fd7600   Data           0  da14585_symbols.txt ABSOLUTE
     rf_in_sleep                              0x07fd7601   Data           0  da14585_symbols.txt ABSOLUTE
     custom_preinit                           0x07fd7604   Data           0  da14585_symbols.txt ABSOLUTE
@@ -3044,21 +3057,21 @@ Memory Map of the image
 
 
 
-  Load Region LR_IROM3 (Base: 0x07fc0510, Size: 0x00006b34, Max: 0x000162f0, ABSOLUTE)
+  Load Region LR_IROM3 (Base: 0x07fc0510, Size: 0x00006a00, Max: 0x000162f0, ABSOLUTE)
 
-    Execution Region ER_IROM3 (Exec base: 0x07fc0510, Load base: 0x07fc0510, Size: 0x00006b34, Max: 0x000162f0, ABSOLUTE)
+    Execution Region ER_IROM3 (Exec base: 0x07fc0510, Load base: 0x07fc0510, Size: 0x00006a00, Max: 0x000162f0, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x07fc0510   0x07fc0510   0x00000000   Code   RO         3679  * .ARM.Collect$$$$00000000  mc_p.l(entry.o)
-    0x07fc0510   0x07fc0510   0x00000004   Code   RO         3951    .ARM.Collect$$$$00000001  mc_p.l(entry2.o)
-    0x07fc0514   0x07fc0514   0x00000004   Code   RO         3954    .ARM.Collect$$$$00000004  mc_p.l(entry5.o)
-    0x07fc0518   0x07fc0518   0x00000000   Code   RO         3956    .ARM.Collect$$$$00000008  mc_p.l(entry7b.o)
-    0x07fc0518   0x07fc0518   0x00000000   Code   RO         3958    .ARM.Collect$$$$0000000A  mc_p.l(entry8b.o)
-    0x07fc0518   0x07fc0518   0x00000008   Code   RO         3959    .ARM.Collect$$$$0000000B  mc_p.l(entry9a.o)
-    0x07fc0520   0x07fc0520   0x00000000   Code   RO         3961    .ARM.Collect$$$$0000000D  mc_p.l(entry10a.o)
-    0x07fc0520   0x07fc0520   0x00000000   Code   RO         3963    .ARM.Collect$$$$0000000F  mc_p.l(entry11a.o)
-    0x07fc0520   0x07fc0520   0x00000004   Code   RO         3952    .ARM.Collect$$$$00002712  mc_p.l(entry2.o)
+    0x07fc0510   0x07fc0510   0x00000000   Code   RO         3729  * .ARM.Collect$$$$00000000  mc_p.l(entry.o)
+    0x07fc0510   0x07fc0510   0x00000004   Code   RO         4001    .ARM.Collect$$$$00000001  mc_p.l(entry2.o)
+    0x07fc0514   0x07fc0514   0x00000004   Code   RO         4004    .ARM.Collect$$$$00000004  mc_p.l(entry5.o)
+    0x07fc0518   0x07fc0518   0x00000000   Code   RO         4006    .ARM.Collect$$$$00000008  mc_p.l(entry7b.o)
+    0x07fc0518   0x07fc0518   0x00000000   Code   RO         4008    .ARM.Collect$$$$0000000A  mc_p.l(entry8b.o)
+    0x07fc0518   0x07fc0518   0x00000008   Code   RO         4009    .ARM.Collect$$$$0000000B  mc_p.l(entry9a.o)
+    0x07fc0520   0x07fc0520   0x00000000   Code   RO         4011    .ARM.Collect$$$$0000000D  mc_p.l(entry10a.o)
+    0x07fc0520   0x07fc0520   0x00000000   Code   RO         4013    .ARM.Collect$$$$0000000F  mc_p.l(entry11a.o)
+    0x07fc0520   0x07fc0520   0x00000004   Code   RO         4002    .ARM.Collect$$$$00002712  mc_p.l(entry2.o)
     0x07fc0524   0x07fc0524   0x00000048   Code   RO            3    .text               system_da14585_586.o
     0x07fc056c   0x07fc056c   0x00000050   Code   RO          275    .text               startup_da14585_586.o
     0x07fc05bc   0x07fc05bc   0x00000068   Code   RO          280    .text               hardfault_handler.o
@@ -3080,131 +3093,130 @@ Memory Map of the image
     0x07fc1620   0x07fc1620   0x00000160   Code   RO         1875    .text               uart.o
     0x07fc1780   0x07fc1780   0x000001bc   Code   RO         1998    .text               trng.o
     0x07fc193c   0x07fc193c   0x000000c8   Code   RO         2017    .text               dma.o
-    0x07fc1a04   0x07fc1a04   0x0000006c   Code   RO         2068    .text               systick.o
-    0x07fc1a70   0x07fc1a70   0x000002a4   Code   RO         2144    .text               rwble.o
-    0x07fc1d14   0x07fc1d14   0x000001d0   Code   RO         2195    .text               rwip.o
-    0x07fc1ee4   0x07fc1ee4   0x0000017c   Code   RO         2223    .text               rf_585.o
-    0x07fc2060   0x07fc2060   0x0000020c   Code   RO         2281    .text               attm_db_128.o
-    0x07fc226c   0x07fc226c   0x00000120   Code   RO         2343    .text               custom_common.o
-    0x07fc238c   0x07fc238c   0x0000017c   Code   RO         2361    .text               diss.o
-    0x07fc2508   0x07fc2508   0x000001d8   Code   RO         2430    .text               diss_task.o
-    0x07fc26e0   0x07fc26e0   0x00000194   Code   RO         2497    .text               custs1.o
-    0x07fc2874   0x07fc2874   0x000005e4   Code   RO         2520    .text               custs1_task.o
-    0x07fc2e58   0x07fc2e58   0x0000020c   Code   RO         2595    .text               prf.o
-    0x07fc3064   0x07fc3064   0x000000b4   Code   RO         2626    .text               app_default_handlers.o
-    0x07fc3118   0x07fc3118   0x00000414   Code   RO         2688    .text               app.o
-    0x07fc352c   0x07fc352c   0x00000290   Code   RO         2877    .text               app_task.o
-    0x07fc37bc   0x07fc37bc   0x0000003c   Code   RO         2959    .text               app_diss.o
-    0x07fc37f8   0x07fc37f8   0x000000e0   Code   RO         2971    .text               app_diss_task.o
-    0x07fc38d8   0x07fc38d8   0x00000088   Code   RO         3002    .text               app_entry_point.o
-    0x07fc3960   0x07fc3960   0x00000028   Code   RO         3039    .text               app_msg_utils.o
-    0x07fc3988   0x07fc3988   0x00000002   Code   RO         3117    .text               app_easy_timer.o
-    0x07fc398a   0x07fc398a   0x00000002   Code   RO         3118    .text               app_easy_timer.o
-    0x07fc398c   0x07fc398c   0x000001e4   Code   RO         3119    .text               app_easy_timer.o
-    0x07fc3b70   0x07fc3b70   0x00000060   Code   RO         3153    .text               app_customs.o
-    0x07fc3bd0   0x07fc3bd0   0x00000018   Code   RO         3175    .text               app_customs_task.o
-    0x07fc3be8   0x07fc3be8   0x0000007c   Code   RO         3259    .text               user_periph_setup.o
-    0x07fc3c64   0x07fc3c64   0x00000038   Code   RO         3305    .text               user_custs1_impl.o
-    0x07fc3c9c   0x07fc3c9c   0x00000218   Code   RO         3327    .text               user_peripheral.o
-    0x07fc3eb4   0x07fc3eb4   0x000000c4   Code   RO         3351    .text               dice_communication.o
-    0x07fc3f78   0x07fc3f78   0x0000025c   Code   RO         3393    .text               dice_led_driver.o
-    0x07fc41d4   0x07fc41d4   0x00000098   Code   RO         3417    .text               dice_led_callback.o
-    0x07fc426c   0x07fc426c   0x000001e4   Code   RO         3454    .text               dice_neural_network.o
-    0x07fc4450   0x07fc4450   0x00000858   Code   RO         3634    .text               da14585_586.lib(patch.o)
-    0x07fc4ca8   0x07fc4ca8   0x000000fc   Code   RO         3637    .text               da14585_586.lib(rf_calibration.o)
-    0x07fc4da4   0x07fc4da4   0x000000e8   Code   RO         3638    .text               da14585_586.lib(rf_calibration.o)
-    0x07fc4e8c   0x07fc4e8c   0x000001b0   Code   RO         3639    .text               da14585_586.lib(rf_calibration.o)
-    0x07fc503c   0x07fc503c   0x00000024   Code   RO         3658    .text               da14585_586.lib(pll_vcocal_lut.o)
-    0x07fc5060   0x07fc5060   0x000000e8   Code   RO         3677    .text               da14585_586.lib(smpc_util.o)
-    0x07fc5148   0x07fc5148   0x000000b2   Code   RO         3943    .text               mf_p.l(fadd.o)
-    0x07fc51fa   0x07fc51fa   0x0000007a   Code   RO         3945    .text               mf_p.l(fmul.o)
-    0x07fc5274   0x07fc5274   0x00000028   Code   RO         3949    .text               mf_p.l(f2d.o)
-    0x07fc529c   0x07fc529c   0x00000060   Code   RO         3968    .text               mc_p.l(uldiv.o)
-    0x07fc52fc   0x07fc52fc   0x00000000   Code   RO         3970    .text               mc_p.l(iusefp.o)
-    0x07fc52fc   0x07fc52fc   0x00000082   Code   RO         3971    .text               mf_p.l(fepilogue.o)
-    0x07fc537e   0x07fc537e   0x00000002   PAD
-    0x07fc5380   0x07fc5380   0x00000164   Code   RO         3973    .text               mf_p.l(dadd.o)
-    0x07fc54e4   0x07fc54e4   0x000000d0   Code   RO         3975    .text               mf_p.l(dmul.o)
-    0x07fc55b4   0x07fc55b4   0x000000f0   Code   RO         3977    .text               mf_p.l(ddiv.o)
-    0x07fc56a4   0x07fc56a4   0x00000040   Code   RO         3979    .text               mf_p.l(dfixul.o)
-    0x07fc56e4   0x07fc56e4   0x00000028   Code   RO         3981    .text               mf_p.l(cdrcmple.o)
-    0x07fc570c   0x07fc570c   0x00000024   Code   RO         3983    .text               mc_p.l(init.o)
-    0x07fc5730   0x07fc5730   0x00000022   Code   RO         3986    .text               mc_p.l(llushr.o)
-    0x07fc5752   0x07fc5752   0x00000026   Code   RO         3988    .text               mc_p.l(llsshr.o)
-    0x07fc5778   0x07fc5778   0x000000be   Code   RO         3991    .text               mf_p.l(depilogue.o)
-    0x07fc5836   0x07fc5836   0x00000002   PAD
-    0x07fc5838   0x07fc5838   0x00000034   Code   RO         3916    i.__0snprintf       mc_p.l(printfa.o)
-    0x07fc586c   0x07fc586c   0x0000002e   Code   RO         3993    i.__ARM_clz         mf_p.l(depilogue.o)
-    0x07fc589a   0x07fc589a   0x0000000e   Code   RO         3997    i.__scatterload_copy  mc_p.l(handlers.o)
-    0x07fc58a8   0x07fc58a8   0x00000002   Code   RO         3998    i.__scatterload_null  mc_p.l(handlers.o)
-    0x07fc58aa   0x07fc58aa   0x0000000e   Code   RO         3999    i.__scatterload_zeroinit  mc_p.l(handlers.o)
-    0x07fc58b8   0x07fc58b8   0x00000174   Code   RO         3922    i._fp_digits        mc_p.l(printfa.o)
-    0x07fc5a2c   0x07fc5a2c   0x000006ec   Code   RO         3923    i._printf_core      mc_p.l(printfa.o)
-    0x07fc6118   0x07fc6118   0x00000020   Code   RO         3924    i._printf_post_padding  mc_p.l(printfa.o)
-    0x07fc6138   0x07fc6138   0x0000002c   Code   RO         3925    i._printf_pre_padding  mc_p.l(printfa.o)
-    0x07fc6164   0x07fc6164   0x00000016   Code   RO         3926    i._snputc           mc_p.l(printfa.o)
-    0x07fc617a   0x07fc617a   0x0000000e   Data   RO          348    .constdata          nvds.o
-    0x07fc6188   0x07fc6188   0x00000184   Data   RO          537    .constdata          jump_table.o
-    0x07fc630c   0x07fc630c   0x000000bc   Data   RO          538    .constdata          jump_table.o
-    0x07fc63c8   0x07fc63c8   0x0000005a   Data   RO          667    .constdata          arch_system.o
-    0x07fc6422   0x07fc6422   0x00000002   PAD
-    0x07fc6424   0x07fc6424   0x00000030   Data   RO          802    .constdata          chacha20.o
-    0x07fc6454   0x07fc6454   0x00000008   Data   RO          871    .constdata          gpio.o
-    0x07fc645c   0x07fc645c   0x00000004   Data   RO         1045    .constdata          adc_58x.o
-    0x07fc6460   0x07fc6460   0x000000f4   Data   RO         2362    .constdata          diss.o
-    0x07fc6554   0x07fc6554   0x00000018   Data   RO         2431    .constdata          diss_task.o
-    0x07fc656c   0x07fc656c   0x00000008   Data   RO         2432    .constdata          diss_task.o
-    0x07fc6574   0x07fc6574   0x00000010   Data   RO         2498    .constdata          custs1.o
-    0x07fc6584   0x07fc6584   0x00000048   Data   RO         2521    .constdata          custs1_task.o
-    0x07fc65cc   0x07fc65cc   0x00000008   Data   RO         2522    .constdata          custs1_task.o
-    0x07fc65d4   0x07fc65d4   0x00000050   Data   RO         2713    .constdata          app.o
-    0x07fc6624   0x07fc6624   0x00000068   Data   RO         2879    .constdata          app_task.o
-    0x07fc668c   0x07fc668c   0x00000008   Data   RO         2880    .constdata          app_task.o
-    0x07fc6694   0x07fc6694   0x00000008   Data   RO         2881    .constdata          app_task.o
-    0x07fc669c   0x07fc669c   0x00000008   Data   RO         2972    .constdata          app_diss_task.o
-    0x07fc66a4   0x07fc66a4   0x00000010   Data   RO         3003    .constdata          app_entry_point.o
-    0x07fc66b4   0x07fc66b4   0x00000038   Data   RO         3226    .constdata          user_custs_config.o
-    0x07fc66ec   0x07fc66ec   0x00000010   Data   RO         3239    .constdata          user_custs1_def.o
-    0x07fc66fc   0x07fc66fc   0x00000002   Data   RO         3240    .constdata          user_custs1_def.o
-    0x07fc66fe   0x07fc66fe   0x00000002   Data   RO         3241    .constdata          user_custs1_def.o
-    0x07fc6700   0x07fc6700   0x00000002   Data   RO         3242    .constdata          user_custs1_def.o
-    0x07fc6702   0x07fc6702   0x00000010   Data   RO         3243    .constdata          user_custs1_def.o
-    0x07fc6712   0x07fc6712   0x00000002   Data   RO         3244    .constdata          user_custs1_def.o
-    0x07fc6714   0x07fc6714   0x00000001   Data   RO         3245    .constdata          user_custs1_def.o
-    0x07fc6715   0x07fc6715   0x00000001   PAD
-    0x07fc6716   0x07fc6716   0x00000002   Data   RO         3246    .constdata          user_custs1_def.o
-    0x07fc6718   0x07fc6718   0x00000050   Data   RO         3247    .constdata          user_custs1_def.o
-    0x07fc6768   0x07fc6768   0x00000018   Data   RO         3352    .constdata          dice_communication.o
-    0x07fc6780   0x07fc6780   0x00000014   Data   RO         3395    .constdata          dice_led_driver.o
-    0x07fc6794   0x07fc6794   0x00000754   Data   RO         3456    .constdata          dice_neural_network.o
-    0x07fc6ee8   0x07fc6ee8   0x00000110   Data   RO         3635    .constdata          da14585_586.lib(patch.o)
-    0x07fc6ff8   0x07fc6ff8   0x00000016   Data   RO         3659    .constdata          da14585_586.lib(pll_vcocal_lut.o)
-    0x07fc700e   0x07fc700e   0x00000002   PAD
-    0x07fc7010   0x07fc7010   0x00000030   Data   RO         3995    Region$$Table       anon$$obj.o
-    0x07fc7040   0x07fc7040   0x00000004   Data   RW          668    .data               arch_system.o
+    0x07fc1a04   0x07fc1a04   0x00000010   Code   RO         2069    .text               systick.o
+    0x07fc1a14   0x07fc1a14   0x000002a4   Code   RO         2161    .text               rwble.o
+    0x07fc1cb8   0x07fc1cb8   0x000001d0   Code   RO         2212    .text               rwip.o
+    0x07fc1e88   0x07fc1e88   0x0000017c   Code   RO         2240    .text               rf_585.o
+    0x07fc2004   0x07fc2004   0x0000020c   Code   RO         2298    .text               attm_db_128.o
+    0x07fc2210   0x07fc2210   0x00000120   Code   RO         2360    .text               custom_common.o
+    0x07fc2330   0x07fc2330   0x0000017c   Code   RO         2378    .text               diss.o
+    0x07fc24ac   0x07fc24ac   0x000001d8   Code   RO         2447    .text               diss_task.o
+    0x07fc2684   0x07fc2684   0x00000194   Code   RO         2514    .text               custs1.o
+    0x07fc2818   0x07fc2818   0x000005e4   Code   RO         2537    .text               custs1_task.o
+    0x07fc2dfc   0x07fc2dfc   0x0000020c   Code   RO         2612    .text               prf.o
+    0x07fc3008   0x07fc3008   0x000000b4   Code   RO         2643    .text               app_default_handlers.o
+    0x07fc30bc   0x07fc30bc   0x00000414   Code   RO         2705    .text               app.o
+    0x07fc34d0   0x07fc34d0   0x00000290   Code   RO         2894    .text               app_task.o
+    0x07fc3760   0x07fc3760   0x0000003c   Code   RO         2976    .text               app_diss.o
+    0x07fc379c   0x07fc379c   0x000000e0   Code   RO         2988    .text               app_diss_task.o
+    0x07fc387c   0x07fc387c   0x00000088   Code   RO         3019    .text               app_entry_point.o
+    0x07fc3904   0x07fc3904   0x00000028   Code   RO         3056    .text               app_msg_utils.o
+    0x07fc392c   0x07fc392c   0x00000002   Code   RO         3134    .text               app_easy_timer.o
+    0x07fc392e   0x07fc392e   0x00000002   Code   RO         3135    .text               app_easy_timer.o
+    0x07fc3930   0x07fc3930   0x000001e4   Code   RO         3136    .text               app_easy_timer.o
+    0x07fc3b14   0x07fc3b14   0x00000060   Code   RO         3170    .text               app_customs.o
+    0x07fc3b74   0x07fc3b74   0x00000018   Code   RO         3192    .text               app_customs_task.o
+    0x07fc3b8c   0x07fc3b8c   0x000000b4   Code   RO         3276    .text               user_periph_setup.o
+    0x07fc3c40   0x07fc3c40   0x00000038   Code   RO         3322    .text               user_custs1_impl.o
+    0x07fc3c78   0x07fc3c78   0x00000218   Code   RO         3344    .text               user_peripheral.o
+    0x07fc3e90   0x07fc3e90   0x000000c4   Code   RO         3368    .text               dice_communication.o
+    0x07fc3f54   0x07fc3f54   0x000001e4   Code   RO         3410    .text               dice_led_driver.o
+    0x07fc4138   0x07fc4138   0x000001e4   Code   RO         3504    .text               dice_neural_network.o
+    0x07fc431c   0x07fc431c   0x00000858   Code   RO         3684    .text               da14585_586.lib(patch.o)
+    0x07fc4b74   0x07fc4b74   0x000000fc   Code   RO         3687    .text               da14585_586.lib(rf_calibration.o)
+    0x07fc4c70   0x07fc4c70   0x000000e8   Code   RO         3688    .text               da14585_586.lib(rf_calibration.o)
+    0x07fc4d58   0x07fc4d58   0x000001b0   Code   RO         3689    .text               da14585_586.lib(rf_calibration.o)
+    0x07fc4f08   0x07fc4f08   0x00000024   Code   RO         3708    .text               da14585_586.lib(pll_vcocal_lut.o)
+    0x07fc4f2c   0x07fc4f2c   0x000000e8   Code   RO         3727    .text               da14585_586.lib(smpc_util.o)
+    0x07fc5014   0x07fc5014   0x000000b2   Code   RO         3993    .text               mf_p.l(fadd.o)
+    0x07fc50c6   0x07fc50c6   0x0000007a   Code   RO         3995    .text               mf_p.l(fmul.o)
+    0x07fc5140   0x07fc5140   0x00000028   Code   RO         3999    .text               mf_p.l(f2d.o)
+    0x07fc5168   0x07fc5168   0x00000060   Code   RO         4018    .text               mc_p.l(uldiv.o)
+    0x07fc51c8   0x07fc51c8   0x00000000   Code   RO         4020    .text               mc_p.l(iusefp.o)
+    0x07fc51c8   0x07fc51c8   0x00000082   Code   RO         4021    .text               mf_p.l(fepilogue.o)
+    0x07fc524a   0x07fc524a   0x00000002   PAD
+    0x07fc524c   0x07fc524c   0x00000164   Code   RO         4023    .text               mf_p.l(dadd.o)
+    0x07fc53b0   0x07fc53b0   0x000000d0   Code   RO         4025    .text               mf_p.l(dmul.o)
+    0x07fc5480   0x07fc5480   0x000000f0   Code   RO         4027    .text               mf_p.l(ddiv.o)
+    0x07fc5570   0x07fc5570   0x00000040   Code   RO         4029    .text               mf_p.l(dfixul.o)
+    0x07fc55b0   0x07fc55b0   0x00000028   Code   RO         4031    .text               mf_p.l(cdrcmple.o)
+    0x07fc55d8   0x07fc55d8   0x00000024   Code   RO         4033    .text               mc_p.l(init.o)
+    0x07fc55fc   0x07fc55fc   0x00000022   Code   RO         4036    .text               mc_p.l(llushr.o)
+    0x07fc561e   0x07fc561e   0x00000026   Code   RO         4038    .text               mc_p.l(llsshr.o)
+    0x07fc5644   0x07fc5644   0x000000be   Code   RO         4041    .text               mf_p.l(depilogue.o)
+    0x07fc5702   0x07fc5702   0x00000002   PAD
+    0x07fc5704   0x07fc5704   0x00000034   Code   RO         3966    i.__0snprintf       mc_p.l(printfa.o)
+    0x07fc5738   0x07fc5738   0x0000002e   Code   RO         4043    i.__ARM_clz         mf_p.l(depilogue.o)
+    0x07fc5766   0x07fc5766   0x0000000e   Code   RO         4047    i.__scatterload_copy  mc_p.l(handlers.o)
+    0x07fc5774   0x07fc5774   0x00000002   Code   RO         4048    i.__scatterload_null  mc_p.l(handlers.o)
+    0x07fc5776   0x07fc5776   0x0000000e   Code   RO         4049    i.__scatterload_zeroinit  mc_p.l(handlers.o)
+    0x07fc5784   0x07fc5784   0x00000174   Code   RO         3972    i._fp_digits        mc_p.l(printfa.o)
+    0x07fc58f8   0x07fc58f8   0x000006ec   Code   RO         3973    i._printf_core      mc_p.l(printfa.o)
+    0x07fc5fe4   0x07fc5fe4   0x00000020   Code   RO         3974    i._printf_post_padding  mc_p.l(printfa.o)
+    0x07fc6004   0x07fc6004   0x0000002c   Code   RO         3975    i._printf_pre_padding  mc_p.l(printfa.o)
+    0x07fc6030   0x07fc6030   0x00000016   Code   RO         3976    i._snputc           mc_p.l(printfa.o)
+    0x07fc6046   0x07fc6046   0x0000000e   Data   RO          348    .constdata          nvds.o
+    0x07fc6054   0x07fc6054   0x00000184   Data   RO          537    .constdata          jump_table.o
+    0x07fc61d8   0x07fc61d8   0x000000bc   Data   RO          538    .constdata          jump_table.o
+    0x07fc6294   0x07fc6294   0x0000005a   Data   RO          667    .constdata          arch_system.o
+    0x07fc62ee   0x07fc62ee   0x00000002   PAD
+    0x07fc62f0   0x07fc62f0   0x00000030   Data   RO          802    .constdata          chacha20.o
+    0x07fc6320   0x07fc6320   0x00000008   Data   RO          871    .constdata          gpio.o
+    0x07fc6328   0x07fc6328   0x00000004   Data   RO         1045    .constdata          adc_58x.o
+    0x07fc632c   0x07fc632c   0x000000f4   Data   RO         2379    .constdata          diss.o
+    0x07fc6420   0x07fc6420   0x00000018   Data   RO         2448    .constdata          diss_task.o
+    0x07fc6438   0x07fc6438   0x00000008   Data   RO         2449    .constdata          diss_task.o
+    0x07fc6440   0x07fc6440   0x00000010   Data   RO         2515    .constdata          custs1.o
+    0x07fc6450   0x07fc6450   0x00000048   Data   RO         2538    .constdata          custs1_task.o
+    0x07fc6498   0x07fc6498   0x00000008   Data   RO         2539    .constdata          custs1_task.o
+    0x07fc64a0   0x07fc64a0   0x00000050   Data   RO         2730    .constdata          app.o
+    0x07fc64f0   0x07fc64f0   0x00000068   Data   RO         2896    .constdata          app_task.o
+    0x07fc6558   0x07fc6558   0x00000008   Data   RO         2897    .constdata          app_task.o
+    0x07fc6560   0x07fc6560   0x00000008   Data   RO         2898    .constdata          app_task.o
+    0x07fc6568   0x07fc6568   0x00000008   Data   RO         2989    .constdata          app_diss_task.o
+    0x07fc6570   0x07fc6570   0x00000010   Data   RO         3020    .constdata          app_entry_point.o
+    0x07fc6580   0x07fc6580   0x00000038   Data   RO         3243    .constdata          user_custs_config.o
+    0x07fc65b8   0x07fc65b8   0x00000010   Data   RO         3256    .constdata          user_custs1_def.o
+    0x07fc65c8   0x07fc65c8   0x00000002   Data   RO         3257    .constdata          user_custs1_def.o
+    0x07fc65ca   0x07fc65ca   0x00000002   Data   RO         3258    .constdata          user_custs1_def.o
+    0x07fc65cc   0x07fc65cc   0x00000002   Data   RO         3259    .constdata          user_custs1_def.o
+    0x07fc65ce   0x07fc65ce   0x00000010   Data   RO         3260    .constdata          user_custs1_def.o
+    0x07fc65de   0x07fc65de   0x00000002   Data   RO         3261    .constdata          user_custs1_def.o
+    0x07fc65e0   0x07fc65e0   0x00000001   Data   RO         3262    .constdata          user_custs1_def.o
+    0x07fc65e1   0x07fc65e1   0x00000001   PAD
+    0x07fc65e2   0x07fc65e2   0x00000002   Data   RO         3263    .constdata          user_custs1_def.o
+    0x07fc65e4   0x07fc65e4   0x00000050   Data   RO         3264    .constdata          user_custs1_def.o
+    0x07fc6634   0x07fc6634   0x00000018   Data   RO         3369    .constdata          dice_communication.o
+    0x07fc664c   0x07fc664c   0x00000014   Data   RO         3415    .constdata          dice_led_driver.o
+    0x07fc6660   0x07fc6660   0x00000754   Data   RO         3506    .constdata          dice_neural_network.o
+    0x07fc6db4   0x07fc6db4   0x00000110   Data   RO         3685    .constdata          da14585_586.lib(patch.o)
+    0x07fc6ec4   0x07fc6ec4   0x00000016   Data   RO         3709    .constdata          da14585_586.lib(pll_vcocal_lut.o)
+    0x07fc6eda   0x07fc6eda   0x00000002   PAD
+    0x07fc6edc   0x07fc6edc   0x00000030   Data   RO         4045    Region$$Table       anon$$obj.o
+    0x07fc6f0c   0x07fc6f0c   0x00000004   Data   RW          668    .data               arch_system.o
 
 
-    Execution Region ER_PRODTEST (Exec base: 0x07fc7048, Load base: 0x07fc7044, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE, UNINIT)
+    Execution Region ER_PRODTEST (Exec base: 0x07fc6f10, Load base: 0x07fc6f10, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE, UNINIT)
 
     **** No section assigned to this execution region ****
 
 
-    Execution Region ER_ZI (Exec base: 0x07fc7048, Load base: 0x07fc7044, Size: 0x00000648, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x07fc6f10, Load base: 0x07fc6f10, Size: 0x00000648, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x07fc7048        -       0x00000030   Zero   RW         1552    .bss                i2c.o
-    0x07fc7078        -       0x00000010   Zero   RW         1999    .bss                trng.o
-    0x07fc7088        -       0x00000001   Zero   RW         2145    .bss                rwble.o
-    0x07fc7089   0x07fc7044   0x00000007   PAD
-    0x07fc7090        -       0x00000600   Zero   RW          272    STACK               startup_da14585_586.o
+    0x07fc6f10        -       0x00000030   Zero   RW         1552    .bss                i2c.o
+    0x07fc6f40        -       0x00000010   Zero   RW         1999    .bss                trng.o
+    0x07fc6f50        -       0x00000001   Zero   RW         2162    .bss                rwble.o
+    0x07fc6f51   0x07fc6f10   0x00000007   PAD
+    0x07fc6f58        -       0x00000600   Zero   RW          272    STACK               startup_da14585_586.o
 
 
-    Execution Region ER_NZI (Exec base: 0x07fc7690, Load base: 0x07fc7044, Size: 0x0000040c, Max: 0xffffffff, ABSOLUTE, UNINIT)
+    Execution Region ER_NZI (Exec base: 0x07fc7558, Load base: 0x07fc6f10, Size: 0x0000040c, Max: 0xffffffff, ABSOLUTE, UNINIT)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x07fc7690        -       0x0000040c   Zero   RW          541    heap_mem_area_not_ret  jump_table.o
+    0x07fc7558        -       0x0000040c   Zero   RW          541    heap_mem_area_not_ret  jump_table.o
 
 
 
@@ -3215,7 +3227,7 @@ Memory Map of the image
     **** No section assigned to this execution region ****
 
 
-    Execution Region RET_DATA (Exec base: 0x07fd4804, Load base: 0x07fd4804, Size: 0x000006a8, Max: 0x00000800, ABSOLUTE)
+    Execution Region RET_DATA (Exec base: 0x07fd4804, Load base: 0x07fd4804, Size: 0x00000698, Max: 0x00000800, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -3230,32 +3242,32 @@ Memory Map of the image
     0x07fd496c        -       0x00000004   Zero   RW         1046    retention_mem_area0  adc_58x.o
     0x07fd4970        -       0x00000040   Zero   RW         1894    retention_mem_area0  uart.o
     0x07fd49b0        -       0x00000020   Zero   RW         2023    retention_mem_area0  dma.o
-    0x07fd49d0        -       0x00000004   Zero   RW         2071    retention_mem_area0  systick.o
-    0x07fd49d4        -       0x00000014   Zero   RW         2146    retention_mem_area0  rwble.o
-    0x07fd49e8        -       0x00000008   Zero   RW         2196    retention_mem_area0  rwip.o
-    0x07fd49f0        -       0x00000004   Zero   RW         2197    retention_mem_area0  rwip.o
-    0x07fd49f4        -       0x00000001   Zero   RW         2227    retention_mem_area0  rf_585.o
+    0x07fd49d0        -       0x00000004   Zero   RW         2074    retention_mem_area0  systick.o
+    0x07fd49d4        -       0x00000014   Zero   RW         2163    retention_mem_area0  rwble.o
+    0x07fd49e8        -       0x00000008   Zero   RW         2213    retention_mem_area0  rwip.o
+    0x07fd49f0        -       0x00000004   Zero   RW         2214    retention_mem_area0  rwip.o
+    0x07fd49f4        -       0x00000001   Zero   RW         2244    retention_mem_area0  rf_585.o
     0x07fd49f5   0x07fd4804   0x00000003   PAD
-    0x07fd49f8        -       0x00000300   Zero   RW         2597    retention_mem_area0  prf.o
-    0x07fd4cf8        -       0x0000005c   Zero   RW         2717    retention_mem_area0  app.o
-    0x07fd4d54        -       0x00000001   Zero   RW         2882    retention_mem_area0  app_task.o
+    0x07fd49f8        -       0x00000300   Zero   RW         2614    retention_mem_area0  prf.o
+    0x07fd4cf8        -       0x0000005c   Zero   RW         2734    retention_mem_area0  app.o
+    0x07fd4d54        -       0x00000001   Zero   RW         2899    retention_mem_area0  app_task.o
     0x07fd4d55   0x07fd4804   0x00000003   PAD
-    0x07fd4d58        -       0x00000050   Zero   RW         3122    retention_mem_area0  app_easy_timer.o
-    0x07fd4da8        -       0x0000004c   Zero   RW         3330    retention_mem_area0  user_peripheral.o
-    0x07fd4df4        -       0x0000001a   Zero   RW         3354    retention_mem_area0  dice_communication.o
-    0x07fd4e0e        -       0x0000003c   Zero   RW         3396    retention_mem_area0  dice_led_driver.o
-    0x07fd4e4a        -       0x00000012   Zero   RW         3423    retention_mem_area0  dice_led_callback.o
-    0x07fd4e5c        -       0x00000028   Zero   RW         3457    retention_mem_area0  dice_neural_network.o
-    0x07fd4e84        -       0x00000028   Zero   RW         3660    retention_mem_area0  da14585_586.lib(pll_vcocal_lut.o)
+    0x07fd4d58        -       0x00000050   Zero   RW         3139    retention_mem_area0  app_easy_timer.o
+    0x07fd4da8        -       0x0000004c   Zero   RW         3347    retention_mem_area0  user_peripheral.o
+    0x07fd4df4        -       0x0000001a   Zero   RW         3371    retention_mem_area0  dice_communication.o
+    0x07fd4e0e        -       0x0000003c   Zero   RW         3416    retention_mem_area0  dice_led_driver.o
+    0x07fd4e4a   0x07fd4804   0x00000002   PAD
+    0x07fd4e4c        -       0x00000028   Zero   RW         3507    retention_mem_area0  dice_neural_network.o
+    0x07fd4e74        -       0x00000028   Zero   RW         3710    retention_mem_area0  da14585_586.lib(pll_vcocal_lut.o)
 
 
-    Execution Region RET_HEAP (Exec base: 0x07fd4eac, Load base: 0x07fd4804, Size: 0x00000bfc, Max: 0x00000bfc, ABSOLUTE, UNINIT)
+    Execution Region RET_HEAP (Exec base: 0x07fd4e9c, Load base: 0x07fd4804, Size: 0x00000bfc, Max: 0x00000bfc, ABSOLUTE, UNINIT)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x07fd4eac        -       0x0000040c   Zero   RW          539    heap_db_area        jump_table.o
-    0x07fd52b8        -       0x00000274   Zero   RW          540    heap_env_area       jump_table.o
-    0x07fd552c        -       0x0000057c   Zero   RW          542    heap_msg_area       jump_table.o
+    0x07fd4e9c        -       0x0000040c   Zero   RW          539    heap_db_area        jump_table.o
+    0x07fd52a8        -       0x00000274   Zero   RW          540    heap_env_area       jump_table.o
+    0x07fd551c        -       0x0000057c   Zero   RW          542    heap_msg_area       jump_table.o
 
 
 ==============================================================================
@@ -3286,8 +3298,7 @@ Image component sizes
        404         30         16          0          0       7407   custs1.o
       1508         20         80          0          0      24241   custs1_task.o
        196         20         24          0         26       3275   dice_communication.o
-       152         28          0          0         18       3242   dice_led_callback.o
-       604         16         20          0         60       3552   dice_led_driver.o
+       484         18         20          0         60       2302   dice_led_driver.o
        484         22       1876          0         40       3790   dice_neural_network.o
        380         12        244          0          0      13588   diss.o
        472          8         32          0          0      18304   diss_task.o
@@ -3307,20 +3318,20 @@ Image component sizes
         80         16        160          0       1536        876   startup_da14585_586.o
         44          0          0          0          0        677   syscntl.o
         72          8          0          0          0     248560   system_da14585_586.o
-       108         10          0          0          4       2421   systick.o
+        16          4          0          0          4       1214   systick.o
        444         40          0          0       1040       4336   trng.o
        352         14          0          0         64      11933   uart.o
          0          0        123          0          0       1451   user_custs1_def.o
         56          8          0          0          0       4428   user_custs1_impl.o
          0          0         56          0          0        901   user_custs_config.o
-       124         16          0          0          0       4331   user_periph_setup.o
+       180         18          0          0          0       4343   user_periph_setup.o
        536         54          0          0         76       6265   user_peripheral.o
        116         12          0          0          8       4166   wkupct_quadec.o
 
     ----------------------------------------------------------------------
-     16172       1196       3646          4       8480     872811   Object Totals
+     15864       1166       3646          4       8464     867124   Object Totals
          0          0         48          0         80          0   (incl. Generated)
-         0          0          3          0         19          0   (incl. Padding)
+         0          0          3          0         21          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -3378,15 +3389,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     23658       1592       3942          4       8520     871383   Grand Totals
-     23658       1592       3942          4       8520     871383   ELF Image Totals
-     23658       1592       3942          4          0          0   ROM Totals
+     23350       1562       3942          4       8504     865872   Grand Totals
+     23350       1562       3942          4       8504     865872   ELF Image Totals
+     23350       1562       3942          4          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                27600 (  26.95kB)
-    Total RW  Size (RW Data + ZI Data)              8524 (   8.32kB)
-    Total ROM Size (Code + RO Data + RW Data)      27604 (  26.96kB)
+    Total RO  Size (Code + RO Data)                27292 (  26.65kB)
+    Total RW  Size (RW Data + ZI Data)              8508 (   8.31kB)
+    Total ROM Size (Code + RO Data + RW Data)      27296 (  26.66kB)
 
 ==============================================================================
 
