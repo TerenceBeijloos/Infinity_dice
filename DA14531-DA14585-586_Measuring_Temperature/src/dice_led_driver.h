@@ -32,8 +32,8 @@ typedef struct{
 	GPIO_LED	LED_PATERN[3];
 } PATERN;
 
-#define LED_SWITCH 	true //false
-#define SIDE_SWITCH false  // true
+#define LED_SWITCH 	true //false  //Led flase turns the led on
+#define SIDE_SWITCH false  // true//Side true turns the side on
 
 /*
 static const GPIO_SIDE SIDE_TOP 					= {GPIO_PORT_0,GPIO_PIN_0};
