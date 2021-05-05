@@ -16,8 +16,8 @@ typedef enum{
 	left,
 	front,
 	back,
-	right,
-	top
+	top,
+	right
 } SIDES;
 
 typedef struct{
@@ -32,8 +32,8 @@ typedef struct{
 	GPIO_LED	LED_PATERN[3];
 } PATERN;
 
-#define LED_SWITCH 	false //false  //Led flase turns the led on
-#define SIDE_SWITCH false  // true//Side true turns the side on
+#define LED_SWITCH 	false  //Led flase turns the led on
+#define SIDE_SWITCH true   //Side true turns the side on
 
 /*
 static const GPIO_SIDE SIDE_TOP 					= {GPIO_PORT_0,GPIO_PIN_0};
@@ -68,7 +68,6 @@ void led_turn_off(const NUMBER number,const SIDES side);
 
 void led_pair_turn_on(const GPIO_LED pair);
 void led_pair_turn_off(const GPIO_LED pair);
-
 
 PATERN 	led_get_patern(const NUMBER number);
 SIDES 	led_get_side(const NUMBER number);

@@ -60,13 +60,6 @@ void led_periph_init(void){
 	
 	RESERVE_GPIO(LED,LED_MIDDLE_ONE.gpPort,LED_MIDDLE_ONE.gpPin,PID_GPIO);
 	GPIO_ConfigurePin(LED_MIDDLE_ONE.gpPort,LED_MIDDLE_ONE.gpPin,OUTPUT,PID_GPIO, !LED_SWITCH);
-	
-//	for (uint8_t i = 0; i<LED_PATERNS[six].u8Size; i++){
-//		GPIO_PORT port = LED_PATERNS[six].LED_PATERN[i].gpPort;
-//		GPIO_PIN pin 	 = LED_PATERNS[six].LED_PATERN[i].gpPin;
-//		RESERVE_GPIO(led,port, pin,PID_GPIO);
-//		GPIO_ConfigurePin(port, pin, OUTPUT, PID_GPIO, !LED_SWITCH);
-//	}
 
 }
 
