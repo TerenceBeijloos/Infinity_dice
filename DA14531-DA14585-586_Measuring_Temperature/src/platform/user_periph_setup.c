@@ -134,53 +134,5 @@ void periph_init(void)
 		
 //		dice_flash_init();
 		led_callback_init();
-		/*LED_DIAGANOL_LTR
-		LED_DIAGANOL_RTL
-		LED_MIDDLE_PAIR 
-		LED_MIDDLE_ONE */
-		
-		//5
-		uint64_t i = 0;
-		uint8_t number = 0;
-		GPIO_LED previous = LED_MIDDLE_ONE;
-		
-
-//		while(true){
-//			i++;
-//			if(i >= 400000){
-//				i = 0;
-//				number++;
-//				
-//				if(number > 4){
-//					number = 1;
-//				}
-//					
-//				switch(number){
-//					case 1:
-//						led_pair_turn_on(LED_DIAGANOL_LTR);
-//						led_pair_turn_off(previous);
-//						previous = LED_DIAGANOL_LTR;
-//						break;
-//					case 2:
-//						led_pair_turn_on(LED_DIAGANOL_RTL);
-//						led_pair_turn_off(previous);
-//						previous = LED_DIAGANOL_RTL;
-//						break;
-//					case 3:
-//						led_pair_turn_on(LED_MIDDLE_PAIR);
-//						led_pair_turn_off(previous);
-//						previous = LED_MIDDLE_PAIR;
-//						break;
-//					case 4:
-//						led_pair_turn_on(LED_MIDDLE_ONE);
-//						led_pair_turn_off(previous);
-//						previous = LED_MIDDLE_ONE;
-//						break;
-//					default:
-//						break;
-
-//				}
-//			}
-//		}
 		
 }
