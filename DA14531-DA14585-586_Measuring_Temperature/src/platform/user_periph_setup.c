@@ -122,7 +122,7 @@ void periph_init(void)
     //set_pad_functions();
 
 		wdg_freeze();
-//	  dice_sensor_init();
+			dice_sensor_init();
 //		dice_chance_init();
 			led_periph_init();
 

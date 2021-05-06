@@ -1,5 +1,6 @@
 #include "dice_sensor_driver.h"
 #include "user_periph_setup.h"
+#include "temp.h"
 
 void dice_sensor_test(void){
 	uint8_t u8aData = 0x01;
@@ -17,13 +18,13 @@ void dice_sensor_test(void){
 /****************************************************************************************/
 
 static void dice_sensor_periph_init(void){
-//	RESERVE_GPIO(SDA,SDA_PORT, SDA_PIN, PID_I2C_SDA);
-//	RESERVE_GPIO(SCL,SCL_PORT, SCL_PIN, PID_I2C_SCL);
-//	
-//	GPIO_ConfigurePin(SCL_PORT, SCL_PIN, INPUT_PULLUP, PID_I2C_SCL, false);
-//  GPIO_ConfigurePin(SDA_PORT, SDA_PIN, INPUT_PULLUP, PID_I2C_SDA, false);
-//	
-//	i2c_init(&i2c_cfg);
+	RESERVE_GPIO(SDA,SDA_PORT, SDA_PIN, PID_I2C_SDA);
+	RESERVE_GPIO(SCL,SCL_PORT, SCL_PIN, PID_I2C_SCL);
+	
+	GPIO_ConfigurePin(SCL_PORT, SCL_PIN, INPUT_PULLUP, PID_I2C_SCL, false);
+	GPIO_ConfigurePin(SDA_PORT, SDA_PIN, INPUT_PULLUP, PID_I2C_SDA, false);
+	
+	i2c_init(&i2c_cfg);
 }
 	
 static void dice_sensor_var_init(void){
@@ -42,6 +43,8 @@ void dice_sensor_init(void){
 	dice_sensor_var_init();
 	dice_sensor_periph_init();
 	
+	i2c_abort_t *abrt_code;
+	sensor_data = dice_sensor_read_byte(WHO_AM_I,abrt_code);
 }
 
 /****************************************************************************************/
@@ -97,7 +100,7 @@ uint8_t dice_sensor_read_byte(const uint8_t u8Address, i2c_abort_t *abrt_code){
 	
 	if( dice_sensor_out_of_bound(u8Address,false)){
 		*abrt_code = I2C_ABORT_SW_ERROR;
-		return NULL;
+		return 0xFF;
 	}
 	
 	uint8_t u8aBuffer[ADDRESS_SIZE];
@@ -105,10 +108,11 @@ uint8_t dice_sensor_read_byte(const uint8_t u8Address, i2c_abort_t *abrt_code){
 	
 	while(i2c_controler_is_busy()){}
 	i2c_master_transmit_buffer_sync(u8aBuffer,ADDRESS_SIZE,abrt_code,I2C_F_WAIT_FOR_STOP);
-	if(*abrt_code != I2C_ABORT_NONE){return NULL;}
+	if(*abrt_code != I2C_ABORT_NONE){return 0xFF;}
 	
 	while(i2c_controler_is_busy()){}
 	i2c_master_receive_buffer_sync(u8aBuffer,1,abrt_code,I2C_F_WAIT_FOR_STOP); //1 = read 1 byte
+	if(*abrt_code != I2C_ABORT_NONE){return 0xFF;}
 	
 	return u8aBuffer[0];
 }

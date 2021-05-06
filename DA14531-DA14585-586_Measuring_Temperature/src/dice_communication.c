@@ -11,6 +11,8 @@
 #include "systick.h"
 #include <time.h> 
 
+#include "temp.h"
+
 static bool bNormal_mode																__SECTION_ZERO("retention_mem_area0");
 static uint8_t u8aDice_chance[DICE_SIDE_COUNT]					__SECTION_ZERO("retention_mem_area0");
 static char caDice_chance_ntf_string[NTF_STRING_SIZE] 	__SECTION_ZERO("retention_mem_area0");
@@ -57,7 +59,7 @@ void dice_chance_send(void){
 	
 	static const uint16_t size = 7;
 	char last_prediction[size];
-	snprintf(last_prediction, size, "%f", predict5);
+	snprintf(last_prediction, size, "%u", sensor_data);
 	
 	struct custs1_val_ntf_ind_req* req = KE_MSG_ALLOC_DYN(CUSTS1_VAL_NTF_REQ,
 																				prf_get_task_from_id(TASK_ID_CUSTS1),

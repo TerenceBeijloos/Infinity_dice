@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060960: Last Updated: Wed May 05 12:23:06 2021
+;#<FEEDBACK># ARM Linker, 5060960: Last Updated: Thu May 06 16:19:05 2021
 ;VERSION 0.2
 ;FILE adc_58x.o
 adc_disable <= USED 0
@@ -106,8 +106,6 @@ dice_sensor_api_get_rotation_velocity <= USED 0
 dice_sensor_api_roll_isr <= USED 0
 dice_sensor_api_set_roll_interupt <= USED 0
 ;FILE dice_sensor_driver.o
-dice_sensor_init <= USED 0
-dice_sensor_read_byte <= USED 0
 dice_sensor_read_multiple <= USED 0
 dice_sensor_test <= USED 0
 dice_sensor_write_bits <= USED 0
@@ -154,15 +152,10 @@ hw_otpc_tdec <= USED 0
 hw_otpc_twr <= USED 0
 hw_otpc_write_rr <= USED 0
 ;FILE i2c.o
-i2c_init <= USED 0
 i2c_master_receive_buffer_async <= USED 0
-i2c_master_receive_buffer_sync <= USED 0
 i2c_master_transmit_buffer_async <= USED 0
-i2c_master_transmit_buffer_sync <= USED 0
 i2c_register_int <= USED 0
 i2c_release <= USED 0
-i2c_setup_master <= USED 0
-i2c_setup_slave <= USED 0
 i2c_slave_receive_buffer_async <= USED 0
 i2c_slave_receive_buffer_sync <= USED 0
 i2c_slave_transmit_buffer_async <= USED 0

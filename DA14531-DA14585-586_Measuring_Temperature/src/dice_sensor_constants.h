@@ -5,22 +5,22 @@
 /* I2C configuration                                                                  	*/
 /****************************************************************************************/
 
-#define I2C_SLAVE_ADDRESS (0xD6>>1)                  // Set slave device address
+#define I2C_SLAVE_ADDRESS ((0xD6>>1))                  // Set slave device address D6
 #define I2C_SPEED_MODE    I2C_SPEED_FAST        // Speed mode: 			I2C_SPEED_FAST (400 kbits/s)
 #define I2C_ADDRESS_MODE  I2C_ADDRESSING_7B     // Addressing mode: I2C_ADDRESSING_7B
 #define I2C_ADDRESS_SIZE  I2C_1BYTES_ADDR       // Address width: 	I2C_1BYTE_ADDR 
 	
-#define SCL_PORT  				GPIO_PORT_0
-#define SCL_PIN	  				GPIO_PIN_1
-#define SDA_PORT  				GPIO_PORT_0
-#define SDA_PIN   				GPIO_PIN_7
-
+#define SCL_PORT  				GPIO_PORT_1
+#define SCL_PIN	  				GPIO_PIN_3
+#define SDA_PORT  				GPIO_PORT_1
+#define SDA_PIN   				GPIO_PIN_2
 
 /****************************************************************************************/
 /* Sensor interrupt configuration                                                       */
 /****************************************************************************************/
 //Interrupt configuration for six dimention interrupt (for vibration)
 //this interrupt should trigger when the dice hits the table
+//TODO: interrupt pins per sensor
 #define SIX_D_INT_PORT			GPIO_PORT_1
 #define SIX_D_INT_PIN				GPIO_PIN_3
 #define SIX_D_INT_TYPE 			GPIO0_IRQn		
