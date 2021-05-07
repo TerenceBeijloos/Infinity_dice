@@ -12,8 +12,8 @@ typedef enum{
 
 //Order must be kept like this because numbers are linked to sides with the number of the side, see led_periph_init.
 typedef enum{
-	bottom = 0,
-	left,
+	left = 0,
+	bottom,
 	front,
 	back,
 	top,

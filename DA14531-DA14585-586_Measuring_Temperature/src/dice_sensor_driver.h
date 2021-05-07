@@ -6,10 +6,16 @@
 #include "i2c.h"
 #include "compiler.h"
 
+typedef enum {
+	accelero_gyroscope = 0,
+	magnetometer
+} sensor;
+
 
 static uint8_t u8aWrite_permissions[PERMISSIONS_WRITE] __SECTION_ZERO("retention_mem_area0");
-
-static const i2c_cfg_t i2c_cfg = {
+static sensor sensor_selected __SECTION_ZERO("retention_mem_area0");
+	
+static const i2c_cfg_t i2c_accelero_gyroscope_cfg = {
     .clock_cfg.ss_hcnt = I2C_SS_SCL_HCNT_REG_RESET,
     .clock_cfg.ss_lcnt = I2C_SS_SCL_LCNT_REG_RESET,
     .clock_cfg.fs_hcnt = I2C_FS_SCL_HCNT_REG_RESET,
@@ -18,10 +24,28 @@ static const i2c_cfg_t i2c_cfg = {
     .speed = I2C_SPEED_MODE,
     .mode = I2C_MODE_MASTER,
     .addr_mode = I2C_ADDRESS_MODE,
-    .address = I2C_SLAVE_ADDRESS,
+    .address = I2C_ACCELERO_GYROSCOPE_ADDRESS,
     .tx_fifo_level = 1,
     .rx_fifo_level = 1,
 };
+
+static const i2c_cfg_t i2c_magnetometer_cfg = {
+    .clock_cfg.ss_hcnt = I2C_SS_SCL_HCNT_REG_RESET,
+    .clock_cfg.ss_lcnt = I2C_SS_SCL_LCNT_REG_RESET,
+    .clock_cfg.fs_hcnt = I2C_FS_SCL_HCNT_REG_RESET,
+    .clock_cfg.fs_lcnt = I2C_FS_SCL_LCNT_REG_RESET,
+    .restart_en = I2C_RESTART_ENABLE,
+    .speed = I2C_SPEED_MODE,
+    .mode = I2C_MODE_MASTER,
+    .addr_mode = I2C_ADDRESS_MODE,
+    .address = I2C_MAGNETOMETER_ADDRESS,
+    .tx_fifo_level = 1,
+    .rx_fifo_level = 1,
+};
+
+void dice_sensor_enable_magnetometer(void);
+
+void dice_sensor_enable_accelero_gyroscope(void);
 
 void dice_sensor_test(void);
 

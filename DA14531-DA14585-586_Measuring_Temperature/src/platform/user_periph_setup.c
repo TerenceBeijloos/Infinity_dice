@@ -47,6 +47,7 @@
 #include "dice_led_driver.h"
 #include "dice_led_callback.h"
 #include "dice_flash_driver.h"
+#include "temp.h"
 
 /**
  ****************************************************************************************
@@ -119,7 +120,7 @@ void periph_init(void)
 		//dice_flash_periph_init();
 					
     // Set pad functionality
-    //set_pad_functions();
+//    set_pad_functions();
 
 		wdg_freeze();
 			dice_sensor_init();
@@ -131,6 +132,12 @@ void periph_init(void)
     // Enable the pads
     GPIO_set_pad_latch_en(true);
 
+//	while(true)
+//	{
+		i2c_abort_t abrt_code;
+		dice_sensor_enable_magnetometer();
+		sensor_data = dice_sensor_read_byte(WHO_AM_I_M,&abrt_code);
+//	}
 		
 //		dice_flash_init();
 		led_callback_init();

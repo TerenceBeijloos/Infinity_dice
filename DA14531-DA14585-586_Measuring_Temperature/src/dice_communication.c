@@ -59,6 +59,7 @@ void dice_chance_send(void){
 	
 	static const uint16_t size = 7;
 	char last_prediction[size];
+	
 	snprintf(last_prediction, size, "%u", sensor_data);
 	
 	struct custs1_val_ntf_ind_req* req = KE_MSG_ALLOC_DYN(CUSTS1_VAL_NTF_REQ,

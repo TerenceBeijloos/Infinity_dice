@@ -2,6 +2,24 @@
 #include "user_periph_setup.h"
 #include "temp.h"
 
+void dice_sensor_enable_magnetometer(void)
+{
+	if(sensor_selected != magnetometer)
+	{
+		sensor_selected = magnetometer;
+		i2c_init(&i2c_magnetometer_cfg);
+	}
+}
+
+void dice_sensor_enable_accelero_gyroscope(void)
+{
+	if(sensor_selected != accelero_gyroscope)
+	{
+		sensor_selected = accelero_gyroscope;
+		i2c_init(&i2c_accelero_gyroscope_cfg);
+	}
+}
+
 void dice_sensor_test(void){
 	uint8_t u8aData = 0x01;
 	i2c_abort_t *abrt_code;
@@ -24,27 +42,25 @@ static void dice_sensor_periph_init(void){
 	GPIO_ConfigurePin(SCL_PORT, SCL_PIN, INPUT_PULLUP, PID_I2C_SCL, false);
 	GPIO_ConfigurePin(SDA_PORT, SDA_PIN, INPUT_PULLUP, PID_I2C_SDA, false);
 	
-	i2c_init(&i2c_cfg);
+	sensor_selected = accelero_gyroscope;
+	i2c_init(&i2c_accelero_gyroscope_cfg);
 }
 	
 static void dice_sensor_var_init(void){
 
 	uint8_t u8Index = 0;
 	
-	u8Index = dice_sensor_add_limit(u8Index,ACT_THS, INT2_CTRL, u8aWrite_permissions);
-	u8Index = dice_sensor_add_limit(u8Index,CTRL_REG1_G, CTRL_REG3_G, u8aWrite_permissions);
-	u8Index = dice_sensor_add_limit(u8Index,CTRL_REG4, CTRL_REG10, u8aWrite_permissions);
-	u8Index = dice_sensor_add_limit(u8Index,FIFO_CTRL, FIFO_CTRL, u8aWrite_permissions);
-	u8Index = dice_sensor_add_limit(u8Index,INT_GEN_CFG_G, INT_GEN_DUR_G, u8aWrite_permissions);
+//	u8Index = dice_sensor_add_limit(u8Index,ACT_THS, INT2_CTRL, u8aWrite_permissions);
+//	u8Index = dice_sensor_add_limit(u8Index,CTRL_REG1_G, CTRL_REG3_G, u8aWrite_permissions);
+//	u8Index = dice_sensor_add_limit(u8Index,CTRL_REG4, CTRL_REG10, u8aWrite_permissions);
+//	u8Index = dice_sensor_add_limit(u8Index,FIFO_CTRL, FIFO_CTRL, u8aWrite_permissions);
+//	u8Index = dice_sensor_add_limit(u8Index,INT_GEN_CFG_G, INT_GEN_DUR_G, u8aWrite_permissions);
 	
 }
 
 void dice_sensor_init(void){
 	dice_sensor_var_init();
 	dice_sensor_periph_init();
-	
-	i2c_abort_t *abrt_code;
-	sensor_data = dice_sensor_read_byte(WHO_AM_I,abrt_code);
 }
 
 /****************************************************************************************/
@@ -153,18 +169,19 @@ bool dice_sensor_out_of_bound(const uint8_t u8Address, bool bRecoverable){
 
 //TODO Implement binary search
 bool dice_sensor_write_permission(const uint8_t u8Address, bool bRecoverable){
+	return true;
 	
-	for (uint8_t i = 0; i<PERMISSIONS_WRITE; i++){
-		if(u8aWrite_permissions[i] == u8Address){
-			return true;
-		}
-	}
-	
-	if(!bRecoverable){
-		//error
-	}
-	
-	return false;
+//	for (uint8_t i = 0; i<PERMISSIONS_WRITE; i++){
+//		if(u8aWrite_permissions[i] == u8Address){
+//			return true;
+//		}
+//	}
+//	
+//	if(!bRecoverable){
+//		//error
+//	}
+//	
+//	return false;
 }
 
 static uint8_t dice_sensor_add_limit(uint8_t u8Array_start, uint8_t u8Address_start, uint8_t u8Address_end, uint8_t *u8pArray){

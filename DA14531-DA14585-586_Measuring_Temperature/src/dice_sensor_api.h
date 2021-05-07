@@ -6,6 +6,10 @@
 
 #include "stdint.h"
 
+void init_gyroscope(void);
+void init_accelerometer(void);
+void init_magnetometer(void);
+
 void dice_sensor_api_set_roll_interupt(void);
 void dice_sensor_api_roll_isr(void);
 
