@@ -4,6 +4,10 @@
 #define I2C_MAGNETOMETER_ADDRESS 						(0x3C>>1)
 #define I2C_ACCELERO_GYROSCOPE_ADDRESS	(0xD6>>1)
 
+#define GYROSCOPE_RESOLUTION 			0.00875
+#define ACCELEROMETER_RESOLUTION	0.000061
+#define MAGNETOMETER_RESOLUTION		0.00014
+
 
 /****************************************************************************************/
 /* I2C configuration                                                                  	*/

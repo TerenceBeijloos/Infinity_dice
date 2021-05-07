@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060960: Last Updated: Fri May 07 15:52:23 2021
+;#<FEEDBACK># ARM Linker, 5060960: Last Updated: Fri May 07 17:12:17 2021
 ;VERSION 0.2
 ;FILE adc_58x.o
 adc_disable <= USED 0
@@ -93,27 +93,31 @@ dice_flash_store_nn_data <= USED 0
 test <= USED 0
 ;FILE dice_led_callback.o
 get_random <= USED 0
+led_callback_init <= USED 0
+led_callback_start_dice_mode <= USED 0
 led_update_key <= USED 0
 ;FILE dice_led_driver.o
 led_get_patern <= USED 0
+led_get_side <= USED 0
 led_pair_turn_off <= USED 0
 led_pair_turn_on <= USED 0
+led_periph_init <= USED 0
+led_turn_off <= USED 0
+led_turn_on <= USED 0
 ;FILE dice_neural_network.o
 network_init <= USED 0
 ;FILE dice_sensor_api.o
+accelerometer_available <= USED 0
 dice_sensor_api_get_orientation <= USED 0
 dice_sensor_api_get_rotation_velocity <= USED 0
 dice_sensor_api_roll_isr <= USED 0
 dice_sensor_api_set_roll_interupt <= USED 0
-init_accelerometer <= USED 0
-init_gyroscope <= USED 0
-init_magnetometer <= USED 0
+gyroscope_available <= USED 0
+magnetometer_available <= USED 0
 ;FILE dice_sensor_driver.o
-dice_sensor_enable_accelero_gyroscope <= USED 0
-dice_sensor_read_multiple <= USED 0
+dice_sensor_read_byte <= USED 0
 dice_sensor_test <= USED 0
 dice_sensor_write_bits <= USED 0
-dice_sensor_write_byte <= USED 0
 dice_sensor_write_multiple <= USED 0
 ;FILE diss.o
 ;FILE dma.o
@@ -288,6 +292,9 @@ syscntl_set_dcdc_vbat3v_level <= USED 0
 ;FILE system_da14585_586.o
 SystemCoreClockUpdate <= USED 0
 ;FILE systick.o
+systick_register_callback <= USED 0
+systick_start <= USED 0
+systick_stop <= USED 0
 systick_value <= USED 0
 systick_wait <= USED 0
 ;FILE trng.o

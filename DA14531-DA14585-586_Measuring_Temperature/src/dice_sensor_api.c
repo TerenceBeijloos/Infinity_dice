@@ -4,6 +4,31 @@
 #include "dice_sensor_driver.h"
 #include "systick.h"
 
+bool gyroscope_available(void)
+{
+	i2c_abort_t abrt_code;
+	dice_sensor_enable_accelero_gyroscope();
+	uint8_t status = dice_sensor_read_byte(STATUS_REG_1, &abrt_code);
+	return ((status & (1<<1)) >> 1);
+}
+
+bool accelerometer_available(void)
+{
+	i2c_abort_t abrt_code;
+	dice_sensor_enable_accelero_gyroscope();
+	uint8_t status = dice_sensor_read_byte(STATUS_REG_1, &abrt_code);
+	return (status & (1<<0));
+}
+
+bool magnetometer_available(void)
+{
+	i2c_abort_t abrt_code;
+	dice_sensor_enable_magnetometer();
+	uint8_t status = dice_sensor_read_byte(STATUS_REG_M, &abrt_code);
+	
+	return ((status & (1<<3)) >> 3);
+}
+
 void init_gyroscope(void)
 {
 	dice_sensor_enable_accelero_gyroscope();

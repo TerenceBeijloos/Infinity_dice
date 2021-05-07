@@ -43,6 +43,8 @@ static const i2c_cfg_t i2c_magnetometer_cfg = {
     .rx_fifo_level = 1,
 };
 
+void read_magnetometer(void);
+
 void dice_sensor_enable_magnetometer(void);
 
 void dice_sensor_enable_accelero_gyroscope(void);

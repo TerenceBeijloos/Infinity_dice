@@ -1,3 +1,3 @@
 #include "temp.h"
 
-unsigned int sensor_data = 69;
+float sensor_data = 69;

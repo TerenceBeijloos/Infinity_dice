@@ -47,6 +47,7 @@
 #include "dice_led_driver.h"
 #include "dice_led_callback.h"
 #include "dice_flash_driver.h"
+#include "dice_sensor_api.h"
 #include "temp.h"
 
 /**
@@ -124,8 +125,11 @@ void periph_init(void)
 
 		wdg_freeze();
 			dice_sensor_init();
+			init_magnetometer();
+			init_accelerometer();
+			init_gyroscope();
 //		dice_chance_init();
-			led_periph_init();
+//			led_periph_init();
 
 		
 		
@@ -134,12 +138,12 @@ void periph_init(void)
 
 //	while(true)
 //	{
-		i2c_abort_t abrt_code;
-		dice_sensor_enable_magnetometer();
-		sensor_data = dice_sensor_read_byte(WHO_AM_I_M,&abrt_code);
+//		i2c_abort_t abrt_code;
+//		dice_sensor_enable_magnetometer();
+//		sensor_data = dice_sensor_read_byte(WHO_AM_I_M,&abrt_code);
 //	}
 		
 //		dice_flash_init();
-		led_callback_init();
+//		led_callback_init();
 		
 }

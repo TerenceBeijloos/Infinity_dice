@@ -1,6 +1,35 @@
 #include "dice_sensor_driver.h"
 #include "user_periph_setup.h"
 #include "temp.h"
+#include "cmath"
+
+#define M_PI 3.14159265359
+//TODO: add parameter with refrence to struct of something
+void read_magnetometer(void)
+{
+	uint8_t temp[6]; // We'll read six bytes from the mag into temp	
+	i2c_abort_t abrt_code;
+	dice_sensor_read_multiple(OUT_X_L_M, temp, 6, &abrt_code);
+
+	uint16_t mx = (temp[1] << 8) | temp[0];
+	uint16_t my = (temp[3] << 8) | temp[2];
+	uint16_t mz = (temp[5] << 8) | temp[4];
+
+	float heading;
+  if (my == 0)
+    heading = (mx < 0) ? M_PI : 0;
+  else
+    heading = atan2(mx, my);
+
+  heading -= -8.58 * M_PI / 180;
+
+  if (heading > M_PI) heading -= (2 * M_PI);
+  else if (heading < -M_PI) heading += (2 * M_PI);
+
+  // Convert everything from radians to degrees:
+  heading *= 180.0 / M_PI;
+	sensor_data = heading;
+}
 
 void dice_sensor_enable_magnetometer(void)
 {

@@ -6,6 +6,10 @@
 
 #include "stdint.h"
 
+bool gyroscope_available(void);
+bool accelerometer_available(void);
+bool magnetometer_available(void);
+
 void init_gyroscope(void);
 void init_accelerometer(void);
 void init_magnetometer(void);
