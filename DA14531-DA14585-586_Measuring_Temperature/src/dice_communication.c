@@ -14,6 +14,7 @@
 
 #include "temp.h"
 
+ke_msg_id_t timer_temperature_ntf      		__SECTION_ZERO("retention_mem_area0"); 		
 static bool bNormal_mode																__SECTION_ZERO("retention_mem_area0");
 static uint8_t u8aDice_chance[DICE_SIDE_COUNT]					__SECTION_ZERO("retention_mem_area0");
 static char caDice_chance_ntf_string[NTF_STRING_SIZE] 	__SECTION_ZERO("retention_mem_area0");
@@ -58,11 +59,11 @@ void dice_chance_send(void){
 	predict(prediction,input);
 	float predict5 = prediction[5];
 	
-	static const uint16_t size = 7;
-	char last_prediction[size];
+	static const uint16_t size = 30;
+	char last_prediction[NTF_STRING_SIZE];
 	
 	read_magnetometer();
-	snprintf(last_prediction, size, "%f", sensor_data);
+	uint8_t length = snprintf(last_prediction, NTF_STRING_SIZE, "(%.0f,%.0f,%.0f)", sensor_data.x,sensor_data.y,sensor_data.z);
 	
 	struct custs1_val_ntf_ind_req* req = KE_MSG_ALLOC_DYN(CUSTS1_VAL_NTF_REQ,
 																				prf_get_task_from_id(TASK_ID_CUSTS1),
@@ -73,10 +74,11 @@ void dice_chance_send(void){
 	req->conidx			 	= 0;                                        //Connection ID to send the data to (this application can only have one connection(0))
 	req->notification = true;                               			//Data is sent as a notification and not as indication
 	req->handle 			= DICE_CHANGE_CHANCE_VAL;      					    //The handle of the characteristic we want to write to
-	req->length 			= NTF_STRING_SIZE;                          //Data length in bytes
-	memcpy(req->value, last_prediction, size);//Copy the string to the message
+	req->length 			= length;                          //Data length in bytes
+	memcpy(req->value, last_prediction, length);//Copy the string to the message
 		
 	ke_msg_send(req);                                       			//Send the message to the task
+	timer_temperature_ntf = app_easy_timer(NOTIFICATION_DELAY/10, dice_chance_send); //Set a timer for NOTIFICATION_DELAY ms
 }
 
 void dice_chance_recieve_handler(struct custs1_val_write_ind const *param){
@@ -103,4 +105,9 @@ void dice_chance_recieve_handler(struct custs1_val_write_ind const *param){
 	}
 	
 	dice_chance_send();
+	
+	if(timer_temperature_ntf == EASY_TIMER_INVALID_TIMER){ 
+		//Start the timer if it is not running
+		timer_temperature_ntf = app_easy_timer(NOTIFICATION_DELAY/10, dice_chance_send); //Set a timer for NOTIFICATION_DELAY ms
+	}
 }

@@ -53,6 +53,7 @@
 #include "dice_communication.h"
 #include "dice_sensor_driver.h"
 #include "dice_led_callback.h"
+#include "temp.h"
 
 #if defined (CFG_USE_INTERNAL_TEMP_SENSOR) && (__DA14531__)
 #include "adc.h"
@@ -122,7 +123,7 @@ static void mnf_data_update()
 {
     uint8_t length;
 
-	
+		read_magnetometer();
     length = snprintf((char*)mnf_data.proprietary_data, TEMPERATURE_DATA, SNPRINT_FORMAT, 0);
     mnf_data.ad_structure_size = sizeof(struct mnf_specific_data_ad_structure ) - sizeof(uint8_t) - (APP_AD_MSD_DATA_LEN - length);
 }
@@ -320,6 +321,7 @@ void user_catch_rest_hndl(ke_msg_id_t const msgid,
             {
                 case DICE_CHANGE_CHANCE_CFG:
 //									GPIO_SetActive(GPIO_LED_PORT, GPIO_LED_PIN);
+
                 break;
 								case DICE_CHANGE_CHANCE_VAL:
 									dice_chance_recieve_handler(msg_param);

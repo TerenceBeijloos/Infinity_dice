@@ -28,7 +28,10 @@ void read_magnetometer(void)
 
   // Convert everything from radians to degrees:
   heading *= 180.0 / M_PI;
-	sensor_data = heading;
+	//Divide by 100 to take up less digits
+	sensor_data.x = mx/100;
+	sensor_data.y = my/100;
+	sensor_data.z = mz/100;
 }
 
 void dice_sensor_enable_magnetometer(void)

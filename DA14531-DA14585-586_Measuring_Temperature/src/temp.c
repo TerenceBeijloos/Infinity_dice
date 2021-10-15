@@ -1,3 +1,3 @@
 #include "temp.h"
 
-float sensor_data = 69;
+struct coordinate sensor_data = {0.0f, 0.0f, 0.0f};

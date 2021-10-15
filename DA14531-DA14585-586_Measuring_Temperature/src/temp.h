@@ -1,6 +1,12 @@
 #ifndef _TEMP_
 #define _TEMP_
 
-extern float sensor_data;
+struct coordinate{
+	float x;
+	float y;
+	float z;
+};
+
+extern struct coordinate sensor_data;
 
 #endif
