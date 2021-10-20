@@ -7,7 +7,7 @@
 void test(){
 	uint8_t u8aPage[SPI_FLASH_PAGE_SIZE];
 	float write_buffef[NN_FLOATS_IN_PAGE];
-	uint16_t actual_size = 0;
+	uint32_t actual_size = 0;
 	
 	for(float j = 1.0f; j<63.0f; j += 1.0f){
 		write_buffef[actual_size] = j;

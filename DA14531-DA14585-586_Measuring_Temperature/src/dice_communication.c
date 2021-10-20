@@ -24,7 +24,7 @@ void dice_chance_init(void){
 	bNormal_mode = false;								
 	memset(u8aDice_chance,0x00,sizeof(u8aDice_chance));				
   memset(caDice_chance_ntf_string,0x00,sizeof(caDice_chance_ntf_string));	
-	network_init();
+	//network_init();
 }
 
 void dice_chance_deinit(void);
@@ -56,7 +56,7 @@ void dice_chance_send(void){
 	float prediction[6];
 	float input[] = { 0.013893f, 0.998055f, 0.146985f, 0.560383f, 0.357070f, 0.638900f };
 	
-	predict(prediction,input);
+	//predict(prediction,input);
 	float predict5 = prediction[5];
 	
 	static const uint16_t size = 30;
@@ -86,6 +86,18 @@ void dice_chance_recieve_handler(struct custs1_val_write_ind const *param){
 	const uint8_t u8Step_size = 3;
 	uint8_t u8Percentage_sum 	= 0;
 	
+	if(param->length >= 1 && param->value[0] == 69)
+	{
+		//wdg_resume();
+		//spi_flash_chip_erase(); //Change this if data other then the boot image is stored
+		//SCB->AIRCR = 0x05FA0004;
+    // Trigger SW reset
+    uint16_t tmp = GetWord16(SYS_CTRL_REG);
+    tmp = (tmp & ~REMAP_ADR0) | 0; // Map ROM at address 0
+    tmp |= SW_RESET;
+    SetWord16(SYS_CTRL_REG, tmp);
+		//for(;;);
+	}
 	if(param->length == 1){
 		bNormal_mode = true;
 	}else if(param->length < 18){

@@ -1,6 +1,6 @@
 #ifndef _DICE_NEURAL_NETWORK_H_
 #define _DICE_NEURAL_NETWORK_H_
-
+/*
 #include "stdint.h"
 #include "compiler.h"
 
@@ -37,5 +37,5 @@ static float act(const float x);
 
 void predict(float* output, const float* input);
 void network_init(void);
-	
+*/	
 #endif // _DICE_NEURAL_NETWORK_H_

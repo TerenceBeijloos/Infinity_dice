@@ -1,16 +1,21 @@
-#! armcc -E -I .\,.\..,.\..\src\config,C:\dev\new_dice\6.0.12.1020.2\sdk\common_project_files\ --cpu Cortex-M0
+#! armcc -E -I .\,.\..,.\..\src\config,C:\dev\SDKs\DA145xx_SDK\6.0.16.1144\sdk\common_project_files\ --cpu Cortex-M0
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;                                                         System RAM                                                         ;
+;                                                             RAM                                                            ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;+******************************+******************************+******************************+******************************+
 ;+ 1st RAM block (32KB)         + 2nd RAM block (16KB)         + 3rd RAM block (16KB)         + 4th RAM block (32KB)         +
 ;+******************************+******************************+******************************+******************************+
-;                                                              ^                 ^            ^                   ^          ;
-;                                                              |                 |            |                   |          ;
-;                                                              |        RET_MEM_BASE_ADDR     |                   |          ;
-;                                                              |                       RAM_4_BASE_ADDR            |          ;
-;                                                       RAM_3_BASE_ADDR                                      __SCT_BLE_BASE  ;
+;                                                                                ^                                ^          ;
+;                                                                                |                                |          ;
+;                                                                       RET_MEM_BASE_ADDR                         |          ;
+;                                                                                                                 |          ;
+;                                                                                                            __SCT_BLE_BASE  ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Comments:                                                                                                                  ;
+; 1. The __SCT_BLE_BASE address is always in the RAM4 block.                                                                 ;
+; 2. The RET_MEM_BASE_ADDR address can be (theoretically) in any RAM block.                                                  ;
+; 3. The FREE_AREA_BASE_ADDR address is always in the RAM4 block.                                                            ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Definition required by da1458x_scatter_config.h
@@ -31,8 +36,20 @@
     #error "CFG_RET_DATA_UNINIT_SIZE is not defined!"
 #endif
 
-#define RET_MEM_BASE_ADDR    ALIGN4_HI((__SCT_BLE_BASE - (CFG_RET_DATA_UNINIT_SIZE + CFG_RET_DATA_SIZE + RET_HEAP_SIZE)))
+; *******************************************************************************************;
+; Memory area where retained data will be stored.                                            ;
+; *******************************************************************************************;
+#define RET_MEM_SIZE        (CFG_RET_DATA_UNINIT_SIZE + CFG_RET_DATA_SIZE + RET_HEAP_SIZE)
+; Retained data base address
+#define RET_MEM_BASE_ADDR    ALIGN4_HI(__SCT_BLE_BASE - RET_MEM_SIZE)
 
+; *******************************************************************************************;
+; Free area resides between the Exchange memory and ROM data.                                ;
+; *******************************************************************************************;
+; Free area base address
+#define FREE_AREA_BASE_ADDR     ALIGN4_HI(__SCT_BLE_BASE + __SCT_EM_BLE_END)
+; Free area size
+#define FREE_AREA_SIZE          (ROM_DATA_BASE_ADDR - FREE_AREA_BASE_ADDR)
 
 #if defined(CFG_CODE_LOCATION_OTP) && defined(CFG_CODE_LOCATION_EXT)
     #error "Only one of CFG_CODE_LOCATION_OTP and CFG_CODE_LOCATION_EXT must be defined!"
@@ -52,22 +69,42 @@
     #define TRNG_BUFFER_AREA_SZ 0
 #endif
 
+; OTP memory size = 64K
+#define OTP_MEM_SIZE            (64 * 1024)
+
+; OTP header section size = 64 * 64-bit words = 512bytes
+#define OTP_HEADER_SIZE         ((64 * 64) / 8)
+
+; Useful OTP memory size:
+; 1. The 512 bytes of the OTP header start at 63.5K offset in OTP
+;    memory.
+; 2. There is a limitation in the location of the TRNG buffer (max size is 1K).
+;    The TRNG buffer must be always placed before the 64K limit in RAM.
+#define OTP_MEM_USEFUL_SIZE     (OTP_MEM_SIZE - OTP_HEADER_SIZE - TRNG_BUFFER_AREA_SZ)
+
 #if CODE_LOCATION_OTP
-
+    ; Base address of code (RAM base address + interrupt vector table size + patch table size)
     #define CODE_AREA_BASE      (0x07fc0000 + 0xC0 + 80)
-    #define CODE_AREA_MAX_SIZE  (0xF800 - (0xC0 + 80))
 
+    ; Max needs in RAM per application - excluding the retained data, the interrupt vector table and the patch table
+    #define CODE_AREA_MAX_SIZE  (RET_MEM_BASE_ADDR - CODE_AREA_BASE)
+
+    ; Useful memory area for OTP code
+    #define CODE_AREA_SIZE      (OTP_MEM_USEFUL_SIZE - (0xC0 + 80))
 #elif CODE_LOCATION_EXT
+    ; Base address of code (RAM base address + interrupt vector table size + patch table size + TRNG buffer)
+    #define CODE_AREA_BASE      ALIGN4_HI(0x07fc0000 + 0xC0 + 80 + TRNG_BUFFER_AREA_SZ)
 
-    #define CODE_AREA_BASE  (0x07fc0000 + 0xC0 + 80 + TRNG_BUFFER_AREA_SZ)
-    #define CODE_AREA_MAX_SIZE  (0x16800 - (0xC0 + 80 + TRNG_BUFFER_AREA_SZ))
+    ; Max needs in RAM per application - excluding the retained data, the interrupt vector table, the patch table and the TRNG buffer
+    #define CODE_AREA_MAX_SIZE  (RET_MEM_BASE_ADDR - CODE_AREA_BASE)
 
+    ; Same as max size
+    #define CODE_AREA_SIZE      CODE_AREA_MAX_SIZE
 #endif
-
 
 LR_IROM1 0x07fc0000 0xc0 {                      ;
     ER_IROM1 0x07fc0000 0xc0 {                  ; load address = execution address
-        *.o (RESET, +First)
+        *.o (RESET, +FIRST)
     }
 }
 
@@ -87,7 +124,7 @@ LR_TRNG_ZI (0x07fc0000 +0xC0+80) TRNG_BUFFER_AREA_SZ {
 
 LR_IROM3 CODE_AREA_BASE CODE_AREA_MAX_SIZE {
 
-    ER_IROM3 CODE_AREA_BASE CODE_AREA_MAX_SIZE {
+    ER_IROM3 CODE_AREA_BASE CODE_AREA_SIZE {
        *(InRoot$$Sections)                      ; All library sections that must be in a
                                                 ; root region, for example, __main.o,
                                                 ; __scatter*.o, __dc*.o, and * Region$$Table
@@ -105,13 +142,12 @@ LR_IROM3 CODE_AREA_BASE CODE_AREA_MAX_SIZE {
         .ANY (prodtest_uninit)
     }
 
-    #if CODE_LOCATION_OTP
+#if CODE_LOCATION_OTP
     ER_TRNG_ZI +0 {
         /* The TRNG buffer area must be located lower than the 64K boundary. */
-        /* This execution region starts at most 2K before the 64K boundary. */
         .ANY(trng_buffer_area_zi, +FIRST)
     }
-    #endif
+#endif
 
     ER_ZI +0 {
         .ANY (+ZI)
@@ -123,19 +159,35 @@ LR_IROM3 CODE_AREA_BASE CODE_AREA_MAX_SIZE {
     }
 }
 
-LR_RETAINED_RAM0 RET_MEM_BASE_ADDR {
+LR_RETAINED_RAM0 RET_MEM_BASE_ADDR RET_MEM_SIZE{
 
     RET_DATA_UNINIT RET_MEM_BASE_ADDR UNINIT CFG_RET_DATA_UNINIT_SIZE {
-        .ANY (retention_mem_area_uninit)        ; uninitialized application data
+        .ANY (retention_mem_area_uninit)        ; uninitialized retained data
     }
 
     RET_DATA +0 CFG_RET_DATA_SIZE {
-        .ANY (retention_mem_area0)              ; zero initialized SDK + application data
+        .ANY (retention_mem_area0)              ; zero initialized retained data
     }
 
     RET_HEAP +0 UNINIT RET_HEAP_SIZE {
-        jump_table.o (heap_env_area)
-        jump_table.o (heap_db_area)
-        jump_table.o (heap_msg_area)
+        jump_table.o (heap_env_area)            ; environment heap
+        jump_table.o (heap_db_area)             ; database heap
+        jump_table.o (heap_msg_area)            ; message heap
+    }
+}
+
+;*********************************************************************************************;
+; Check if the user selected retained data (the zero initialized) size fits in the RET_DATA   ;
+; executon region.                                                                            ;
+; If the check fails, then the CFG_RET_DATA_SIZE value must be increased accordingly.         ;
+; Note: If the selected size is equal to the value calculated by the linker, then the check   ;
+;       can be omitted.                                                                       ;
+;*********************************************************************************************;
+ScatterAssert(CFG_RET_DATA_SIZE > ImageLength(RET_DATA))
+
+; Free area to be used by the application (remove EMPTY attribute if used)
+LR_FREE_AREA FREE_AREA_BASE_ADDR FREE_AREA_SIZE{
+    ER_FREE_AREA FREE_AREA_BASE_ADDR EMPTY FREE_AREA_SIZE {
+     ;.ANY (+ZI)
     }
 }

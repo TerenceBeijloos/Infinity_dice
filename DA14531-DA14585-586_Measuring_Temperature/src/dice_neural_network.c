@@ -1,4 +1,5 @@
 #include "dice_neural_network.h"
+/*
 #include "math.h"
 
 // Activation function.
@@ -78,3 +79,5 @@ void network_init(void) {
 	}
 	
 }
+
+*/

@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060750: Last Updated: Fri Oct 15 11:13:15 2021
+;#<FEEDBACK># ARM Linker, 5060960: Last Updated: Wed Oct 20 15:53:39 2021
 ;VERSION 0.2
 ;FILE adc_58x.o
 adc_disable <= USED 0
@@ -104,8 +104,6 @@ led_pair_turn_on <= USED 0
 led_periph_init <= USED 0
 led_turn_off <= USED 0
 led_turn_on <= USED 0
-;FILE dice_neural_network.o
-network_init <= USED 0
 ;FILE dice_sensor_api.o
 accelerometer_available <= USED 0
 dice_sensor_api_get_orientation <= USED 0
@@ -242,6 +240,8 @@ spi_set_irq_mode <= USED 0
 spi_set_speed <= USED 0
 spi_transaction <= USED 0
 spi_transfer <= USED 0
+spi_wait_dma_read_to_finish <= USED 0
+spi_wait_dma_write_to_finish <= USED 0
 ;FILE spi_flash.o
 spi_flash_auto_detect <= USED 0
 spi_flash_block_erase <= USED 0
@@ -250,11 +250,14 @@ spi_flash_chip_erase <= USED 0
 spi_flash_chip_erase_forced <= USED 0
 spi_flash_configure_env <= USED 0
 spi_flash_configure_memory_protection <= USED 0
+spi_flash_disable_power_pin <= USED 0
 spi_flash_enable <= USED 0
+spi_flash_enable_power_pin <= USED 0
 spi_flash_enable_with_autodetect <= USED 0
 spi_flash_erase_fail <= USED 0
 spi_flash_fill <= USED 0
 spi_flash_get_power_mode <= USED 0
+spi_flash_get_power_pin_status <= USED 0
 spi_flash_is_busy <= USED 0
 spi_flash_is_empty <= USED 0
 spi_flash_is_page_empty <= USED 0
@@ -279,6 +282,7 @@ spi_flash_release_from_power_down <= USED 0
 spi_flash_set_power_mode <= USED 0
 spi_flash_set_write_disable <= USED 0
 spi_flash_set_write_enable <= USED 0
+spi_flash_ultra_deep_power_down <= USED 0
 spi_flash_wait_till_ready <= USED 0
 spi_flash_write_data <= USED 0
 spi_flash_write_data_buffer <= USED 0
